@@ -2,8 +2,29 @@ require('dotenv').config();
 const express   = require('express');
 const mongoose  = require('mongoose');
 const path      = require('path');
+const cors      = require('cors');
 
 const app = express();
+
+/* ═══════════════════════════════════════
+   CORS — allow Vercel frontend + localhost
+═══════════════════════════════════════ */
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  'https://community-hub-liart-three.vercel.app',
+  process.env.FRONTEND_URL
+].filter(Boolean);
+
+app.use(cors({
+  origin: function(origin, callback) {
+    // allow requests with no origin (mobile apps, curl, etc.)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true
+}));
 
 /* ═══════════════════════════════════════
    MIDDLEWARE
