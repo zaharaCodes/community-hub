@@ -480,7 +480,7 @@ function submitStep2(btn2,passInput,nameInput,alert2){
   if(!valid){setTimeout(function(){passInput.classList.remove('error')},400);return}
 
   setLoading(btn2,true);hideAlert(alert2);
-  var endpoint=state.isNew?'/api/auth/register':'/api/auth/login';
+  var endpoint=state.isNew?API+'/api/auth/register':API+'/api/auth/login';
   var body=state.isNew
     ?{email:state.email,password:pass,name:name}
     :{email:state.email,password:pass};
