@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Community Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0E0E0E;--bg2:#161616;--bg3:#1E1E1E;--card:#1A1A1A;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
+  --text:#F0EDE8;--muted:#888;--amber:#F5A623;--green:#4ADE80;
+  --blue:#60A5FA;--coral:#FF6B6B;--grad:linear-gradient(135deg,#F5A623 0%,#FF6B6B 100%);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;height:60px;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(14,14,14,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:0.65rem;font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:800;color:var(--text);text-decoration:none}
+.nav-logo-icon{width:30px;height:30px;border-radius:7px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:900;color:#fff;flex-shrink:0}
+.nav-back{color:var(--muted);text-decoration:none;font-size:0.83rem;font-weight:500;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
+.nav-back:hover{color:var(--text)}
+
+.page{max-width:760px;margin:0 auto;padding:7rem 2rem 5rem}
+
+.doc-hero{margin-bottom:3.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border)}
+.doc-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.25);color:var(--blue);padding:0.35rem 1rem;border-radius:100px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1.25rem}
+.doc-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;line-height:1.1;margin-bottom:1rem}
+.doc-meta{display:flex;gap:1.5rem;flex-wrap:wrap}
+.doc-meta-item{display:flex;align-items:center;gap:0.4rem;color:var(--muted);font-size:0.82rem}
+.doc-meta-item span{color:var(--text);font-weight:600}
+
+.toc{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:3rem}
+.toc-title{font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.9rem}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:0.3rem}
+.toc-list a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;display:flex;align-items:center;gap:0.5rem;padding:0.28rem 0;transition:color 0.2s}
+.toc-list a:hover{color:var(--blue)}
+.toc-num{color:var(--blue);font-size:0.72rem;font-weight:700;width:18px;flex-shrink:0}
+
+.doc-section{margin-bottom:3rem;scroll-margin-top:80px}
+.section-num{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);margin-bottom:0.5rem}
+.section-title{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:800;margin-bottom:1rem;line-height:1.2}
+.doc-section p{color:var(--muted);font-size:0.92rem;margin-bottom:0.9rem;line-height:1.75}
+.doc-section p strong{color:var(--text)}
+
+.doc-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin:1rem 0}
+.doc-list li{display:flex;align-items:flex-start;gap:0.65rem;color:var(--muted);font-size:0.9rem;line-height:1.6}
+.doc-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:0.55rem}
+
+/* Data table */
+.data-table{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:0.86rem}
+.data-table th{background:var(--bg2);color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;font-size:0.72rem;padding:0.7rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
+.data-table td{padding:0.75rem 1rem;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top;line-height:1.5}
+.data-table td strong{color:var(--text)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:hover td{background:rgba(255,255,255,0.02)}
+
+.highlight-box{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:0 12px 12px 0;padding:1.1rem 1.25rem;margin:1.25rem 0}
+.highlight-box p{color:var(--muted);font-size:0.88rem;margin:0;line-height:1.7}
+.highlight-box strong{color:var(--text)}
+
+.green-box{background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.2);border-radius:12px;padding:1.1rem 1.25rem;margin:1.25rem 0}
+.green-box p{color:var(--muted);font-size:0.88rem;margin:0;line-height:1.7}
+.green-box strong{color:var(--green)}
+
+.rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.25rem 0}
+.right-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem}
+.right-card-icon{font-size:1.2rem;margin-bottom:0.4rem}
+.right-card-title{font-weight:700;font-size:0.86rem;color:var(--text);margin-bottom:0.3rem}
+.right-card-desc{color:var(--muted);font-size:0.78rem;line-height:1.5}
+
+.doc-divider{height:1px;background:var(--border);margin:2.5rem 0}
+
+.doc-footer{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.75rem;margin-top:3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.doc-footer-text{color:var(--muted);font-size:0.85rem}
+.doc-footer-links{display:flex;gap:1.25rem}
+.doc-footer-links a{color:var(--muted);text-decoration:none;font-size:0.83rem;transition:color 0.2s}
+.doc-footer-links a:hover{color:var(--blue)}
+
+footer{border-top:1px solid var(--border);padding:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:4rem}
+footer .brand{font-family:'Playfair Display',serif;font-weight:800;font-size:1rem}
+footer .links{display:flex;gap:1.25rem}
+footer .links a{color:var(--muted);text-decoration:none;font-size:0.82rem;transition:color 0.2s}
+footer .links a:hover{color:var(--text)}
+footer .copy{color:var(--muted);font-size:0.78rem}
+
+@media(max-width:600px){.rights-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-icon">CH</div>
+    Community Hub
+  </a>
+  <a class="nav-back" href="javascript:history.back()">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    Go back
+  </a>
+</nav>
+
+<div class="page">
+
+  <div class="doc-hero">
+    <div class="doc-badge">🔒 Privacy Document</div>
+    <h1 class="doc-title">Privacy Policy</h1>
+    <div class="doc-meta">
+      <div class="doc-meta-item">📅 Last updated: <span>March 5, 2026</span></div>
+      <div class="doc-meta-item">⏱ Reading time: <span>~6 minutes</span></div>
+      <div class="doc-meta-item">🌍 Applies to: <span>All users worldwide</span></div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Table of Contents</div>
+    <ul class="toc-list">
+      <li><a href="#p1"><span class="toc-num">01</span>What Data We Collect</a></li>
+      <li><a href="#p2"><span class="toc-num">02</span>How We Use Your Data</a></li>
+      <li><a href="#p3"><span class="toc-num">03</span>Data We Don't Collect</a></li>
+      <li><a href="#p4"><span class="toc-num">04</span>Cookies & Local Storage</a></li>
+      <li><a href="#p5"><span class="toc-num">05</span>Data Sharing & Third Parties</a></li>
+      <li><a href="#p6"><span class="toc-num">06</span>Data Security</a></li>
+      <li><a href="#p7"><span class="toc-num">07</span>Your Rights</a></li>
+      <li><a href="#p8"><span class="toc-num">08</span>Data Retention</a></li>
+      <li><a href="#p9"><span class="toc-num">09</span>Children's Privacy</a></li>
+      <li><a href="#p10"><span class="toc-num">10</span>Contact & Requests</a></li>
+    </ul>
+  </div>
+
+  <div class="green-box">
+    <p><strong>Our commitment:</strong> Community Hub does not sell your data. We do not run ads. We collect only what's necessary to run the platform. Your privacy is a feature, not an afterthought.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="doc-section" id="p1">
+    <div class="section-num">01</div>
+    <h2 class="section-title">What Data We Collect</h2>
+    <p>We collect only the minimum data required to operate the platform. Here's exactly what we store:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data Type</th>
+          <th>What We Store</th>
+          <th>Why</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Account info</strong></td>
+          <td>Name, email address, hashed password</td>
+          <td>To create and authenticate your account</td>
+        </tr>
+        <tr>
+          <td><strong>Profile</strong></td>
+          <td>Optional bio, avatar color, initials</td>
+          <td>To personalize your profile</td>
+        </tr>
+        <tr>
+          <td><strong>Resources</strong></td>
+          <td>Name, description, location, tags, contact info you submit</td>
+          <td>To display community resources</td>
+        </tr>
+        <tr>
+          <td><strong>Activity</strong></td>
+          <td>Helpful votes you cast, resources you submitted</td>
+          <td>To show your dashboard stats and prevent duplicate votes</td>
+        </tr>
+        <tr>
+          <td><strong>Timestamps</strong></td>
+          <td>Account creation date, resource submission dates</td>
+          <td>To show recency of resources</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Browsing Community Hub without an account is completely anonymous. We do not require an account to view resources.</p>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 2 -->
+  <div class="doc-section" id="p2">
+    <div class="section-num">02</div>
+    <h2 class="section-title">How We Use Your Data</h2>
+    <p>We use the data we collect <strong>only</strong> for the following purposes:</p>
+    <ul class="doc-list">
+      <li>Authenticating your login and keeping your session secure</li>
+      <li>Displaying your submitted resources and dashboard statistics</li>
+      <li>Preventing spam and duplicate helpful votes</li>
+      <li>Sending transactional emails (e.g. password reset) — never marketing emails without consent</li>
+      <li>Improving platform performance and fixing bugs</li>
+    </ul>
+    <div class="highlight-box">
+      <p><strong>We will never</strong> use your data to serve advertisements, sell to third parties, build behavioral profiles, or contact you with unsolicited marketing.</p>
+    </div>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 3 -->
+  <div class="doc-section" id="p3">
+    <div class="section-num">03</div>
+    <h2 class="section-title">Data We Don't Collect</h2>
+    <p>To be explicit about what we <strong>do not</strong> collect:</p>
+    <ul class="doc-list">
+      <li>Your precise location or GPS coordinates</li>
+      <li>Browsing history or behavior tracking</li>
+      <li>Device fingerprints or persistent identifiers</li>
+      <li>Payment information of any kind — the platform is free</li>
+      <li>Phone numbers (unless you voluntarily add them to a resource listing)</li>
+      <li>Social media profiles or connections</li>
+    </ul>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 4 -->
+  <div class="doc-section" id="p4">
+    <div class="section-num">04</div>
+    <h2 class="section-title">Cookies & Local Storage</h2>
+    <p>Community Hub uses <strong>minimal browser storage</strong> to provide core functionality:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Storage Type</th><th>What's Stored</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>localStorage</strong></td>
+          <td>Auth token (JWT), your bookmarks, your vote history</td>
+          <td>Keep you logged in, save bookmarks locally</td>
+        </tr>
+        <tr>
+          <td><strong>Session cookies</strong></td>
+          <td>Basic session state</td>
+          <td>Security and authentication</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>We do <strong>not</strong> use advertising cookies, third-party tracking cookies, or analytics platforms like Google Analytics. Your browsing on Community Hub stays on Community Hub.</p>
+    <p>You can clear your localStorage at any time through your browser settings. This will sign you out and clear saved bookmarks on that device.</p>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 5 -->
+  <div class="doc-section" id="p5">
+    <div class="section-num">05</div>
+    <h2 class="section-title">Data Sharing & Third Parties</h2>
+    <p><strong>We do not sell, rent, or trade your personal data.</strong> Period.</p>
+    <p>We may share limited data only in these specific circumstances:</p>
+    <ul class="doc-list">
+      <li><strong>Service providers:</strong> Our hosting provider (to run the server) and email provider (for transactional emails only) process data on our behalf under strict data agreements</li>
+      <li><strong>Legal requirements:</strong> If required by law, court order, or to protect the safety of users</li>
+      <li><strong>Business transfer:</strong> If Community Hub is acquired or merged, users will be notified before data is transferred</li>
+    </ul>
+    <div class="highlight-box">
+      <p><strong>Google Fonts</strong> is loaded from Google's servers to render our typography. This means Google's servers process your IP address when fonts load. To avoid this, you can use a browser extension that blocks external font requests.</p>
+    </div>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 6 -->
+  <div class="doc-section" id="p6">
+    <div class="section-num">06</div>
+    <h2 class="section-title">Data Security</h2>
+    <p>We take reasonable measures to protect your data:</p>
+    <ul class="doc-list">
+      <li>Passwords are hashed using <strong>bcrypt</strong> with a cost factor of 12 — they are never stored in plain text</li>
+      <li>Authentication uses <strong>JWT tokens</strong> with expiry — not persistent cookies</li>
+      <li>All data is transmitted over <strong>HTTPS</strong> (encrypted in transit)</li>
+      <li>Our database is not publicly accessible</li>
+    </ul>
+    <p>However, no system is 100% secure. If you discover a security vulnerability, please report it responsibly to our contact email rather than publicly disclosing it.</p>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 7 -->
+  <div class="doc-section" id="p7">
+    <div class="section-num">07</div>
+    <h2 class="section-title">Your Rights</h2>
+    <p>Depending on your location, you may have the following rights regarding your data:</p>
+    <div class="rights-grid">
+      <div class="right-card">
+        <div class="right-card-icon">👁</div>
+        <div class="right-card-title">Access</div>
+        <div class="right-card-desc">Request a copy of all personal data we hold about you</div>
+      </div>
+      <div class="right-card">
+        <div class="right-card-icon">✏️</div>
+        <div class="right-card-title">Correction</div>
+        <div class="right-card-desc">Update or correct your name, email, and profile information</div>
+      </div>
+      <div class="right-card">
+        <div class="right-card-icon">🗑</div>
+        <div class="right-card-title">Deletion</div>
+        <div class="right-card-desc">Delete your account and associated personal data at any time</div>
+      </div>
+      <div class="right-card">
+        <div class="right-card-icon">📦</div>
+        <div class="right-card-title">Portability</div>
+        <div class="right-card-desc">Request an export of your submitted resources and account data</div>
+      </div>
+      <div class="right-card">
+        <div class="right-card-icon">🚫</div>
+        <div class="right-card-title">Objection</div>
+        <div class="right-card-desc">Object to certain uses of your data — we'll review and respond</div>
+      </div>
+      <div class="right-card">
+        <div class="right-card-icon">⏸</div>
+        <div class="right-card-title">Restriction</div>
+        <div class="right-card-desc">Request we limit how we process your data in certain circumstances</div>
+      </div>
+    </div>
+    <p>To exercise any of these rights, email us at the address in Section 10. We will respond within 30 days.</p>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 8 -->
+  <div class="doc-section" id="p8">
+    <div class="section-num">08</div>
+    <h2 class="section-title">Data Retention</h2>
+    <p>We retain your personal data for as long as your account is active. When you delete your account:</p>
+    <ul class="doc-list">
+      <li>Your name, email, and password are permanently deleted immediately</li>
+      <li>Resources you submitted may remain as anonymous community contributions unless you request removal</li>
+      <li>Helpful votes attributed to your account are anonymized</li>
+      <li>Backups may retain data for up to 30 days before permanent deletion</li>
+    </ul>
+    <p>To request complete deletion of all your data including submitted resources, contact us at the address in Section 10.</p>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 9 -->
+  <div class="doc-section" id="p9">
+    <div class="section-num">09</div>
+    <h2 class="section-title">Children's Privacy</h2>
+    <p>Community Hub is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13.</p>
+    <p>If you are a parent or guardian and believe your child has provided us with personal information, please contact us and we will delete that information promptly.</p>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 10 -->
+  <div class="doc-section" id="p10">
+    <div class="section-num">10</div>
+    <h2 class="section-title">Contact & Data Requests</h2>
+    <p>For any privacy-related questions, data access requests, or deletion requests:</p>
+    <ul class="doc-list">
+      <li>Email: <strong>privacy@communityhub.app</strong></li>
+      <li>Subject line: Include "Privacy Request" for faster processing</li>
+      <li>Response time: Within 30 days for all requests</li>
+    </ul>
+    <div class="green-box">
+      <p><strong>You are always in control.</strong> You can update your profile, change your password, or delete your account entirely from your dashboard settings at any time — no need to contact us.</p>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <div class="doc-footer-text">© 2026 Community Hub. All rights reserved.</div>
+    <div class="doc-footer-links">
+      <a href="terms.html">Terms of Service →</a>
+      <a href="index.html">Back to Home →</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="brand">Community Hub</div>
+  <div class="links">
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="index.html">Home</a>
+    <a href="app.html">Browse Resources</a>
+  </div>
+  <div class="copy">© 2026 Community Hub. Built with ❤️ for the community.</div>
+</footer>
+
+</body>
+</html>

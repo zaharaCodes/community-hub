@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — Community Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0E0E0E;--bg2:#161616;--bg3:#1E1E1E;--card:#1A1A1A;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
+  --text:#F0EDE8;--muted:#888;--amber:#F5A623;--green:#4ADE80;
+  --coral:#FF6B6B;--grad:linear-gradient(135deg,#F5A623 0%,#FF6B6B 100%);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;height:60px;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(14,14,14,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:0.65rem;font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:800;color:var(--text);text-decoration:none}
+.nav-logo-icon{width:30px;height:30px;border-radius:7px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:900;color:#fff;flex-shrink:0}
+.nav-back{color:var(--muted);text-decoration:none;font-size:0.83rem;font-weight:500;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
+.nav-back:hover{color:var(--text)}
+
+/* PAGE */
+.page{max-width:760px;margin:0 auto;padding:7rem 2rem 5rem}
+
+/* HERO */
+.doc-hero{margin-bottom:3.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border)}
+.doc-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.25);color:var(--amber);padding:0.35rem 1rem;border-radius:100px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1.25rem}
+.doc-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;line-height:1.1;margin-bottom:1rem}
+.doc-meta{display:flex;gap:1.5rem;flex-wrap:wrap}
+.doc-meta-item{display:flex;align-items:center;gap:0.4rem;color:var(--muted);font-size:0.82rem}
+.doc-meta-item span{color:var(--text);font-weight:600}
+
+/* TOC */
+.toc{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:3rem}
+.toc-title{font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.9rem}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:0.3rem}
+.toc-list a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;display:flex;align-items:center;gap:0.5rem;padding:0.28rem 0;transition:color 0.2s;border-radius:4px}
+.toc-list a:hover{color:var(--amber)}
+.toc-num{color:var(--amber);font-size:0.72rem;font-weight:700;width:18px;flex-shrink:0}
+
+/* SECTIONS */
+.doc-section{margin-bottom:3rem;scroll-margin-top:80px}
+.section-num{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--amber);margin-bottom:0.5rem}
+.section-title{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:800;margin-bottom:1rem;line-height:1.2}
+.doc-section p{color:var(--muted);font-size:0.92rem;margin-bottom:0.9rem;line-height:1.75}
+.doc-section p strong{color:var(--text)}
+
+.doc-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin:1rem 0}
+.doc-list li{display:flex;align-items:flex-start;gap:0.65rem;color:var(--muted);font-size:0.9rem;line-height:1.6}
+.doc-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;margin-top:0.55rem}
+
+.highlight-box{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 12px 12px 0;padding:1.1rem 1.25rem;margin:1.25rem 0}
+.highlight-box p{color:var(--muted);font-size:0.88rem;margin:0;line-height:1.7}
+.highlight-box strong{color:var(--text)}
+
+.warning-box{background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);border-radius:12px;padding:1.1rem 1.25rem;margin:1.25rem 0}
+.warning-box p{color:var(--muted);font-size:0.88rem;margin:0;line-height:1.7}
+.warning-box strong{color:var(--coral)}
+
+/* DIVIDER */
+.doc-divider{height:1px;background:var(--border);margin:2.5rem 0}
+
+/* FOOTER */
+.doc-footer{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.75rem;margin-top:3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.doc-footer-text{color:var(--muted);font-size:0.85rem}
+.doc-footer-links{display:flex;gap:1.25rem}
+.doc-footer-links a{color:var(--muted);text-decoration:none;font-size:0.83rem;transition:color 0.2s}
+.doc-footer-links a:hover{color:var(--amber)}
+
+/* PAGE FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:4rem}
+footer .brand{font-family:'Playfair Display',serif;font-weight:800;font-size:1rem}
+footer .links{display:flex;gap:1.25rem}
+footer .links a{color:var(--muted);text-decoration:none;font-size:0.82rem;transition:color 0.2s}
+footer .links a:hover{color:var(--text)}
+footer .copy{color:var(--muted);font-size:0.78rem}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-icon">CH</div>
+    Community Hub
+  </a>
+  <a class="nav-back" href="javascript:history.back()">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    Go back
+  </a>
+</nav>
+
+<div class="page">
+
+  <div class="doc-hero">
+    <div class="doc-badge">📄 Legal Document</div>
+    <h1 class="doc-title">Terms of Service</h1>
+    <div class="doc-meta">
+      <div class="doc-meta-item">📅 Last updated: <span>March 5, 2026</span></div>
+      <div class="doc-meta-item">⏱ Reading time: <span>~5 minutes</span></div>
+      <div class="doc-meta-item">📍 Applies to: <span>All users worldwide</span></div>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">Table of Contents</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span class="toc-num">01</span>Acceptance of Terms</a></li>
+      <li><a href="#s2"><span class="toc-num">02</span>Description of Service</a></li>
+      <li><a href="#s3"><span class="toc-num">03</span>User Accounts</a></li>
+      <li><a href="#s4"><span class="toc-num">04</span>Content Guidelines</a></li>
+      <li><a href="#s5"><span class="toc-num">05</span>Prohibited Conduct</a></li>
+      <li><a href="#s6"><span class="toc-num">06</span>Intellectual Property</a></li>
+      <li><a href="#s7"><span class="toc-num">07</span>Disclaimers & Liability</a></li>
+      <li><a href="#s8"><span class="toc-num">08</span>Termination</a></li>
+      <li><a href="#s9"><span class="toc-num">09</span>Changes to Terms</a></li>
+      <li><a href="#s10"><span class="toc-num">10</span>Contact Us</a></li>
+    </ul>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>Plain English Summary:</strong> Community Hub is a free platform where people share and find local resources. By using it, you agree to be honest, not spam or abuse the platform, and understand that we can't guarantee the accuracy of community-submitted info. That's the gist — but please read the full terms below.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="doc-section" id="s1">
+    <div class="section-num">01</div>
+    <h2 class="section-title">Acceptance of Terms</h2>
+    <p>By accessing or using Community Hub ("the Service", "we", "us"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our platform.</p>
+    <p>These terms apply to all visitors, users, and contributors of the Service. By creating an account or submitting content, you confirm you are at least 13 years of age and have the legal capacity to enter into these terms.</p>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 2 -->
+  <div class="doc-section" id="s2">
+    <div class="section-num">02</div>
+    <h2 class="section-title">Description of Service</h2>
+    <p>Community Hub is a <strong>free, community-powered platform</strong> that allows users to discover, share, and vote on local resources including food assistance, shelter, healthcare, legal aid, job training, and more.</p>
+    <p>The Service includes:</p>
+    <ul class="doc-list">
+      <li>Browsing and searching community-submitted resources without an account</li>
+      <li>Creating a free account to submit, edit, and manage resources</li>
+      <li>Voting on resources to surface the most helpful ones</li>
+      <li>Bookmarking resources for personal reference</li>
+      <li>A personal dashboard to track your contributions</li>
+    </ul>
+    <p>We reserve the right to modify, suspend, or discontinue any part of the Service at any time without notice.</p>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 3 -->
+  <div class="doc-section" id="s3">
+    <div class="section-num">03</div>
+    <h2 class="section-title">User Accounts</h2>
+    <p>An account is <strong>not required to browse</strong> resources. However, to submit or manage resources, you must create a free account.</p>
+    <p>When creating an account, you agree to:</p>
+    <ul class="doc-list">
+      <li>Provide accurate and truthful information</li>
+      <li>Keep your password secure and confidential</li>
+      <li>Notify us immediately of any unauthorized use of your account</li>
+      <li>Be responsible for all activity that occurs under your account</li>
+    </ul>
+    <div class="warning-box">
+      <p><strong>Important:</strong> Do not share your password with anyone. Community Hub staff will never ask for your password. If you suspect your account has been compromised, change your password immediately.</p>
+    </div>
+    <p>We reserve the right to suspend or terminate accounts that violate these terms, engage in spam, or submit false information.</p>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 4 -->
+  <div class="doc-section" id="s4">
+    <div class="section-num">04</div>
+    <h2 class="section-title">Content Guidelines</h2>
+    <p>When you submit a resource, you are responsible for ensuring it meets our community standards. Resources must:</p>
+    <ul class="doc-list">
+      <li>Be real, verifiable organizations or services</li>
+      <li>Provide genuinely free or low-cost assistance to people in need</li>
+      <li>Include accurate contact information and descriptions</li>
+      <li>Be relevant to the community — food, shelter, health, legal, education, or related categories</li>
+    </ul>
+    <p>By submitting content, you grant Community Hub a <strong>non-exclusive, royalty-free license</strong> to display, distribute, and promote that content as part of the Service. You retain ownership of your submissions.</p>
+    <p>You are solely responsible for keeping your submitted resources up to date. Please edit or remove resources that are no longer active.</p>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 5 -->
+  <div class="doc-section" id="s5">
+    <div class="section-num">05</div>
+    <h2 class="section-title">Prohibited Conduct</h2>
+    <p>You agree not to use Community Hub to:</p>
+    <ul class="doc-list">
+      <li>Submit false, misleading, or fraudulent resource listings</li>
+      <li>Spam the platform with duplicate or irrelevant entries</li>
+      <li>Harass, abuse, or threaten other users</li>
+      <li>Attempt to gain unauthorized access to any part of the platform</li>
+      <li>Use automated bots, scrapers, or scripts without prior written permission</li>
+      <li>Submit commercial advertisements disguised as community resources</li>
+      <li>Violate any applicable local, national, or international law</li>
+      <li>Impersonate any person, organization, or Community Hub staff</li>
+    </ul>
+    <div class="warning-box">
+      <p><strong>Violations may result in immediate account suspension</strong> and permanent banning from the platform without notice. We take the integrity of community information seriously.</p>
+    </div>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 6 -->
+  <div class="doc-section" id="s6">
+    <div class="section-num">06</div>
+    <h2 class="section-title">Intellectual Property</h2>
+    <p>The Community Hub name, logo, design, and original platform code are the intellectual property of Community Hub and may not be copied, reproduced, or used without explicit written permission.</p>
+    <p>Community-submitted resource data is contributed by users and is not owned by Community Hub. Users retain rights to their own submissions.</p>
+    <p>If you believe any content on Community Hub infringes your intellectual property rights, please contact us at the address in Section 10.</p>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 7 -->
+  <div class="doc-section" id="s7">
+    <div class="section-num">07</div>
+    <h2 class="section-title">Disclaimers & Limitation of Liability</h2>
+    <p>Community Hub is provided <strong>"as is"</strong> without warranties of any kind. We do not guarantee the accuracy, completeness, or availability of any resource listed on the platform.</p>
+    <div class="highlight-box">
+      <p><strong>Important:</strong> Resources on Community Hub are submitted by community members. We do not independently verify every listing. Always confirm details (hours, availability, eligibility) directly with the resource provider before visiting.</p>
+    </div>
+    <p>To the maximum extent permitted by law, Community Hub shall not be liable for:</p>
+    <ul class="doc-list">
+      <li>Inaccurate or outdated resource information submitted by users</li>
+      <li>Any indirect, incidental, or consequential damages arising from use of the Service</li>
+      <li>Loss of data, service interruptions, or technical failures</li>
+      <li>Actions taken by users based on information found on the platform</li>
+    </ul>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 8 -->
+  <div class="doc-section" id="s8">
+    <div class="section-num">08</div>
+    <h2 class="section-title">Termination</h2>
+    <p>You may delete your account at any time from your account settings. Upon deletion, your submitted resources may remain on the platform as community contributions unless you explicitly request their removal.</p>
+    <p>We may suspend or terminate your access to the Service at our sole discretion, with or without notice, if we believe you have violated these Terms of Service.</p>
+    <p>Termination does not affect any rights or obligations that arose prior to termination.</p>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 9 -->
+  <div class="doc-section" id="s9">
+    <div class="section-num">09</div>
+    <h2 class="section-title">Changes to Terms</h2>
+    <p>We reserve the right to update these Terms of Service at any time. When we make significant changes, we will update the "Last updated" date at the top of this page.</p>
+    <p>Your continued use of Community Hub after changes are posted constitutes your acceptance of the revised terms. We encourage you to review this page periodically.</p>
+  </div>
+
+  <div class="doc-divider"></div>
+
+  <!-- SECTION 10 -->
+  <div class="doc-section" id="s10">
+    <div class="section-num">10</div>
+    <h2 class="section-title">Contact Us</h2>
+    <p>If you have questions about these Terms of Service, please reach out:</p>
+    <ul class="doc-list">
+      <li>Email: <strong>legal@communityhub.app</strong></li>
+      <li>Through the platform: Use the feedback form in your account settings</li>
+    </ul>
+    <p>We aim to respond to all legal inquiries within 5 business days.</p>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="doc-footer">
+    <div class="doc-footer-text">© 2026 Community Hub. All rights reserved.</div>
+    <div class="doc-footer-links">
+      <a href="privacy.html">Privacy Policy →</a>
+      <a href="index.html">Back to Home →</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="brand">Community Hub</div>
+  <div class="links">
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="index.html">Home</a>
+    <a href="app.html">Browse Resources</a>
+  </div>
+  <div class="copy">© 2026 Community Hub. Built with ❤️ for the community.</div>
+</footer>
+
+</body>
+</html>

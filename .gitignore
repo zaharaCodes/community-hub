@@ -1,0 +1,8 @@
+touch .gitignore
+```
+
+Add to `.gitignore`:
+```
+node_modules/
+.env
+.DS_Store

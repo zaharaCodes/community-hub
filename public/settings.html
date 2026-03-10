@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings — Community Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0E0E0E;--bg2:#161616;--bg3:#1E1E1E;--card:#1A1A1A;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
+  --text:#F0EDE8;--muted:#888;--amber:#F5A623;
+  --green:#4ADE80;--coral:#FF6B6B;--blue:#60A5FA;
+  --grad:linear-gradient(135deg,#F5A623 0%,#FF6B6B 100%);
+}
+body.light{
+  --bg:#F5F4F0;--bg2:#ECEAE4;--bg3:#E2DED6;--card:#FFFFFF;
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.14);
+  --text:#1A1714;--muted:#6B6660;
+}
+body.light .navbar{background:rgba(245,244,240,0.95)}
+body.light .nav-username{color:#1A1714}
+body.light .nav-btn{color:#6B6660;border-color:rgba(0,0,0,0.12)}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;background:rgba(14,14,14,0.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:0.65rem;text-decoration:none;color:var(--text);font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:800}
+.nav-logo-icon{width:32px;height:32px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:0.85rem;font-family:'Playfair Display',serif}
+.nav-right{display:flex;align-items:center;gap:0.65rem}
+.nav-btn{background:transparent;color:var(--muted);padding:0.4rem 0.9rem;border-radius:8px;font-weight:600;font-size:0.82rem;font-family:'Outfit',sans-serif;text-decoration:none;border:1px solid var(--border);transition:all 0.2s;cursor:pointer}
+.nav-btn:hover{color:var(--text);border-color:var(--border2)}
+.nav-username{font-size:0.82rem;font-weight:600}
+.nav-avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.72rem;color:#fff;border:2px solid var(--border2)}
+.theme-toggle{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.95rem;transition:all 0.2s}
+.theme-toggle:hover{border-color:var(--border2)}
+
+/* PAGE */
+.page{max-width:860px;margin:0 auto;padding:80px 2rem 4rem;display:grid;grid-template-columns:220px 1fr;gap:2rem}
+@media(max-width:680px){.page{grid-template-columns:1fr;padding:80px 1rem 4rem}}
+
+/* TAB NAV */
+.settings-nav{display:flex;flex-direction:column;gap:0.2rem;position:sticky;top:80px;align-self:start}
+.settings-nav-item{display:flex;align-items:center;gap:0.65rem;padding:0.65rem 0.85rem;border-radius:10px;color:var(--muted);font-size:0.88rem;font-weight:500;cursor:pointer;border:none;background:none;font-family:'Outfit',sans-serif;transition:all 0.2s;text-align:left;width:100%}
+.settings-nav-item:hover{color:var(--text);background:rgba(255,255,255,0.04)}
+.settings-nav-item.active{color:var(--text);background:rgba(245,166,35,0.1)}
+.settings-nav-item.active .sn-icon{color:var(--amber)}
+.sn-icon{font-size:1rem;width:18px;text-align:center}
+@media(max-width:680px){.settings-nav{flex-direction:row;flex-wrap:wrap;position:static;gap:0.35rem}}
+
+/* PANELS */
+.settings-panel{display:none}
+.settings-panel.active{display:block;animation:fadeUp 0.3s ease both}
+
+/* SECTION */
+.settings-section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin-bottom:1.25rem}
+.settings-section-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:800;margin-bottom:0.35rem}
+.settings-section-sub{color:var(--muted);font-size:0.82rem;margin-bottom:1.5rem}
+
+/* FORM */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+@media(max-width:500px){.form-row{grid-template-columns:1fr}}
+.form-group{margin-bottom:1rem}
+.form-label{display:block;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:0.4rem}
+.form-input,.form-textarea{width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:0.8rem 1rem;border-radius:10px;font-size:0.9rem;font-family:'Outfit',sans-serif;outline:none;transition:all 0.2s}
+.form-input:focus,.form-textarea:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,166,35,0.08)}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--muted)}
+.form-textarea{resize:vertical;min-height:80px}
+.input-wrap{position:relative}
+.input-wrap .form-input{padding-right:2.8rem}
+.toggle-pass{position:absolute;right:0.85rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);padding:0.2rem;transition:color 0.2s;font-size:0.9rem}
+.toggle-pass:hover{color:var(--text)}
+
+/* ALERT */
+.alert{padding:0.75rem 1rem;border-radius:10px;font-size:0.85rem;font-weight:500;display:none;align-items:center;gap:0.5rem;margin-bottom:1rem}
+.alert.show{display:flex;animation:fadeIn 0.2s ease}
+.alert.error{background:rgba(255,107,107,0.1);border:1px solid rgba(255,107,107,0.25);color:var(--coral)}
+.alert.success{background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);color:var(--green)}
+
+/* BUTTONS */
+.btn-primary{padding:0.75rem 1.5rem;border-radius:10px;background:var(--grad);color:#fff;border:none;font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.4rem}
+.btn-primary:hover:not(:disabled){opacity:0.9;transform:translateY(-1px)}
+.btn-primary:disabled{opacity:0.5;cursor:not-allowed}
+.btn-ghost{padding:0.75rem 1.5rem;border-radius:10px;background:transparent;border:1px solid var(--border);color:var(--muted);font-family:'Outfit',sans-serif;font-weight:600;font-size:0.9rem;cursor:pointer;transition:all 0.2s}
+.btn-ghost:hover{color:var(--text);border-color:var(--border2)}
+.btn-danger{padding:0.75rem 1.5rem;border-radius:10px;background:rgba(255,107,107,0.1);border:1px solid rgba(255,107,107,0.25);color:var(--coral);font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;transition:all 0.2s}
+.btn-danger:hover{background:rgba(255,107,107,0.2)}
+.btn-row{display:flex;gap:0.65rem;flex-wrap:wrap;margin-top:1.25rem}
+.spinner-sm{width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;display:none}
+
+/* AVATAR SECTION */
+.avatar-section{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.avatar-big{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.5rem;color:#fff;border:3px solid var(--border2);transition:all 0.3s;flex-shrink:0}
+.avatar-info{flex:1}
+.avatar-info-title{font-weight:700;margin-bottom:0.25rem}
+.avatar-info-sub{color:var(--muted);font-size:0.82rem}
+.color-picker-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.75rem}
+.color-dot{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all 0.2s;flex-shrink:0}
+.color-dot:hover{transform:scale(1.15)}
+.color-dot.selected{border-color:white;transform:scale(1.15)}
+
+/* DANGER ZONE */
+.danger-zone{background:rgba(255,107,107,0.04);border:1px solid rgba(255,107,107,0.15);border-radius:16px;padding:1.75rem;margin-bottom:1.25rem}
+.danger-zone-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:800;color:var(--coral);margin-bottom:0.35rem}
+.danger-zone-sub{color:var(--muted);font-size:0.82rem;margin-bottom:1.5rem}
+
+/* CONFIRM DELETE MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:2rem;width:100%;max-width:420px;transform:translateY(20px);transition:transform 0.3s}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:800;margin-bottom:0.5rem}
+.modal-sub{color:var(--muted);font-size:0.88rem;margin-bottom:1.25rem;line-height:1.6}
+
+/* TOAST */
+.toast-wrap{position:fixed;bottom:1.5rem;right:1.5rem;z-index:300;display:flex;flex-direction:column;gap:0.5rem}
+.toast{background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:0.7rem 1rem;font-size:0.85rem;font-weight:600;display:flex;align-items:center;gap:0.5rem;animation:slideIn 0.3s ease both;max-width:280px}
+.toast.success{border-color:rgba(74,222,128,0.3);color:var(--green)}
+.toast.error{border-color:rgba(255,107,107,0.3);color:var(--coral)}
+.toast.info{border-color:rgba(96,165,250,0.3);color:var(--blue)}
+
+/* THEME SWITCH (appearance tab) */
+.theme-option{display:flex;align-items:center;justify-content:space-between;padding:1rem;border-radius:12px;border:2px solid var(--border);cursor:pointer;transition:all 0.2s;margin-bottom:0.75rem}
+.theme-option:hover{border-color:var(--border2)}
+.theme-option.selected{border-color:var(--amber);background:rgba(245,166,35,0.06)}
+.theme-option-left{display:flex;align-items:center;gap:0.85rem}
+.theme-option-icon{font-size:1.4rem}
+.theme-option-name{font-weight:700;font-size:0.92rem}
+.theme-option-sub{color:var(--muted);font-size:0.78rem;margin-top:0.1rem}
+.theme-check{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.7rem;transition:all 0.2s}
+.theme-option.selected .theme-check{background:var(--amber);border-color:var(--amber);color:#fff}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes slideIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:translateX(0)}}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="nav-logo" href="app.html">
+    <div class="nav-logo-icon">CH</div>
+    Community Hub
+  </a>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+    <div class="nav-avatar" id="navAvatar"></div>
+    <span class="nav-username" id="navUsername"></span>
+    <a href="app.html" class="nav-btn">← Back to App</a>
+  </div>
+</nav>
+
+<!-- PAGE -->
+<div class="page">
+
+  <!-- LEFT: TAB NAV -->
+  <nav class="settings-nav">
+    <button class="settings-nav-item active" data-tab="profile">
+      <span class="sn-icon">👤</span> Profile
+    </button>
+    <button class="settings-nav-item" data-tab="security">
+      <span class="sn-icon">🔒</span> Security
+    </button>
+    <button class="settings-nav-item" data-tab="appearance">
+      <span class="sn-icon">🎨</span> Appearance
+    </button>
+    <button class="settings-nav-item" data-tab="data">
+      <span class="sn-icon">📦</span> Data
+    </button>
+  </nav>
+
+  <!-- RIGHT: PANELS -->
+  <div>
+
+    <!-- ══ PROFILE TAB ══ -->
+    <div class="settings-panel active" id="tab-profile">
+
+      <!-- Avatar & Color -->
+      <div class="settings-section">
+        <div class="settings-section-title">Your Avatar</div>
+        <div class="settings-section-sub">Pick a color for your profile avatar.</div>
+        <div class="avatar-section">
+          <div class="avatar-big" id="avatarPreview">?</div>
+          <div class="avatar-info">
+            <div class="avatar-info-title" id="avatarName">Your Name</div>
+            <div class="avatar-info-sub">Choose a color below</div>
+          </div>
+        </div>
+        <div class="color-picker-row" id="colorPicker"></div>
+      </div>
+
+      <!-- Profile Info -->
+      <div class="settings-section">
+        <div class="settings-section-title">Profile Info</div>
+        <div class="settings-section-sub">Update your name and bio shown on submissions.</div>
+        <div class="alert" id="profileAlert"></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input class="form-input" id="profileName" type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input class="form-input" id="profileEmail" type="email" disabled style="opacity:0.5;cursor:not-allowed">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Bio <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
+          <textarea class="form-textarea" id="profileBio" placeholder="Tell the community a little about yourself..."></textarea>
+        </div>
+        <div class="btn-row">
+          <button class="btn-primary" id="saveProfileBtn">
+            <span id="saveProfileText">Save Changes</span>
+            <div class="spinner-sm" id="saveProfileSpinner"></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Social Links -->
+      <div class="settings-section">
+        <div class="settings-section-title">Social Links <span style="color:var(--muted);font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:400">(optional)</span></div>
+        <div class="settings-section-sub">Shown on your public profile.</div>
+        <div class="alert" id="socialAlert"></div>
+        <div class="form-group">
+          <label class="form-label">Twitter / X</label>
+          <input class="form-input" id="socialTwitter" type="text" placeholder="@username">
+        </div>
+        <div class="form-group">
+          <label class="form-label">LinkedIn</label>
+          <input class="form-input" id="socialLinkedin" type="text" placeholder="linkedin.com/in/username">
+        </div>
+        <div class="form-group">
+          <label class="form-label">GitHub</label>
+          <input class="form-input" id="socialGithub" type="text" placeholder="github.com/username">
+        </div>
+        <div class="btn-row">
+          <button class="btn-primary" id="saveSocialBtn">
+            <span id="saveSocialText">Save Links</span>
+            <div class="spinner-sm" id="saveSocialSpinner"></div>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══ SECURITY TAB ══ -->
+    <div class="settings-panel" id="tab-security">
+
+      <div class="settings-section">
+        <div class="settings-section-title">Change Password</div>
+        <div class="settings-section-sub">Use a strong password with at least 6 characters.</div>
+        <div class="alert" id="passAlert"></div>
+        <div class="form-group">
+          <label class="form-label">Current Password</label>
+          <div class="input-wrap">
+            <input class="form-input" id="currentPass" type="password" placeholder="Your current password">
+            <button class="toggle-pass" data-target="currentPass">👁</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">New Password</label>
+          <div class="input-wrap">
+            <input class="form-input" id="newPass" type="password" placeholder="At least 6 characters">
+            <button class="toggle-pass" data-target="newPass">👁</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Confirm New Password</label>
+          <div class="input-wrap">
+            <input class="form-input" id="confirmPass" type="password" placeholder="Repeat new password">
+            <button class="toggle-pass" data-target="confirmPass">👁</button>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn-primary" id="changePassBtn">
+            <span id="changePassText">Update Password</span>
+            <div class="spinner-sm" id="changePassSpinner"></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Active Sessions</div>
+        <div class="settings-section-sub">You're currently signed in. Sign out of all devices by changing your password.</div>
+        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.85rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:10px">
+          <span style="font-size:1.2rem">💻</span>
+          <div>
+            <div style="font-weight:600;font-size:0.88rem">This device</div>
+            <div style="color:var(--muted);font-size:0.78rem">Active now · Community Hub Web</div>
+          </div>
+          <span style="margin-left:auto;background:rgba(74,222,128,0.12);color:var(--green);font-size:0.72rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:100px">Active</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══ APPEARANCE TAB ══ -->
+    <div class="settings-panel" id="tab-appearance">
+
+      <div class="settings-section">
+        <div class="settings-section-title">Theme</div>
+        <div class="settings-section-sub">Choose how Community Hub looks for you.</div>
+
+        <div class="theme-option" id="themeOptDark" onclick="setTheme('dark')">
+          <div class="theme-option-left">
+            <span class="theme-option-icon">🌙</span>
+            <div>
+              <div class="theme-option-name">Dark Mode</div>
+              <div class="theme-option-sub">Easy on the eyes — great for night use</div>
+            </div>
+          </div>
+          <div class="theme-check" id="checkDark">✓</div>
+        </div>
+
+        <div class="theme-option" id="themeOptLight" onclick="setTheme('light')">
+          <div class="theme-option-left">
+            <span class="theme-option-icon">☀️</span>
+            <div>
+              <div class="theme-option-name">Light Mode</div>
+              <div class="theme-option-sub">Clean and bright for daytime use</div>
+            </div>
+          </div>
+          <div class="theme-check" id="checkLight">✓</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══ DATA TAB ══ -->
+    <div class="settings-panel" id="tab-data">
+
+      <div class="settings-section">
+        <div class="settings-section-title">Export Your Data</div>
+        <div class="settings-section-sub">Download a copy of your profile and submitted resources as JSON.</div>
+        <div class="btn-row">
+          <button class="btn-ghost" id="exportBtn">📥 Download My Data</button>
+        </div>
+      </div>
+
+      <div class="danger-zone">
+        <div class="danger-zone-title">⚠️ Danger Zone</div>
+        <div class="danger-zone-sub">Permanently delete your account and all submitted resources. This cannot be undone.</div>
+        <button class="btn-danger" id="deleteAccountBtn">🗑 Delete My Account</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- DELETE CONFIRM MODAL -->
+<div class="modal-overlay" id="deleteModal">
+  <div class="modal">
+    <div class="modal-title" style="color:var(--coral)">Delete Account?</div>
+    <p class="modal-sub">This will permanently delete your account and <strong style="color:var(--text)">all resources you've submitted</strong>. There is no going back.</p>
+    <div class="form-group">
+      <label class="form-label">Enter your password to confirm</label>
+      <div class="input-wrap">
+        <input class="form-input" id="deletePassInput" type="password" placeholder="Your password">
+        <button class="toggle-pass" data-target="deletePassInput">👁</button>
+      </div>
+    </div>
+    <div class="alert" id="deleteAlert"></div>
+    <div class="btn-row">
+      <button class="btn-ghost" id="cancelDeleteBtn">Cancel</button>
+      <button class="btn-danger" id="confirmDeleteBtn">
+        <span id="confirmDeleteText">Yes, Delete Everything</span>
+        <div class="spinner-sm" id="deleteSpinner" style="border-top-color:var(--coral)"></div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+/* ── STATE ── */
+var user  = null;
+var token = null;
+var selectedColor = '#F5A623';
+
+/* ── AVATAR COLORS ── */
+var COLORS = [
+  '#F5A623','#FF6B6B','#4ADE80','#60A5FA','#A78BFA',
+  '#F472B6','#34D399','#FB923C','#FACC15','#38BDF8',
+  '#E879F9','#4ADE80','#F87171','#818CF8'
+];
+
+/* ── HELPERS ── */
+function esc(s){var d=document.createElement('div');d.textContent=String(s||'');return d.innerHTML}
+function authHeaders(){return{'Content-Type':'application/json','Authorization':'Bearer '+token}}
+function showAlert(id,msg,type){var el=document.getElementById(id);el.textContent=msg;el.className='alert show '+(type||'error')}
+function hideAlert(id){document.getElementById(id).className='alert'}
+function setLoading(textId,spinnerId,on,text){
+  document.getElementById(textId).textContent=on?'Saving...':text;
+  document.getElementById(spinnerId).style.display=on?'block':'none';
+  document.getElementById(textId).closest('button').disabled=on;
+}
+
+function toast(msg,type){
+  var t=document.createElement('div');
+  t.className='toast '+(type||'info');
+  var icons={success:'✓',error:'✕',info:'ℹ'};
+  t.innerHTML='<span>'+(icons[type]||'ℹ')+'</span> '+esc(msg);
+  document.getElementById('toastWrap').appendChild(t);
+  setTimeout(function(){t.style.opacity='0';t.style.transition='opacity 0.3s';setTimeout(function(){t.remove()},300)},3000);
+}
+
+/* ── AUTH GUARD ── */
+function initAuth(){
+  token=localStorage.getItem('ch_token');
+  if(!token){window.location.href='auth.html';return}
+  try{user=JSON.parse(localStorage.getItem('ch_user'))}catch(e){}
+
+  fetch('/api/auth/me',{headers:authHeaders()})
+    .then(function(r){if(!r.ok)throw 0;return r.json()})
+    .then(function(d){
+      user=d.user;
+      localStorage.setItem('ch_user',JSON.stringify(user));
+      fillForm();
+    })
+    .catch(function(){window.location.href='auth.html'});
+}
+
+/* ── FILL FORM WITH USER DATA ── */
+function fillForm(){
+  if(!user)return;
+  // Nav
+  var init=user.avatar&&user.avatar.initials?user.avatar.initials:(user.name?user.name[0].toUpperCase():'?');
+  var col=user.avatar&&user.avatar.color?user.avatar.color:'#F5A623';
+  document.getElementById('navAvatar').textContent=init;
+  document.getElementById('navAvatar').style.background=col;
+  document.getElementById('navUsername').textContent=user.name?user.name.split(' ')[0]:user.email;
+
+  // Profile fields
+  document.getElementById('profileName').value=user.name||'';
+  document.getElementById('profileEmail').value=user.email||'';
+  document.getElementById('profileBio').value=user.bio||'';
+
+  // Social
+  if(user.social){
+    document.getElementById('socialTwitter').value=user.social.twitter||'';
+    document.getElementById('socialLinkedin').value=user.social.linkedin||'';
+    document.getElementById('socialGithub').value=user.social.github||'';
+  }
+
+  // Avatar preview
+  selectedColor=col;
+  updateAvatarPreview(user.name,col);
+  buildColorPicker();
+}
+
+/* ── AVATAR PREVIEW ── */
+function updateAvatarPreview(name,color){
+  var initials='?';
+  if(name&&name.trim()){
+    var parts=name.trim().split(' ');
+    initials=parts.length>1?(parts[0][0]+parts[parts.length-1][0]).toUpperCase():parts[0].substring(0,2).toUpperCase();
+  }
+  var el=document.getElementById('avatarPreview');
+  el.textContent=initials;
+  el.style.background=color;
+  document.getElementById('avatarName').textContent=name||'Your Name';
+}
+
+document.getElementById('profileName').addEventListener('input',function(){
+  updateAvatarPreview(this.value,selectedColor);
+});
+
+/* ── COLOR PICKER ── */
+function buildColorPicker(){
+  var wrap=document.getElementById('colorPicker');
+  wrap.innerHTML=COLORS.map(function(c){
+    return'<div class="color-dot'+(c===selectedColor?' selected':'')+'" style="background:'+c+'" data-color="'+c+'" title="'+c+'"></div>';
+  }).join('');
+  wrap.querySelectorAll('.color-dot').forEach(function(dot){
+    dot.addEventListener('click',function(){
+      selectedColor=this.dataset.color;
+      wrap.querySelectorAll('.color-dot').forEach(function(d){d.classList.remove('selected')});
+      this.classList.add('selected');
+      updateAvatarPreview(document.getElementById('profileName').value,selectedColor);
+    });
+  });
+}
+
+/* ── SAVE PROFILE ── */
+document.getElementById('saveProfileBtn').addEventListener('click',function(){
+  var name=document.getElementById('profileName').value.trim();
+  var bio=document.getElementById('profileBio').value.trim();
+  hideAlert('profileAlert');
+  setLoading('saveProfileText','saveProfileSpinner',true,'Save Changes');
+
+  // Build initials from name
+  var initials='?';
+  if(name){
+    var parts=name.split(' ');
+    initials=parts.length>1?(parts[0][0]+parts[parts.length-1][0]).toUpperCase():parts[0].substring(0,2).toUpperCase();
+  }
+
+  fetch('/api/auth/profile',{
+    method:'PUT',headers:authHeaders(),
+    body:JSON.stringify({name:name,bio:bio,avatar:{color:selectedColor,initials:initials}})
+  })
+  .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}})})
+  .then(function(res){
+    setLoading('saveProfileText','saveProfileSpinner',false,'Save Changes');
+    if(!res.ok){showAlert('profileAlert',res.data.error||'Could not save','error');return}
+    user=res.data.user;
+    localStorage.setItem('ch_user',JSON.stringify(user));
+    fillForm();
+    toast('Profile saved!','success');
+  })
+  .catch(function(){setLoading('saveProfileText','saveProfileSpinner',false,'Save Changes');toast('Network error','error')});
+});
+
+/* ── SAVE SOCIAL ── */
+document.getElementById('saveSocialBtn').addEventListener('click',function(){
+  hideAlert('socialAlert');
+  setLoading('saveSocialText','saveSocialSpinner',true,'Save Links');
+  fetch('/api/auth/profile',{
+    method:'PUT',headers:authHeaders(),
+    body:JSON.stringify({social:{
+      twitter:document.getElementById('socialTwitter').value.trim(),
+      linkedin:document.getElementById('socialLinkedin').value.trim(),
+      github:document.getElementById('socialGithub').value.trim()
+    }})
+  })
+  .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}})})
+  .then(function(res){
+    setLoading('saveSocialText','saveSocialSpinner',false,'Save Links');
+    if(!res.ok){showAlert('socialAlert',res.data.error||'Could not save','error');return}
+    user=res.data.user;localStorage.setItem('ch_user',JSON.stringify(user));
+    toast('Social links saved!','success');
+  })
+  .catch(function(){setLoading('saveSocialText','saveSocialSpinner',false,'Save Links');toast('Network error','error')});
+});
+
+/* ── CHANGE PASSWORD ── */
+document.getElementById('changePassBtn').addEventListener('click',function(){
+  var cur=document.getElementById('currentPass').value;
+  var nw=document.getElementById('newPass').value;
+  var conf=document.getElementById('confirmPass').value;
+  hideAlert('passAlert');
+  if(!cur||!nw||!conf){showAlert('passAlert','All fields are required.','error');return}
+  if(nw.length<6){showAlert('passAlert','New password must be at least 6 characters.','error');return}
+  if(nw!==conf){showAlert('passAlert','New passwords do not match.','error');return}
+  setLoading('changePassText','changePassSpinner',true,'Update Password');
+  fetch('/api/auth/change-password',{
+    method:'PUT',headers:authHeaders(),
+    body:JSON.stringify({currentPassword:cur,newPassword:nw})
+  })
+  .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}})})
+  .then(function(res){
+    setLoading('changePassText','changePassSpinner',false,'Update Password');
+    if(!res.ok){showAlert('passAlert',res.data.error||'Could not update password','error');return}
+    document.getElementById('currentPass').value='';
+    document.getElementById('newPass').value='';
+    document.getElementById('confirmPass').value='';
+    toast('Password updated successfully!','success');
+  })
+  .catch(function(){setLoading('changePassText','changePassSpinner',false,'Update Password');toast('Network error','error')});
+});
+
+/* ── PASSWORD TOGGLES ── */
+document.querySelectorAll('.toggle-pass').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var inp=document.getElementById(this.dataset.target);
+    inp.type=inp.type==='password'?'text':'password';
+    this.textContent=inp.type==='password'?'👁':'🙈';
+  });
+});
+
+/* ── APPEARANCE ── */
+function setTheme(theme){
+  var isLight=theme==='light';
+  document.body.classList.toggle('light',isLight);
+  localStorage.setItem('ch_theme',theme);
+  document.getElementById('themeOptDark').classList.toggle('selected',!isLight);
+  document.getElementById('themeOptLight').classList.toggle('selected',isLight);
+  document.getElementById('themeToggle').textContent=isLight?'🌙':'☀️';
+}
+
+function initTheme(){
+  var saved=localStorage.getItem('ch_theme')||'dark';
+  setTheme(saved);
+  // Also wire the navbar toggle
+  document.getElementById('themeToggle').addEventListener('click',function(){
+    var cur=localStorage.getItem('ch_theme')||'dark';
+    setTheme(cur==='dark'?'light':'dark');
+  });
+}
+
+/* ── EXPORT DATA ── */
+document.getElementById('exportBtn').addEventListener('click',function(){
+  if(!user){toast('Not logged in','error');return}
+  fetch('/api/resources',{headers:authHeaders()})
+    .then(function(r){return r.json()})
+    .then(function(resources){
+      var mine=resources.filter(function(r){return String(r.submittedBy&&r.submittedBy._id||r.submittedBy)===String(user._id)});
+      var data={exportedAt:new Date().toISOString(),profile:{name:user.name,email:user.email,bio:user.bio,social:user.social,joinedAt:user.createdAt},submissions:mine};
+      var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+      var a=document.createElement('a');
+      a.href=URL.createObjectURL(blob);
+      a.download='community-hub-data.json';
+      a.click();
+      toast('Data exported!','success');
+    })
+    .catch(function(){toast('Could not export data','error')});
+});
+
+/* ── DELETE ACCOUNT ── */
+document.getElementById('deleteAccountBtn').addEventListener('click',function(){
+  document.getElementById('deletePassInput').value='';
+  hideAlert('deleteAlert');
+  document.getElementById('deleteModal').classList.add('open');
+});
+document.getElementById('cancelDeleteBtn').addEventListener('click',function(){
+  document.getElementById('deleteModal').classList.remove('open');
+});
+document.getElementById('deleteModal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open')});
+
+document.getElementById('confirmDeleteBtn').addEventListener('click',function(){
+  var pass=document.getElementById('deletePassInput').value;
+  if(!pass){showAlert('deleteAlert','Please enter your password','error');return}
+  hideAlert('deleteAlert');
+  document.getElementById('confirmDeleteText').textContent='Deleting...';
+  document.getElementById('deleteSpinner').style.display='block';
+  this.disabled=true;
+
+  fetch('/api/auth/account',{
+    method:'DELETE',headers:authHeaders(),
+    body:JSON.stringify({password:pass})
+  })
+  .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}})})
+  .then(function(res){
+    if(!res.ok){
+      showAlert('deleteAlert',res.data.error||'Incorrect password','error');
+      document.getElementById('confirmDeleteText').textContent='Yes, Delete Everything';
+      document.getElementById('deleteSpinner').style.display='none';
+      document.getElementById('confirmDeleteBtn').disabled=false;
+      return;
+    }
+    localStorage.clear();
+    window.location.href='index.html';
+  })
+  .catch(function(){
+    showAlert('deleteAlert','Network error','error');
+    document.getElementById('confirmDeleteText').textContent='Yes, Delete Everything';
+    document.getElementById('deleteSpinner').style.display='none';
+    document.getElementById('confirmDeleteBtn').disabled=false;
+  });
+});
+
+/* ── TAB SWITCHING ── */
+document.querySelectorAll('.settings-nav-item').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var tab=this.dataset.tab;
+    document.querySelectorAll('.settings-nav-item').forEach(function(b){b.classList.remove('active')});
+    document.querySelectorAll('.settings-panel').forEach(function(p){p.classList.remove('active')});
+    this.classList.add('active');
+    document.getElementById('tab-'+tab).classList.add('active');
+  });
+});
+
+/* ── INIT ── */
+initTheme();
+initAuth();
+</script>
+</body>
+</html>
