@@ -268,6 +268,11 @@ body.light .reason-btn{background:#ECEAE4;color:#6B6660}
 <div class="toast-container" id="toastContainer"></div>
 
 <script>
+/* ── API BASE (works locally + in production) ── */
+var API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? ''
+  : 'https://community-hub-production-5633.up.railway.app';
+
 /* ══════════════════════════════════════
    STATE
 ══════════════════════════════════════ */
@@ -318,7 +323,7 @@ function initAuth() {
   updateNav();
 
   if (state.token) {
-    fetch('/api/auth/me', { headers: authHeaders() })
+    fetch(API+'/api/auth/me', { headers: authHeaders() })
       .then(function(r){ if (!r.ok) throw 0; return r.json(); })
       .then(function(d){ state.user = d.user; localStorage.setItem('ch_user', JSON.stringify(d.user)); updateNav(); })
       .catch(function(){ state.token = null; state.user = null; localStorage.removeItem('ch_token'); updateNav(); });
@@ -356,7 +361,7 @@ function loadResource() {
   var id = getResourceId();
   if (!id) { showError('No resource ID', 'This link looks broken.'); return; }
 
-  fetch('/api/resources/' + id)
+  fetch(API+'/api/resources/' + id)
     .then(function(r){ if (!r.ok) throw r.status; return r.json(); })
     .then(function(data){
       state.resource = data;
@@ -606,7 +611,7 @@ document.getElementById('submitReport').addEventListener('click', function(){
   var btn = this;
   btn.disabled = true; btn.textContent = 'Submitting...';
 
-  fetch('/api/resources/' + r._id + '/report', {
+  fetch(API+'/api/resources/' + r._id + '/report', {
     method: 'POST',
     headers: authHeaders(),
     body: JSON.stringify({ reason: state.selectedReason })

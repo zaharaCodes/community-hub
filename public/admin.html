@@ -522,6 +522,11 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 <div class="toast-wrap" id="toastWrap"></div>
 
 <script>
+/* ── API BASE (works locally + in production) ── */
+var API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? ''
+  : 'https://community-hub-production-5633.up.railway.app';
+
 /* ══════════════════════════
    GLOBALS
 ══════════════════════════ */
@@ -583,7 +588,7 @@ document.getElementById('confirmOverlay').addEventListener('click',function(e){i
   if(!G.token){hideLoad();showDenied();return}
 
   /* Verify token + check admin */
-  fetch('/api/auth/me',{headers:authH()})
+  fetch(API+'/api/auth/me',{headers:authH()})
     .then(function(r){if(!r.ok)throw new Error();return r.json()})
     .then(function(d){
       G.user=d.user;
@@ -614,7 +619,7 @@ function loadAll(){
 function refreshAll(){loadAll();toast('Data refreshed','info')}
 
 function loadResources(){
-  fetch('/api/resources',{headers:authH()})
+  fetch(API+'/api/resources',{headers:authH()})
     .then(function(r){return r.json()})
     .then(function(data){
       G.resources=Array.isArray(data)?data:[];
@@ -630,7 +635,7 @@ function loadResources(){
 }
 
 function loadUsers(){
-  fetch('/api/admin/users',{headers:authH()})
+  fetch(API+'/api/admin/users',{headers:authH()})
     .then(function(r){if(!r.ok)throw new Error();return r.json()})
     .then(function(data){
       G.users=Array.isArray(data)?data:(data.users||[]);
@@ -648,7 +653,7 @@ function loadUsers(){
 }
 
 function loadReports(){
-  fetch('/api/admin/reports',{headers:authH()})
+  fetch(API+'/api/admin/reports',{headers:authH()})
     .then(function(r){if(!r.ok)throw new Error();return r.json()})
     .then(function(data){
       G.reports=Array.isArray(data)?data:(data.reports||[]);
@@ -782,7 +787,7 @@ function saveResource(){
   var alertEl=document.getElementById('editResAlert');
   if(!name||!cat||!loc||!desc){alertEl.textContent='Please fill in all required fields.';alertEl.className='modal-alert error show';return}
   var btn=document.getElementById('saveResBtn');btn.disabled=true;btn.textContent='Saving...';
-  fetch('/api/resources/'+id,{method:'PUT',headers:authH(),body:JSON.stringify({name:name,category:cat,location:loc,description:desc,contact:con,tags:tags})})
+  fetch(API+'/api/resources/'+id,{method:'PUT',headers:authH(),body:JSON.stringify({name:name,category:cat,location:loc,description:desc,contact:con,tags:tags})})
     .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}})})
     .then(function(res){
       btn.disabled=false;btn.textContent='Save Changes';
@@ -796,7 +801,7 @@ document.getElementById('editResModal').addEventListener('click',function(e){if(
 /* Delete resource */
 function deleteRes(id,name){
   confirm2('🗑','Delete Resource?','Delete "'+name+'"? This cannot be undone.','Delete','btn-danger',function(){
-    fetch('/api/resources/'+id,{method:'DELETE',headers:authH()})
+    fetch(API+'/api/resources/'+id,{method:'DELETE',headers:authH()})
       .then(function(){toast('Resource deleted','success');loadResources()})
       .catch(function(){toast('Could not delete','error')});
   });
@@ -851,7 +856,7 @@ function filterUsers(q,role){
 /* Promote to admin */
 function promoteUser(id,name){
   confirm2('⭐','Promote to Admin?',name+' will gain full admin access.','Promote','btn-primary',function(){
-    fetch('/api/admin/users/'+id+'/role',{method:'PUT',headers:authH(),body:JSON.stringify({role:'admin'})})
+    fetch(API+'/api/admin/users/'+id+'/role',{method:'PUT',headers:authH(),body:JSON.stringify({role:'admin'})})
       .then(function(r){return r.json()})
       .then(function(){toast(name+' is now an admin ⭐','success');loadUsers()})
       .catch(function(){toast('Could not update role','error')});
@@ -861,7 +866,7 @@ function promoteUser(id,name){
 /* Ban user */
 function banUser(id,name){
   confirm2('🚫','Ban User?',name+' will lose access to the platform.','Ban User','btn-danger',function(){
-    fetch('/api/admin/users/'+id+'/role',{method:'PUT',headers:authH(),body:JSON.stringify({role:'banned'})})
+    fetch(API+'/api/admin/users/'+id+'/role',{method:'PUT',headers:authH(),body:JSON.stringify({role:'banned'})})
       .then(function(r){return r.json()})
       .then(function(){toast(name+' has been banned','info');loadUsers()})
       .catch(function(){toast('Could not ban user','error')});
@@ -871,7 +876,7 @@ function banUser(id,name){
 /* Unban user */
 function unbanUser(id,name){
   confirm2('✓','Unban User?',name+' will regain access to the platform.','Unban','btn-success',function(){
-    fetch('/api/admin/users/'+id+'/role',{method:'PUT',headers:authH(),body:JSON.stringify({role:'user'})})
+    fetch(API+'/api/admin/users/'+id+'/role',{method:'PUT',headers:authH(),body:JSON.stringify({role:'user'})})
       .then(function(r){return r.json()})
       .then(function(){toast(name+' has been unbanned ✓','success');loadUsers()})
       .catch(function(){toast('Could not unban user','error')});
@@ -915,14 +920,14 @@ function renderReports(){
 
 function deleteReportedRes(resId,resName,repId){
   confirm2('🗑','Delete & Resolve?','Delete "'+resName+'" and close this report.','Delete','btn-danger',function(){
-    fetch('/api/resources/'+resId,{method:'DELETE',headers:authH()})
+    fetch(API+'/api/resources/'+resId,{method:'DELETE',headers:authH()})
       .then(function(){toast('Resource deleted and report resolved','success');loadResources();loadReports()})
       .catch(function(){toast('Could not delete','error')});
   });
 }
 
 function dismissReport(repId){
-  fetch('/api/admin/reports/'+repId+'/dismiss',{method:'PUT',headers:authH()})
+  fetch(API+'/api/admin/reports/'+repId+'/dismiss',{method:'PUT',headers:authH()})
     .then(function(){toast('Report dismissed ✓','success');loadReports()})
     .catch(function(){
       /* Optimistically remove from local if endpoint not built yet */

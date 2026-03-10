@@ -436,6 +436,10 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
 <div class="toast-container" id="toastContainer"></div>
 
 <script>
+/* ── API BASE (works locally + in production) ── */
+var API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? ''
+  : 'https://community-hub-production-5633.up.railway.app';
 var S={user:null,token:null,resources:[],filtered:[],bookmarks:[],voted:[],activeCat:'all',sort:'newest',search:'',editId:null};
 var CAT_LABEL={food:'Food',shelter:'Shelter',health:'Healthcare',mental:'Mental Health',job:'Job Training',education:'Education',legal:'Legal Aid',other:'Other'};
 var TITLE_MAP={all:'All Resources',food:'Food Assistance',shelter:'Shelter',health:'Healthcare',mental:'Mental Health',job:'Job Training',education:'Education',legal:'Legal Aid',other:'Other'};
@@ -459,7 +463,7 @@ function initAuth(){
   try{S.voted=JSON.parse(localStorage.getItem('ch_voted'))||[]}catch(e){S.voted=[]}
   renderNav();
   if(S.token){
-    fetch('/api/auth/me',{headers:authHeaders()})
+    fetch(API+'/api/auth/me',{headers:authHeaders()})
       .then(function(r){if(!r.ok)throw new Error();return r.json()})
       .then(function(d){S.user=d.user;localStorage.setItem('ch_user',JSON.stringify(d.user));renderNav()})
       .catch(function(){S.token=null;S.user=null;localStorage.removeItem('ch_token');localStorage.removeItem('ch_user');renderNav()});
@@ -517,7 +521,7 @@ function showView(view){
 
 /* LOAD */
 function loadResources(){
-  fetch('/api/resources')
+  fetch(API+'/api/resources')
     .then(function(r){return r.json()})
     .then(function(data){
       S.resources=Array.isArray(data)?data:[];
@@ -660,7 +664,7 @@ document.getElementById('saveResource').addEventListener('click',function(){
 /* DELETE */
 function deleteResource(id){
   if(!confirm('Delete this resource? This cannot be undone.'))return;
-  fetch('/api/resources/'+id,{method:'DELETE',headers:authHeaders()})
+  fetch(API+'/api/resources/'+id,{method:'DELETE',headers:authHeaders()})
     .then(function(r){return r.json()})
     .then(function(){toast('Resource deleted','info');loadResources()})
     .catch(function(){toast('Could not delete','error')});

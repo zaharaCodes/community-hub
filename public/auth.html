@@ -288,6 +288,10 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 </div>
 
 <script>
+/* ── API BASE (works locally + in production) ── */
+var API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? ''
+  : 'https://community-hub-production-5633.up.railway.app';
 /* ── STATE ── */
 var state={email:'',isNew:false,loading:false};
 
@@ -341,7 +345,7 @@ function checkEmail(){
     setTimeout(function(){emailInput.classList.remove('error')},400);return;
   }
   state.email=email;setLoading(btn1,true);hideAlert(alert1);
-  fetch('/api/auth/check-email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})})
+  fetch(API+'/api/auth/check-email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})})
     .then(function(r){return r.json()})
     .then(function(data){
       if(data.error){showAlert(alert1,data.error);setLoading(btn1,false);return}
@@ -573,7 +577,7 @@ function sendResetEmail(){
 
   setLoading(btn,true);hideAlert(alertEl);
 
-  fetch('/api/auth/forgot-password',{
+  fetch(API+'/api/auth/forgot-password',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({email:email})
@@ -597,7 +601,7 @@ function sendResetEmail(){
 (function(){
   var token=localStorage.getItem('ch_token');
   if(!token)return;
-  fetch('/api/auth/me',{headers:{'Authorization':'Bearer '+token}})
+  fetch(API+'/api/auth/me',{headers:{'Authorization':'Bearer '+token}})
     .then(function(r){if(r.ok)window.location.href='app.html'})
     .catch(function(){});
 })();
