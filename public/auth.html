@@ -289,9 +289,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 
 <script>
 /* ── API BASE (works locally + in production) ── */
-var API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-  ? ''
-  : 'https://community-hub-production-5633.up.railway.app';
+var API = ''; /* vercel.json proxies /api to Railway */
 /* ── STATE ── */
 var state={email:'',isNew:false,loading:false};
 

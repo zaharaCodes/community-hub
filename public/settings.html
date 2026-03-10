@@ -379,6 +379,8 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 <div class="toast-wrap" id="toastWrap"></div>
 
 <script>
+/* ── API BASE (works locally + in production) ── */
+var API = ''; /* vercel.json proxies /api to Railway */
 /* ── STATE ── */
 var user  = null;
 var token = null;
@@ -417,7 +419,7 @@ function initAuth(){
   if(!token){window.location.href='auth.html';return}
   try{user=JSON.parse(localStorage.getItem('ch_user'))}catch(e){}
 
-  fetch('/api/auth/me',{headers:authHeaders()})
+  fetch(API+'/api/auth/me',{headers:authHeaders()})
     .then(function(r){if(!r.ok)throw 0;return r.json()})
     .then(function(d){
       user=d.user;
@@ -502,7 +504,7 @@ document.getElementById('saveProfileBtn').addEventListener('click',function(){
     initials=parts.length>1?(parts[0][0]+parts[parts.length-1][0]).toUpperCase():parts[0].substring(0,2).toUpperCase();
   }
 
-  fetch('/api/auth/profile',{
+  fetch(API+'/api/auth/profile',{
     method:'PUT',headers:authHeaders(),
     body:JSON.stringify({name:name,bio:bio,avatar:{color:selectedColor,initials:initials}})
   })
@@ -522,7 +524,7 @@ document.getElementById('saveProfileBtn').addEventListener('click',function(){
 document.getElementById('saveSocialBtn').addEventListener('click',function(){
   hideAlert('socialAlert');
   setLoading('saveSocialText','saveSocialSpinner',true,'Save Links');
-  fetch('/api/auth/profile',{
+  fetch(API+'/api/auth/profile',{
     method:'PUT',headers:authHeaders(),
     body:JSON.stringify({social:{
       twitter:document.getElementById('socialTwitter').value.trim(),
@@ -550,7 +552,7 @@ document.getElementById('changePassBtn').addEventListener('click',function(){
   if(nw.length<6){showAlert('passAlert','New password must be at least 6 characters.','error');return}
   if(nw!==conf){showAlert('passAlert','New passwords do not match.','error');return}
   setLoading('changePassText','changePassSpinner',true,'Update Password');
-  fetch('/api/auth/change-password',{
+  fetch(API+'/api/auth/change-password',{
     method:'PUT',headers:authHeaders(),
     body:JSON.stringify({currentPassword:cur,newPassword:nw})
   })
@@ -598,7 +600,7 @@ function initTheme(){
 /* ── EXPORT DATA ── */
 document.getElementById('exportBtn').addEventListener('click',function(){
   if(!user){toast('Not logged in','error');return}
-  fetch('/api/resources',{headers:authHeaders()})
+  fetch(API+'/api/resources',{headers:authHeaders()})
     .then(function(r){return r.json()})
     .then(function(resources){
       var mine=resources.filter(function(r){return String(r.submittedBy&&r.submittedBy._id||r.submittedBy)===String(user._id)});
@@ -632,7 +634,7 @@ document.getElementById('confirmDeleteBtn').addEventListener('click',function(){
   document.getElementById('deleteSpinner').style.display='block';
   this.disabled=true;
 
-  fetch('/api/auth/account',{
+  fetch(API+'/api/auth/account',{
     method:'DELETE',headers:authHeaders(),
     body:JSON.stringify({password:pass})
   })

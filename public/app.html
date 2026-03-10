@@ -437,9 +437,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
 
 <script>
 /* ── API BASE (works locally + in production) ── */
-var API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-  ? ''
-  : 'https://community-hub-production-5633.up.railway.app';
+var API = ''; /* vercel.json proxies /api to Railway */
 var S={user:null,token:null,resources:[],filtered:[],bookmarks:[],voted:[],activeCat:'all',sort:'newest',search:'',editId:null};
 var CAT_LABEL={food:'Food',shelter:'Shelter',health:'Healthcare',mental:'Mental Health',job:'Job Training',education:'Education',legal:'Legal Aid',other:'Other'};
 var TITLE_MAP={all:'All Resources',food:'Food Assistance',shelter:'Shelter',health:'Healthcare',mental:'Mental Health',job:'Job Training',education:'Education',legal:'Legal Aid',other:'Other'};
