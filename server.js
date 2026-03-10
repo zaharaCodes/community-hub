@@ -32,8 +32,10 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve everything in /public as static files
-app.use(express.static(path.join(__dirname, 'public')));
+// Static files only served in development
+if (process.env.NODE_ENV !== 'production') {
+  app.use(express.static(path.join(__dirname, 'public')));
+}
 
 /* ═══════════════════════════════════════
    DATABASE
@@ -54,11 +56,14 @@ app.use('/api/resources', resourceRoutes);
 app.use('/api/admin',     adminRoutes);               // ← NEW
 
 /* ═══════════════════════════════════════
-   FALLBACK — serve index.html for any
-   unknown route (SPA-style)
+   FALLBACK
 ═══════════════════════════════════════ */
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  if (process.env.NODE_ENV === 'production') {
+    res.status(404).json({ error: 'Not found' });
+  } else {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  }
 });
 
 /* ═══════════════════════════════════════
