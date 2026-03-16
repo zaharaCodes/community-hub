@@ -19,7 +19,6 @@ const allowedOrigins = [
 app.use(cors({
   origin: function(origin, callback) {
     if (!origin) return callback(null, true);
-    // Allow any vercel.app subdomain + localhost
     if (
       allowedOrigins.includes(origin) ||
       origin.endsWith('.vercel.app') ||
@@ -54,11 +53,18 @@ mongoose.connect(process.env.MONGODB_URI)
 ═══════════════════════════════════════ */
 const authRoutes     = require('./routes/auth');
 const resourceRoutes = require('./routes/resource');
-const adminRoutes    = require('./routes/admin');      // ← NEW
+const adminRoutes    = require('./routes/admin');
 
 app.use('/api/auth',      authRoutes);
 app.use('/api/resources', resourceRoutes);
-app.use('/api/admin',     adminRoutes);               // ← NEW
+app.use('/api/admin',     adminRoutes);
+
+/* ═══════════════════════════════════════
+   HEALTH CHECK
+═══════════════════════════════════════ */
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', time: new Date().toISOString() });
+});
 
 /* ═══════════════════════════════════════
    FALLBACK

@@ -12,14 +12,34 @@ const { Resend } = require('resend');
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 /* ═══════════════════════════════════════════════════
+   GET /api/resources/stats
+   Public — total resource count + total helpful votes
+   ⚠️ MUST stay above /:id or Express treats "stats" as an ID
+═══════════════════════════════════════════════════ */
+router.get('/stats', async (req, res) => {
+  try {
+    const totalResources = await Resource.countDocuments();
+    const agg = await Resource.aggregate([
+      { $group: { _id: null, totalViews: { $sum: '$helpful' } } }
+    ]);
+    const totalViews = agg[0]?.totalViews || 0;
+    res.json({ totalResources, totalViews });
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+/* ═══════════════════════════════════════════════════
    GET /api/resources
-   Public — all resources (for app.html grid)
+   Public — all resources with optional ?limit=N
 ═══════════════════════════════════════════════════ */
 router.get('/', async (req, res) => {
   try {
+    const limit = req.query.limit ? parseInt(req.query.limit) : 0;
     const resources = await Resource.find()
       .populate('submittedBy', 'name avatar')
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .limit(limit);
     res.json(resources);
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
@@ -78,12 +98,12 @@ router.put('/:id', protect, async (req, res) => {
     if (!isOwner && !isAdmin) return res.status(403).json({ error: 'Not authorised.' });
 
     const { name, category, location, description, contact, tags } = req.body;
-    if (name)              resource.name        = name;
-    if (category)          resource.category    = category;
-    if (location)          resource.location    = location;
-    if (description)       resource.description = description;
-    if (contact !== undefined) resource.contact = contact;
-    if (tags    !== undefined) resource.tags    = tags;
+    if (name)                  resource.name        = name;
+    if (category)              resource.category    = category;
+    if (location)              resource.location    = location;
+    if (description)           resource.description = description;
+    if (contact !== undefined) resource.contact     = contact;
+    if (tags    !== undefined) resource.tags        = tags;
 
     await resource.save();
     res.json(resource);
@@ -126,10 +146,8 @@ router.post('/:id/helpful', async (req, res) => {
 
     if (!resource) return res.status(404).json({ error: 'Resource not found.' });
 
-    // Respond immediately
     res.json({ helpful: resource.helpful });
 
-    // Send email at milestones: 1, 5, 10, 25, 50, 100, 250, 500
     const milestones = [1, 5, 10, 25, 50, 100, 250, 500];
     const submitter  = resource.submittedBy;
 
@@ -149,8 +167,6 @@ router.post('/:id/helpful', async (req, res) => {
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#0E0E0E;padding:48px 16px">
 <tr><td align="center">
 <table width="100%" cellpadding="0" cellspacing="0" style="max-width:480px">
-
-  <!-- LOGO -->
   <tr><td style="padding-bottom:32px;text-align:center">
     <table cellpadding="0" cellspacing="0" style="display:inline-table">
       <tr>
@@ -159,14 +175,10 @@ router.post('/:id/helpful', async (req, res) => {
       </tr>
     </table>
   </td></tr>
-
-  <!-- CARD -->
   <tr><td style="background:#1A1A1A;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:40px">
-
     <div style="text-align:center;margin-bottom:24px">
       <div style="width:64px;height:64px;background:rgba(245,166,35,0.1);border:2px solid #F5A623;border-radius:50%;display:inline-block;line-height:64px;font-size:28px">🎉</div>
     </div>
-
     <p style="margin:0 0 8px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#F5A623;text-align:center">Community Impact</p>
     <h1 style="margin:0 0 16px;font-size:24px;font-weight:800;color:#F0EDE8;line-height:1.2;text-align:center">
       ${resource.helpful} ${plural} found your<br>resource helpful!
@@ -176,14 +188,12 @@ router.post('/:id/helpful', async (req, res) => {
       <strong style="color:#F0EDE8">"${resource.name}"</strong><br>
       is making a real difference. 💛
     </p>
-
     <table width="100%" cellpadding="0" cellspacing="0" style="background:rgba(245,166,35,0.06);border:1px solid rgba(245,166,35,0.15);border-radius:12px;margin-bottom:28px">
       <tr><td style="padding:20px;text-align:center">
         <div style="font-size:48px;font-weight:900;color:#F5A623;line-height:1">${resource.helpful}</div>
         <div style="font-size:13px;color:#888;margin-top:6px">people helped</div>
       </td></tr>
     </table>
-
     <table width="100%" cellpadding="0" cellspacing="0">
       <tr><td align="center" style="padding-bottom:24px">
         <a href="${resourceUrl}" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#F5A623,#FF6B6B);color:#fff;text-decoration:none;border-radius:11px;font-weight:700;font-size:15px">
@@ -191,18 +201,14 @@ router.post('/:id/helpful', async (req, res) => {
         </a>
       </td></tr>
     </table>
-
     <hr style="border:none;border-top:1px solid rgba(255,255,255,0.06);margin:0 0 20px">
     <p style="margin:0;font-size:12px;color:#555;text-align:center;line-height:1.6">
       Keep sharing — every resource makes your community stronger. 🌱
     </p>
-
   </td></tr>
-
   <tr><td style="padding-top:24px;text-align:center">
     <p style="margin:0;font-size:12px;color:#444">© 2026 Community Hub · Built for the community</p>
   </td></tr>
-
 </table>
 </td></tr>
 </table>
@@ -228,7 +234,6 @@ router.post('/:id/unhelpful', async (req, res) => {
       { new: true }
     );
     if (!resource) return res.status(404).json({ error: 'Resource not found.' });
-    // Don't let helpful go below 0
     if (resource.helpful < 0) {
       await Resource.findByIdAndUpdate(req.params.id, { helpful: 0 });
       return res.json({ helpful: 0 });
@@ -248,7 +253,6 @@ router.post('/:id/report', protect, async (req, res) => {
     const resource = await Resource.findById(req.params.id);
     if (!resource) return res.status(404).json({ error: 'Resource not found.' });
 
-    // Block duplicate reports from same user
     const already = resource.reports.some(
       r => String(r.reportedBy) === String(req.user._id)
     );
