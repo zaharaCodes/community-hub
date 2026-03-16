@@ -34,13 +34,16 @@ body.light .form-input{background:#ECEAE4;color:#1A1714}
 body.light .form-select{background:#ECEAE4;color:#1A1714}
 body.light .form-textarea{background:#ECEAE4;color:#1A1714}
 body.light .modal{background:#FFFFFF}
+body.light .res-action-btn{background:#ECEAE4}
+body.light .search-bar{background:#ECEAE4}
 .theme-toggle{
   width:34px;height:34px;border-radius:8px;border:1px solid var(--border);
   background:var(--bg2);color:var(--text);cursor:pointer;
-  display:flex;align-items:center;justify-content:center;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
   transition:all 0.2s;flex-shrink:0;
 }
 .theme-toggle:hover{border-color:var(--border2);transform:scale(1.08)}
+.theme-toggle svg{width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:1.6;stroke-linecap:round}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;min-height:100vh}
 
 /* NAVBAR */
@@ -59,7 +62,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
 .hamburger{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0}
 .hamburger span{display:block;width:18px;height:2px;background:var(--text);border-radius:2px}
 
-/* LAYOUT — the actual fix */
+/* LAYOUT */
 .page-shell{display:flex;padding-top:var(--nav);min-height:100vh}
 
 /* SIDEBAR */
@@ -71,34 +74,25 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
   display:flex;flex-direction:column;gap:0.1rem;z-index:500;
   transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);
 }
-.sidebar-add-btn{display:flex;align-items:center;justify-content:center;gap:0.4rem;width:100%;padding:0.62rem;border-radius:9px;background:var(--grad);color:#fff;border:none;font-family:'Outfit',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;transition:all 0.2s;margin-bottom:0.4rem;white-space:nowrap}
+.sidebar-add-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;width:100%;padding:0.62rem;border-radius:9px;background:var(--grad);color:#fff;border:none;font-family:'Outfit',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;transition:all 0.2s;margin-bottom:0.4rem;white-space:nowrap}
 .sidebar-add-btn:hover{opacity:0.9;transform:translateY(-1px)}
+.sidebar-add-btn svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0}
 .sidebar-section{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);padding:0.45rem 0.55rem 0.22rem;margin-top:0.35rem}
-.sidebar-item{display:flex;align-items:center;gap:0.5rem;padding:0.52rem 0.65rem;border-radius:8px;color:var(--muted);font-size:0.83rem;font-weight:500;cursor:pointer;transition:all 0.15s;border:none;background:none;width:100%;text-align:left;font-family:'Outfit',sans-serif;white-space:nowrap}
+.sidebar-item{display:flex;align-items:center;gap:0.55rem;padding:0.52rem 0.65rem;border-radius:8px;color:var(--muted);font-size:0.83rem;font-weight:500;cursor:pointer;transition:all 0.15s;border:none;background:none;width:100%;text-align:left;font-family:'Outfit',sans-serif;white-space:nowrap}
 .sidebar-item:hover{color:var(--text);background:rgba(255,255,255,0.04)}
 .sidebar-item.active{color:var(--text);background:rgba(245,166,35,0.1)}
-.sidebar-item.active .si-icon{color:var(--amber)}
-.si-icon{font-size:0.88rem;width:16px;text-align:center;flex-shrink:0}
+.sidebar-item.active .si-icon svg{stroke:var(--amber)}
+.si-icon{width:16px;height:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.si-icon svg{width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:stroke 0.15s}
+.sidebar-item:hover .si-icon svg{stroke:var(--text)}
 .si-count{margin-left:auto;flex-shrink:0;background:rgba(255,255,255,0.06);color:var(--muted);font-size:0.64rem;font-weight:700;padding:0.08rem 0.4rem;border-radius:100px}
 
-/* MAIN — THE CRITICAL FIX */
-.main-content{
-  flex:1;
-  min-width:0;                        /* prevents flex child overflow */
-  margin-left:var(--sidebar);         /* push past fixed sidebar */
-  width:calc(100% - var(--sidebar));  /* explicit width */
-  padding:1.75rem 2rem;
-  overflow-x:hidden;
-}
+/* MAIN */
+.main-content{flex:1;min-width:0;margin-left:var(--sidebar);width:calc(100% - var(--sidebar));padding:1.75rem 2rem;overflow-x:hidden}
 
 /* PAGE HEADER */
 .page-header{margin-bottom:1.5rem}
-.page-title{
-  font-family:'Playfair Display',serif;
-  font-size:1.8rem;font-weight:800;line-height:1.2;margin-bottom:0.22rem;
-  /* THE FIX for stacked text — force single line */
-  display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;
-}
+.page-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;line-height:1.2;margin-bottom:0.22rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .page-sub{color:var(--muted);font-size:0.86rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* SEARCH */
@@ -106,28 +100,13 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
 .search-bar:focus-within{border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,166,35,0.07)}
 .search-bar input{flex:1;min-width:0;background:none;border:none;outline:none;color:var(--text);font-size:0.88rem;font-family:'Outfit',sans-serif}
 .search-bar input::placeholder{color:var(--muted)}
-.search-icon{color:var(--muted);flex-shrink:0}
+.search-icon svg{width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round}
 
-/* FILTER ROW — horizontal, never wraps */
-.filter-row{
-  display:flex;
-  flex-direction:row;   /* force horizontal */
-  flex-wrap:nowrap;     /* NEVER wrap to next line */
-  align-items:center;
-  gap:0.32rem;
-  margin-bottom:1.5rem;
-  overflow-x:auto;      /* scroll on tiny screens */
-  padding-bottom:2px;
-  scrollbar-width:none;-ms-overflow-style:none;
-}
+/* FILTER ROW */
+.filter-row{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:0.32rem;margin-bottom:1.5rem;overflow-x:auto;padding-bottom:2px;scrollbar-width:none;-ms-overflow-style:none}
 .filter-row::-webkit-scrollbar{display:none}
-.filter-chip{
-  flex-shrink:0;        /* never shrink / stack */
-  padding:0.28rem 0.75rem;border-radius:100px;
-  font-size:0.73rem;font-weight:600;cursor:pointer;
-  border:1px solid var(--border);background:transparent;
-  color:var(--muted);font-family:'Outfit',sans-serif;transition:all 0.15s;white-space:nowrap;
-}
+.filter-chip{flex-shrink:0;display:inline-flex;align-items:center;gap:0.35rem;padding:0.28rem 0.75rem;border-radius:100px;font-size:0.73rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Outfit',sans-serif;transition:all 0.15s;white-space:nowrap}
+.filter-chip svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 .filter-chip:hover{border-color:var(--border2);color:var(--text)}
 .filter-chip.active{background:rgba(245,166,35,0.1);border-color:rgba(245,166,35,0.36);color:var(--amber)}
 .sort-select{flex-shrink:0;margin-left:auto;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:0.28rem 0.62rem;border-radius:7px;font-size:0.73rem;font-family:'Outfit',sans-serif;outline:none;cursor:pointer}
@@ -150,48 +129,43 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
 .cat-education{background:rgba(52,211,153,0.12);color:#34d399}
 .cat-legal{background:rgba(251,146,60,0.12);color:#fb923c}
 .cat-other{background:rgba(136,136,136,0.12);color:#888}
-.res-loc{color:var(--muted);font-size:0.76rem;margin-bottom:0.48rem}
+.res-loc{display:flex;align-items:center;gap:0.3rem;color:var(--muted);font-size:0.76rem;margin-bottom:0.48rem}
+.res-loc svg{width:11px;height:11px;stroke:var(--muted);fill:none;stroke-width:1.8;flex-shrink:0}
 .res-desc{color:var(--muted);font-size:0.81rem;line-height:1.52;margin-bottom:0.75rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .res-tags{display:flex;gap:0.28rem;flex-wrap:wrap;margin-bottom:0.75rem}
 .res-tag{background:rgba(245,166,35,0.07);border:1px solid rgba(245,166,35,0.16);color:var(--amber);font-size:0.58rem;font-weight:600;padding:0.09rem 0.4rem;border-radius:100px}
 .res-footer{display:flex;justify-content:space-between;align-items:center}
-.res-helpful{color:var(--muted);font-size:0.74rem}
+.res-helpful{display:flex;align-items:center;gap:0.3rem;color:var(--muted);font-size:0.74rem}
+.res-helpful svg{width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:1.6;flex-shrink:0}
 .res-actions{display:flex;gap:0.26rem}
-.res-action-btn{width:24px;height:24px;border-radius:6px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.64rem;cursor:pointer;transition:all 0.15s;color:var(--muted)}
+.res-action-btn{width:26px;height:26px;border-radius:6px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.15s;color:var(--muted);text-decoration:none}
+.res-action-btn svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .res-action-btn:hover{border-color:var(--amber);color:var(--amber)}
 .res-action-btn.voted{background:rgba(245,166,35,0.09);border-color:var(--amber);color:var(--amber)}
+.res-action-btn.voted svg{stroke:var(--amber)}
 
 /* AUTOCOMPLETE */
 .search-wrap{position:relative;width:100%}
-.autocomplete-dropdown{
-  position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:200;
-  background:var(--card);border:1px solid var(--border2);
-  border-radius:12px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,0.35);
-  display:none;
-}
+.autocomplete-dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:200;background:var(--card);border:1px solid var(--border2);border-radius:12px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,0.35);display:none}
 .autocomplete-dropdown.open{display:block;animation:fadeUp 0.15s ease both}
 .ac-item{display:flex;align-items:center;gap:0.65rem;padding:0.7rem 1rem;cursor:pointer;transition:background 0.15s;font-size:0.88rem}
 .ac-item:hover,.ac-item.focused{background:rgba(245,166,35,0.08)}
-.ac-icon{font-size:0.9rem;width:18px;text-align:center;flex-shrink:0;color:var(--muted)}
+.ac-icon{width:18px;height:18px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.ac-icon svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .ac-label{font-weight:600;flex:1}
 .ac-type{font-size:0.72rem;color:var(--muted);font-weight:500}
 
-/* NEAR ME BUTTON */
-.near-me-btn{
-  display:flex;align-items:center;gap:0.4rem;
-  padding:0.35rem 0.85rem;border-radius:100px;
-  font-size:0.78rem;font-weight:600;cursor:pointer;
-  border:1px solid var(--border);background:transparent;
-  color:var(--muted);font-family:'Outfit',sans-serif;
-  transition:all 0.2s;white-space:nowrap;flex-shrink:0;
-}
+/* NEAR ME */
+.near-me-btn{display:flex;align-items:center;gap:0.4rem;padding:0.28rem 0.75rem;border-radius:100px;font-size:0.73rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Outfit',sans-serif;transition:all 0.2s;white-space:nowrap;flex-shrink:0}
+.near-me-btn svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;flex-shrink:0}
 .near-me-btn:hover{border-color:var(--blue);color:var(--blue)}
 .near-me-btn.active{background:rgba(96,165,250,0.1);border-color:rgba(96,165,250,0.4);color:var(--blue)}
 .near-me-btn.loading{opacity:0.7;cursor:wait}
 
 /* STATES */
 .state-box{grid-column:1/-1;text-align:center;padding:3rem 2rem;color:var(--muted)}
-.state-icon{font-size:2.2rem;margin-bottom:0.7rem}
+.state-icon{margin-bottom:0.7rem;display:flex;justify-content:center}
+.state-icon svg{width:36px;height:36px;stroke:var(--muted);fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;opacity:0.5}
 .state-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:0.32rem}
 .state-sub{font-size:0.85rem}
 .skeleton-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem;animation:shimmer 1.4s ease-in-out infinite}
@@ -207,7 +181,8 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
 
 /* AUTH REQUIRED */
 .auth-required{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:2.25rem;text-align:center;max-width:360px}
-.auth-req-icon{font-size:2rem;margin-bottom:0.8rem}
+.auth-req-icon{display:flex;justify-content:center;margin-bottom:0.8rem}
+.auth-req-icon svg{width:32px;height:32px;stroke:var(--muted);fill:none;stroke-width:1.4;opacity:0.6}
 .auth-req-title{font-family:'Playfair Display',serif;font-size:1.28rem;font-weight:800;margin-bottom:0.38rem}
 .auth-req-sub{color:var(--muted);font-size:0.86rem;margin-bottom:1.3rem;line-height:1.6}
 .auth-req-btn{display:inline-block;background:var(--grad);color:#fff;padding:0.65rem 1.4rem;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:700;font-size:0.88rem;text-decoration:none;transition:all 0.2s}
@@ -220,8 +195,9 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
 .modal-overlay.open .modal{transform:translateY(0)}
 .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.3rem}
 .modal-title{font-family:'Playfair Display',serif;font-size:1.38rem;font-weight:800}
-.modal-close{width:28px;height:28px;border-radius:7px;background:var(--bg2);border:1px solid var(--border);color:var(--muted);cursor:pointer;font-size:0.85rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.modal-close{width:28px;height:28px;border-radius:7px;background:var(--bg2);border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
 .modal-close:hover{color:var(--text);border-color:var(--border2)}
+.modal-close svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
 .form-group{margin-bottom:0.9rem}
 .form-label{display:block;font-size:0.71rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:0.36rem}
 .form-input,.form-select,.form-textarea{width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:0.7rem 0.85rem;border-radius:9px;font-size:0.88rem;font-family:'Outfit',sans-serif;outline:none;transition:all 0.2s}
@@ -242,6 +218,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
 /* TOAST */
 .toast-container{position:fixed;bottom:1.4rem;right:1.4rem;z-index:3000;display:flex;flex-direction:column;gap:0.45rem;pointer-events:none}
 .toast{background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:0.65rem 0.95rem;font-size:0.81rem;font-weight:600;display:flex;align-items:center;gap:0.45rem;animation:toastIn 0.28s cubic-bezier(0.4,0,0.2,1) both;max-width:270px;pointer-events:all}
+.toast svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0}
 .toast.success{border-color:rgba(74,222,128,0.3);color:var(--green)}
 .toast.error{border-color:rgba(255,107,107,0.3);color:var(--coral)}
 .toast.info{border-color:rgba(96,165,250,0.3);color:var(--blue)}
@@ -269,6 +246,70 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
 </head>
 <body>
 
+<!-- SVG ICON DEFS (reusable symbols) -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <!-- search -->
+  <symbol id="ic-search" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="M11 11l3 3"/></symbol>
+  <!-- grid / all -->
+  <symbol id="ic-grid" viewBox="0 0 16 16"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></symbol>
+  <!-- food / utensils -->
+  <symbol id="ic-food" viewBox="0 0 16 16"><path d="M5 2v5a2 2 0 0 0 4 0V2"/><path d="M7 7v7"/><path d="M11 2v12"/></symbol>
+  <!-- shelter / home -->
+  <symbol id="ic-shelter" viewBox="0 0 16 16"><path d="M2 7l6-5 6 5v7a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/><path d="M6 14v-5h4v5"/></symbol>
+  <!-- health / cross -->
+  <symbol id="ic-health" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12"/></symbol>
+  <!-- mental / brain / mind -->
+  <symbol id="ic-mental" viewBox="0 0 16 16"><path d="M8 14s-5-3-5-7a5 5 0 0 1 10 0c0 4-5 7-5 7z"/><path d="M8 7v3"/><circle cx="8" cy="6" r="0.6" fill="currentColor"/></symbol>
+  <!-- job / briefcase -->
+  <symbol id="ic-job" viewBox="0 0 16 16"><rect x="2" y="5" width="12" height="9" rx="1.5"/><path d="M5 5V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M2 9h12"/></symbol>
+  <!-- education / book -->
+  <symbol id="ic-education" viewBox="0 0 16 16"><path d="M3 3h7l3 3v8H3z"/><path d="M10 3v3h3"/><path d="M6 8h4M6 11h3"/></symbol>
+  <!-- legal / scales -->
+  <symbol id="ic-legal" viewBox="0 0 16 16"><path d="M8 2v12"/><path d="M4 4h8"/><path d="M3 5l-2 4h4z"/><path d="M13 5l-2 4h4z"/><path d="M5 14h6"/></symbol>
+  <!-- other / sparkle -->
+  <symbol id="ic-other" viewBox="0 0 16 16"><path d="M8 2v3M8 11v3M2 8h3M11 8h3"/><path d="M4.2 4.2l2.1 2.1M9.7 9.7l2.1 2.1M4.2 11.8l2.1-2.1M9.7 6.3l2.1-2.1"/></symbol>
+  <!-- dashboard / chart -->
+  <symbol id="ic-dashboard" viewBox="0 0 16 16"><rect x="2" y="9" width="3" height="5" rx="0.5"/><rect x="6.5" y="6" width="3" height="8" rx="0.5"/><rect x="11" y="3" width="3" height="11" rx="0.5"/></symbol>
+  <!-- bookmark -->
+  <symbol id="ic-bookmark" viewBox="0 0 16 16"><path d="M4 2h8a1 1 0 0 1 1 1v11l-5-3-5 3V3a1 1 0 0 1 1-1z"/></symbol>
+  <!-- settings / gear -->
+  <symbol id="ic-settings" viewBox="0 0 16 16"><circle cx="8" cy="8" r="2.2"/><path d="M8 2v1.5M8 12.5V14M2 8h1.5M12.5 8H14M3.5 3.5l1.1 1.1M11.4 11.4l1.1 1.1M3.5 12.5l1.1-1.1M11.4 4.6l1.1-1.1"/></symbol>
+  <!-- admin / shield -->
+  <symbol id="ic-shield" viewBox="0 0 16 16"><path d="M8 2l5 2v4c0 3-2.5 5.5-5 6-2.5-.5-5-3-5-6V4z"/><path d="M5.5 8l2 2 3-3"/></symbol>
+  <!-- plus -->
+  <symbol id="ic-plus" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></symbol>
+  <!-- location pin -->
+  <symbol id="ic-pin" viewBox="0 0 16 16"><path d="M8 2a4 4 0 0 1 4 4c0 3-4 8-4 8S4 9 4 6a4 4 0 0 1 4-4z"/><circle cx="8" cy="6" r="1.2"/></symbol>
+  <!-- thumbs up -->
+  <symbol id="ic-thumb" viewBox="0 0 16 16"><path d="M6 14H3a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3l2-5a1.5 1.5 0 0 1 3 1.5V6h3a1 1 0 0 1 1 1l-1 6a1 1 0 0 1-1 1H6z"/></symbol>
+  <!-- eye / view -->
+  <symbol id="ic-eye" viewBox="0 0 16 16"><path d="M1 8s3-5 7-5 7 5 7 5-3 5-7 5-7-5-7-5z"/><circle cx="8" cy="8" r="2"/></symbol>
+  <!-- edit / pencil -->
+  <symbol id="ic-edit" viewBox="0 0 16 16"><path d="M11 2l3 3-8 8H3v-3z"/><path d="M9 4l3 3"/></symbol>
+  <!-- trash / delete -->
+  <symbol id="ic-trash" viewBox="0 0 16 16"><path d="M3 5h10M6 5V3h4v2"/><path d="M5 5l.5 8h5L11 5"/><path d="M7 8v3M9 8v3"/></symbol>
+  <!-- link / share -->
+  <symbol id="ic-link" viewBox="0 0 16 16"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2-2a3 3 0 0 0-4.2-4.2l-1 1"/><path d="M9.5 6.5a3 3 0 0 0-4.2 0l-2 2a3 3 0 0 0 4.2 4.2l1-1"/></symbol>
+  <!-- close / x -->
+  <symbol id="ic-x" viewBox="0 0 16 16"><path d="M3 3l10 10M13 3L3 13"/></symbol>
+  <!-- check -->
+  <symbol id="ic-check" viewBox="0 0 16 16"><path d="M2 8l4 4 8-8"/></symbol>
+  <!-- alert / warning -->
+  <symbol id="ic-alert" viewBox="0 0 16 16"><path d="M8 2l6 12H2z"/><path d="M8 7v3"/><circle cx="8" cy="12" r="0.6" fill="currentColor"/></symbol>
+  <!-- moon -->
+  <symbol id="ic-moon" viewBox="0 0 16 16"><path d="M13 10A6 6 0 0 1 6 3a6 6 0 1 0 7 7z"/></symbol>
+  <!-- sun -->
+  <symbol id="ic-sun" viewBox="0 0 16 16"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.2 3.2l1.4 1.4M11.4 11.4l1.4 1.4M3.2 12.8l1.4-1.4M11.4 4.6l1.4-1.4"/></symbol>
+  <!-- lock -->
+  <symbol id="ic-lock" viewBox="0 0 16 16"><rect x="3" y="7" width="10" height="8" rx="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/><circle cx="8" cy="11" r="1" fill="currentColor"/></symbol>
+  <!-- map pin / near me -->
+  <symbol id="ic-nearme" viewBox="0 0 16 16"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2"/><circle cx="8" cy="8" r="1" fill="currentColor"/></symbol>
+  <!-- note / empty -->
+  <symbol id="ic-empty" viewBox="0 0 16 16"><rect x="3" y="2" width="10" height="12" rx="1.5"/><path d="M6 6h4M6 9h4M6 12h2"/></symbol>
+  <!-- warning server -->
+  <symbol id="ic-warning" viewBox="0 0 16 16"><rect x="2" y="4" width="12" height="8" rx="1.5"/><path d="M5 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><circle cx="8" cy="8" r="1.5"/><path d="M8 6v1M8 9v1"/></symbol>
+</svg>
+
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-left">
@@ -279,13 +320,17 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
     </a>
   </div>
   <div class="nav-right">
-    <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode">🌙</button>
-    <!-- Admin quick-access button — shown only for admins -->
+    <!-- Theme toggle -->
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode">
+      <svg id="themeIcon"><use href="#ic-moon"/></svg>
+    </button>
+    <!-- Admin quick-access -->
     <a href="admin.html" id="adminNavBtn"
        style="display:none;align-items:center;gap:0.4rem;padding:0.4rem 0.85rem;border-radius:8px;background:rgba(245,166,35,0.12);border:1px solid rgba(245,166,35,0.3);color:var(--amber);text-decoration:none;font-size:0.8rem;font-weight:700;font-family:'Outfit',sans-serif;transition:all 0.2s"
        onmouseover="this.style.background='rgba(245,166,35,0.2)'"
        onmouseout="this.style.background='rgba(245,166,35,0.12)'">
-      🛡️ Admin
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><use href="#ic-shield"/></svg>
+      Admin
     </a>
     <div id="guestNav" style="display:flex;align-items:center;gap:0.45rem">
       <a href="auth.html" class="nav-btn-ghost">Sign In</a>
@@ -306,31 +351,72 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
 
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
-    <button class="sidebar-add-btn" id="openAddModal">+ Share a Resource</button>
+
+    <button class="sidebar-add-btn" id="openAddModal">
+      <svg><use href="#ic-plus"/></svg>
+      Share a Resource
+    </button>
 
     <div class="sidebar-section">Browse</div>
+
     <button class="sidebar-item active" data-view="resources" data-cat="all">
-      <span class="si-icon">🏠</span>All Resources<span class="si-count" id="allCount">—</span>
+      <span class="si-icon"><svg><use href="#ic-grid"/></svg></span>
+      All Resources
+      <span class="si-count" id="allCount">—</span>
     </button>
-    <button class="sidebar-item" data-view="resources" data-cat="food"><span class="si-icon">🥗</span>Food Assistance</button>
-    <button class="sidebar-item" data-view="resources" data-cat="shelter"><span class="si-icon">🏠</span>Shelter</button>
-    <button class="sidebar-item" data-view="resources" data-cat="health"><span class="si-icon">❤️</span>Healthcare</button>
-    <button class="sidebar-item" data-view="resources" data-cat="mental"><span class="si-icon">🧠</span>Mental Health</button>
-    <button class="sidebar-item" data-view="resources" data-cat="job"><span class="si-icon">💼</span>Job Training</button>
-    <button class="sidebar-item" data-view="resources" data-cat="education"><span class="si-icon">📚</span>Education</button>
-    <button class="sidebar-item" data-view="resources" data-cat="legal"><span class="si-icon">⚖️</span>Legal Aid</button>
-    <button class="sidebar-item" data-view="resources" data-cat="other"><span class="si-icon">✨</span>Other</button>
+    <button class="sidebar-item" data-view="resources" data-cat="food">
+      <span class="si-icon"><svg><use href="#ic-food"/></svg></span>
+      Food Assistance
+    </button>
+    <button class="sidebar-item" data-view="resources" data-cat="shelter">
+      <span class="si-icon"><svg><use href="#ic-shelter"/></svg></span>
+      Shelter
+    </button>
+    <button class="sidebar-item" data-view="resources" data-cat="health">
+      <span class="si-icon"><svg><use href="#ic-health"/></svg></span>
+      Healthcare
+    </button>
+    <button class="sidebar-item" data-view="resources" data-cat="mental">
+      <span class="si-icon"><svg><use href="#ic-mental"/></svg></span>
+      Mental Health
+    </button>
+    <button class="sidebar-item" data-view="resources" data-cat="job">
+      <span class="si-icon"><svg><use href="#ic-job"/></svg></span>
+      Job Training
+    </button>
+    <button class="sidebar-item" data-view="resources" data-cat="education">
+      <span class="si-icon"><svg><use href="#ic-education"/></svg></span>
+      Education
+    </button>
+    <button class="sidebar-item" data-view="resources" data-cat="legal">
+      <span class="si-icon"><svg><use href="#ic-legal"/></svg></span>
+      Legal Aid
+    </button>
+    <button class="sidebar-item" data-view="resources" data-cat="other">
+      <span class="si-icon"><svg><use href="#ic-other"/></svg></span>
+      Other
+    </button>
 
     <div class="sidebar-section">My Account</div>
-    <button class="sidebar-item" data-view="dashboard"><span class="si-icon">📊</span>My Dashboard</button>
-    <button class="sidebar-item" data-view="bookmarks"><span class="si-icon">🔖</span>My Bookmarks</button>
-    <a class="sidebar-item" href="settings.html"><span class="si-icon">⚙️</span>Settings</a>
+    <button class="sidebar-item" data-view="dashboard">
+      <span class="si-icon"><svg><use href="#ic-dashboard"/></svg></span>
+      My Dashboard
+    </button>
+    <button class="sidebar-item" data-view="bookmarks">
+      <span class="si-icon"><svg><use href="#ic-bookmark"/></svg></span>
+      My Bookmarks
+    </button>
+    <a class="sidebar-item" href="settings.html">
+      <span class="si-icon"><svg><use href="#ic-settings"/></svg></span>
+      Settings
+    </a>
 
-    <!-- ADMIN — only shown if role=admin -->
+    <!-- ADMIN -->
     <div id="adminSidebarSection" style="display:none">
       <div class="sidebar-section" style="color:var(--amber)">Admin</div>
       <a class="sidebar-item" href="admin.html" style="color:var(--amber)">
-        <span class="si-icon">🛡️</span>Admin Dashboard
+        <span class="si-icon"><svg style="stroke:var(--amber)"><use href="#ic-shield"/></svg></span>
+        Admin Dashboard
         <span class="si-count" style="background:rgba(245,166,35,0.15);color:var(--amber)" id="adminBadge"></span>
       </a>
     </div>
@@ -345,32 +431,53 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
         <h1 class="page-title" id="viewTitle">All Resources</h1>
         <p class="page-sub">Community-shared resources, updated in real time.</p>
       </div>
+
       <div class="search-wrap">
         <div class="search-bar">
-          <svg class="search-icon" width="15" height="15" viewBox="0 0 15 15" fill="none">
-            <circle cx="6.5" cy="6.5" r="4.5" stroke="#888" stroke-width="1.4"/>
-            <path d="M10 10l3.5 3.5" stroke="#888" stroke-width="1.4" stroke-linecap="round"/>
-          </svg>
+          <span class="search-icon">
+            <svg width="15" height="15" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round"><use href="#ic-search"/></svg>
+          </span>
           <input type="text" id="searchInput" placeholder="Search by name, location, or category..." autocomplete="off">
         </div>
         <div class="autocomplete-dropdown" id="acDropdown"></div>
       </div>
+
       <div class="filter-row">
-        <button class="filter-chip active" data-cat="all">All</button>
-        <button class="filter-chip" data-cat="food">🥗 Food</button>
-        <button class="filter-chip" data-cat="shelter">🏠 Shelter</button>
-        <button class="filter-chip" data-cat="health">❤️ Health</button>
-        <button class="filter-chip" data-cat="mental">🧠 Mental</button>
-        <button class="filter-chip" data-cat="job">💼 Jobs</button>
-        <button class="filter-chip" data-cat="education">📚 Education</button>
-        <button class="filter-chip" data-cat="legal">⚖️ Legal</button>
-        <button class="near-me-btn" id="nearMeBtn">📍 Near Me</button>
+        <button class="filter-chip active" data-cat="all">
+          <svg><use href="#ic-grid"/></svg> All
+        </button>
+        <button class="filter-chip" data-cat="food">
+          <svg><use href="#ic-food"/></svg> Food
+        </button>
+        <button class="filter-chip" data-cat="shelter">
+          <svg><use href="#ic-shelter"/></svg> Shelter
+        </button>
+        <button class="filter-chip" data-cat="health">
+          <svg><use href="#ic-health"/></svg> Health
+        </button>
+        <button class="filter-chip" data-cat="mental">
+          <svg><use href="#ic-mental"/></svg> Mental
+        </button>
+        <button class="filter-chip" data-cat="job">
+          <svg><use href="#ic-job"/></svg> Jobs
+        </button>
+        <button class="filter-chip" data-cat="education">
+          <svg><use href="#ic-education"/></svg> Education
+        </button>
+        <button class="filter-chip" data-cat="legal">
+          <svg><use href="#ic-legal"/></svg> Legal
+        </button>
+        <button class="near-me-btn" id="nearMeBtn">
+          <svg><use href="#ic-nearme"/></svg>
+          <span id="nearMeLabel">Near Me</span>
+        </button>
         <select class="sort-select" id="sortSelect">
           <option value="newest">Newest first</option>
           <option value="helpful">Most helpful</option>
           <option value="az">A → Z</option>
         </select>
       </div>
+
       <div class="resource-grid" id="resourceGrid">
         <div class="skeleton-card"><div class="skel" style="height:15px;width:60%"></div><div class="skel" style="height:10px;width:37%;margin-top:.4rem"></div><div class="skel" style="height:48px;margin-top:.65rem"></div><div class="skel" style="height:10px;width:46%;margin-top:.65rem"></div></div>
         <div class="skeleton-card"><div class="skel" style="height:15px;width:50%"></div><div class="skel" style="height:10px;width:30%;margin-top:.4rem"></div><div class="skel" style="height:48px;margin-top:.65rem"></div><div class="skel" style="height:10px;width:50%;margin-top:.65rem"></div></div>
@@ -404,7 +511,9 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
   <div class="modal">
     <div class="modal-header">
       <div class="modal-title" id="modalTitle">Share a Resource</div>
-      <button class="modal-close" id="closeModal">✕</button>
+      <button class="modal-close" id="closeModal">
+        <svg><use href="#ic-x"/></svg>
+      </button>
     </div>
     <div class="form-alert error" id="modalAlert"></div>
     <input type="hidden" id="editId">
@@ -412,14 +521,14 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
     <div class="form-group"><label class="form-label">Category *</label>
       <select class="form-select" id="fCategory">
         <option value="">Select a category</option>
-        <option value="food">🥗 Food Assistance</option>
-        <option value="shelter">🏠 Shelter</option>
-        <option value="health">❤️ Healthcare</option>
-        <option value="mental">🧠 Mental Health</option>
-        <option value="job">💼 Job Training</option>
-        <option value="education">📚 Education</option>
-        <option value="legal">⚖️ Legal Aid</option>
-        <option value="other">✨ Other</option>
+        <option value="food">Food Assistance</option>
+        <option value="shelter">Shelter</option>
+        <option value="health">Healthcare</option>
+        <option value="mental">Mental Health</option>
+        <option value="job">Job Training</option>
+        <option value="education">Education</option>
+        <option value="legal">Legal Aid</option>
+        <option value="other">Other</option>
       </select>
     </div>
     <div class="form-group"><label class="form-label">Location *</label><input class="form-input" id="fLocation" placeholder="e.g. Austin, TX" type="text"></div>
@@ -436,19 +545,38 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line
 <div class="toast-container" id="toastContainer"></div>
 
 <script>
-/* ── API BASE (works locally + in production) ── */
+/* ── API BASE ── */
 var API = 'https://community-hub-production-5633.up.railway.app';
-var S={user:null,token:null,resources:[],filtered:[],bookmarks:[],voted:[],activeCat:'all',sort:'newest',search:'',editId:null};
+var S={user:null,token:null,resources:[],filtered:[],bookmarks:[],voted:[],activeCat:'all',sort:'newest',search:'',editId:null,nearMe:false};
 var CAT_LABEL={food:'Food',shelter:'Shelter',health:'Healthcare',mental:'Mental Health',job:'Job Training',education:'Education',legal:'Legal Aid',other:'Other'};
 var TITLE_MAP={all:'All Resources',food:'Food Assistance',shelter:'Shelter',health:'Healthcare',mental:'Mental Health',job:'Job Training',education:'Education',legal:'Legal Aid',other:'Other'};
 
+/* ── SVG HELPERS (inline icons for JS-rendered cards) ── */
+var IC = {
+  pin:  '<svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><use href="#ic-pin"/></svg>',
+  thumb:'<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#ic-thumb"/></svg>',
+  eye:  '<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><use href="#ic-eye"/></svg>',
+  edit: '<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><use href="#ic-edit"/></svg>',
+  trash:'<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><use href="#ic-trash"/></svg>',
+  bm:   '<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><use href="#ic-bookmark"/></svg>',
+  link: '<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><use href="#ic-link"/></svg>',
+  check:'<svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#ic-check"/></svg>',
+  alert:'<svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><use href="#ic-alert"/></svg>',
+  info: '<svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><use href="#ic-nearme"/></svg>',
+  lock: '<svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><use href="#ic-lock"/></svg>',
+  empty:'<svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><use href="#ic-empty"/></svg>',
+  warn: '<svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><use href="#ic-warning"/></svg>',
+  srch: '<svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><use href="#ic-search"/></svg>',
+};
+
 function esc(s){var d=document.createElement('div');d.textContent=String(s||'');return d.innerHTML}
 function authHeaders(){var h={'Content-Type':'application/json'};if(S.token)h['Authorization']='Bearer '+S.token;return h}
-function toast(msg,type){
-  var icons={success:'✓',error:'✕',info:'ℹ'};
-  var t=document.createElement('div');
-  t.className='toast '+(type||'info');
-  t.innerHTML='<span>'+(icons[type]||'ℹ')+'</span>'+esc(msg);
+
+function toast(msg, type) {
+  var iconMap = {success: IC.check, error: IC.alert, info: IC.info};
+  var t = document.createElement('div');
+  t.className = 'toast ' + (type || 'info');
+  t.innerHTML = (iconMap[type] || IC.info) + '<span>' + esc(msg) + '</span>';
   document.getElementById('toastContainer').appendChild(t);
   setTimeout(function(){t.style.transition='all 0.28s';t.style.opacity='0';t.style.transform='translateX(14px)';setTimeout(function(){t.remove()},280)},3000);
 }
@@ -467,6 +595,7 @@ function initAuth(){
       .catch(function(){S.token=null;S.user=null;localStorage.removeItem('ch_token');localStorage.removeItem('ch_user');renderNav()});
   }
 }
+
 function renderNav(){
   var g=document.getElementById('guestNav'),u=document.getElementById('userNav');
   if(S.user){
@@ -475,17 +604,10 @@ function renderNav(){
     av.textContent=(S.user.avatar&&S.user.avatar.initials)?S.user.avatar.initials:(S.user.name?S.user.name[0].toUpperCase():'?');
     av.style.background=(S.user.avatar&&S.user.avatar.color)?S.user.avatar.color:'#F5A623';
     document.getElementById('navUsername').textContent=S.user.name?S.user.name.split(' ')[0]:S.user.email;
-
-    // Show admin section in sidebar if admin
     var adminSection=document.getElementById('adminSidebarSection');
     var adminNavBtn=document.getElementById('adminNavBtn');
-    if(S.user.role==='admin'){
-      adminSection.style.display='block';
-      if(adminNavBtn)adminNavBtn.style.display='flex';
-    } else {
-      adminSection.style.display='none';
-      if(adminNavBtn)adminNavBtn.style.display='none';
-    }
+    if(S.user.role==='admin'){adminSection.style.display='block';if(adminNavBtn)adminNavBtn.style.display='flex'}
+    else{adminSection.style.display='none';if(adminNavBtn)adminNavBtn.style.display='none'}
   }else{
     g.style.display='flex';u.style.display='none';
     var adminSection=document.getElementById('adminSidebarSection');
@@ -494,6 +616,7 @@ function renderNav(){
     if(adminNavBtn)adminNavBtn.style.display='none';
   }
 }
+
 document.getElementById('logoutBtn').addEventListener('click',function(){
   localStorage.removeItem('ch_token');localStorage.removeItem('ch_user');
   S.token=null;S.user=null;renderNav();showView('resources');toast('Signed out','info');
@@ -527,13 +650,16 @@ function loadResources(){
       applyFilters();
     })
     .catch(function(){
-      document.getElementById('resourceGrid').innerHTML='<div class="state-box"><div class="state-icon">⚠️</div><div class="state-title">Could not load resources</div><div class="state-sub">Make sure your server is running.</div></div>';
+      document.getElementById('resourceGrid').innerHTML='<div class="state-box"><div class="state-icon">'+IC.warn+'</div><div class="state-title">Could not load resources</div><div class="state-sub">Make sure your server is running.</div></div>';
     });
 }
 
 function applyFilters(){
   var q=S.search.toLowerCase(),cat=S.activeCat;
-  S.filtered=S.resources.filter(function(r){
+  var base = S.nearMe
+    ? S.resources.filter(function(r){ return r.location && r.location.toLowerCase().includes(S.nearMe.toLowerCase()); })
+    : S.resources;
+  S.filtered=base.filter(function(r){
     var mc=cat==='all'||r.category===cat;
     var mq=!q||(r.name&&r.name.toLowerCase().includes(q))||(r.description&&r.description.toLowerCase().includes(q))||(r.location&&r.location.toLowerCase().includes(q))||(r.tags&&r.tags.some(function(t){return t.toLowerCase().includes(q)}));
     return mc&&mq;
@@ -546,7 +672,10 @@ function applyFilters(){
 
 function renderGrid(){
   var grid=document.getElementById('resourceGrid');
-  if(!S.filtered.length){grid.innerHTML='<div class="state-box"><div class="state-icon">🔍</div><div class="state-title">No resources found</div><div class="state-sub">Try a different search or be the first to add one!</div></div>';return}
+  if(!S.filtered.length){
+    grid.innerHTML='<div class="state-box"><div class="state-icon">'+IC.srch+'</div><div class="state-title">No resources found</div><div class="state-sub">Try a different search or be the first to add one!</div></div>';
+    return;
+  }
   grid.innerHTML=S.filtered.map(function(r,i){
     var tags=(r.tags||[]).slice(0,3).map(function(t){return'<span class="res-tag">'+esc(t)+'</span>'}).join('');
     var voted=S.voted.indexOf(r._id)>-1,bm=S.bookmarks.indexOf(r._id)>-1;
@@ -555,53 +684,41 @@ function renderGrid(){
       +'<div class="res-top">'
       +'<a class="res-name" href="resource.html?id='+esc(r._id)+'" style="text-decoration:none;color:inherit;display:block" title="View details">'+esc(r.name)+'</a>'
       +'<span class="res-cat cat-'+esc(r.category)+'">'+(CAT_LABEL[r.category]||esc(r.category))+'</span></div>'
-      +'<div class="res-loc">📍 '+esc(r.location)+'</div>'
+      +'<div class="res-loc">'+IC.pin+' '+esc(r.location)+'</div>'
       +(r.description?'<div class="res-desc" onclick="window.location.href=\'resource.html?id='+esc(r._id)+'\'" style="cursor:pointer">'+esc(r.description)+'</div>':'')
       +(tags?'<div class="res-tags">'+tags+'</div>':'')
-      +'<div class="res-footer"><div class="res-helpful">👍 '+(r.helpful||0)+' helpful</div>'
+      +'<div class="res-footer">'
+      +'<div class="res-helpful">'+IC.thumb+' '+(r.helpful||0)+' helpful</div>'
       +'<div class="res-actions">'
-      +'<button class="res-action-btn'+(voted?' voted':'')+'" title="'+(voted?'Already voted':'Mark helpful')+'" onclick="voteHelpful(\''+esc(r._id)+'\')">👍</button>'
-      +'<button class="res-action-btn'+(bm?' voted':'')+'" title="'+(bm?'Remove bookmark':'Bookmark')+'" onclick="toggleBookmark(\''+esc(r._id)+'\')">🔖</button>'
-      +'<a class="res-action-btn" title="View details" href="resource.html?id='+esc(r._id)+'">👁</a>'
-      +(canEdit?'<button class="res-action-btn" title="Edit" onclick="openEditModal(\''+esc(r._id)+'\')">✏️</button>':'')
-      +(canEdit?'<button class="res-action-btn" title="Delete" onclick="deleteResource(\''+esc(r._id)+'\')">🗑</button>':'')
+      +'<button class="res-action-btn'+(voted?' voted':'')+'" title="'+(voted?'Remove vote':'Mark helpful')+'" onclick="voteHelpful(\''+esc(r._id)+'\')">'+IC.thumb+'</button>'
+      +'<button class="res-action-btn'+(bm?' voted':'')+'" title="'+(bm?'Remove bookmark':'Bookmark')+'" onclick="toggleBookmark(\''+esc(r._id)+'\')">'+IC.bm+'</button>'
+      +'<a class="res-action-btn" title="View details" href="resource.html?id='+esc(r._id)+'">'+IC.eye+'</a>'
+      +(canEdit?'<button class="res-action-btn" title="Edit" onclick="openEditModal(\''+esc(r._id)+'\')">'+IC.edit+'</button>':'')
+      +(canEdit?'<button class="res-action-btn" title="Delete" onclick="deleteResource(\''+esc(r._id)+'\')">'+IC.trash+'</button>':'')
       +'</div></div></div>';
   }).join('');
 }
 
-/* VOTE / BOOKMARK / COPY */
+/* VOTE / BOOKMARK */
 function voteHelpful(id){
-  var idx=S.voted.indexOf(id);
-  var isVoted=idx>-1;
-  var endpoint='/api/resources/'+id+'/'+(isVoted?'unhelpful':'helpful');
+  var idx=S.voted.indexOf(id);var isVoted=idx>-1;
+  var endpoint=API+'/api/resources/'+id+'/'+(isVoted?'unhelpful':'helpful');
   fetch(endpoint,{method:'POST',headers:authHeaders()})
-    .then(function(r){
-      if(!r.ok)throw new Error('status '+r.status);
-      return r.json();
-    })
+    .then(function(r){if(!r.ok)throw new Error('status '+r.status);return r.json()})
     .then(function(d){
       var res=S.resources.find(function(x){return x._id===id});
       if(res&&d.helpful!==undefined)res.helpful=d.helpful;
       if(isVoted){S.voted.splice(idx,1);toast('Vote removed','info')}
-      else{S.voted.push(id);toast('Marked as helpful! 👍','success')}
-      localStorage.setItem('ch_voted',JSON.stringify(S.voted));
-      applyFilters();
+      else{S.voted.push(id);toast('Marked as helpful','success')}
+      localStorage.setItem('ch_voted',JSON.stringify(S.voted));applyFilters();
     })
-    .catch(function(err){
-      console.error('Vote error:',err);
-      toast('Could not vote — restart the server and try again','error');
-    });
+    .catch(function(){toast('Could not vote — is the server running?','error')});
 }
 function toggleBookmark(id){
   var idx=S.bookmarks.indexOf(id);
   if(idx>-1){S.bookmarks.splice(idx,1);toast('Bookmark removed','info')}
-  else{S.bookmarks.push(id);toast('Bookmarked! 🔖','success')}
+  else{S.bookmarks.push(id);toast('Bookmarked','success')}
   localStorage.setItem('ch_bookmarks',JSON.stringify(S.bookmarks));applyFilters();
-}
-function copyLink(id){
-  navigator.clipboard.writeText(window.location.origin+'/app.html?r='+id)
-    .then(function(){toast('Link copied! 🔗','success')})
-    .catch(function(){toast('Could not copy link','error')});
 }
 
 /* MODAL */
@@ -613,14 +730,7 @@ function openModal(editId){
   document.getElementById('modalAlert').className='form-alert error';
   if(editId){
     var r=S.resources.find(function(x){return x._id===editId});
-    if(r){
-      document.getElementById('fName').value=r.name||'';
-      document.getElementById('fCategory').value=r.category||'';
-      document.getElementById('fLocation').value=r.location||'';
-      document.getElementById('fDescription').value=r.description||'';
-      document.getElementById('fContact').value=r.contact||'';
-      document.getElementById('fTags').value=(r.tags||[]).join(', ');
-    }
+    if(r){document.getElementById('fName').value=r.name||'';document.getElementById('fCategory').value=r.category||'';document.getElementById('fLocation').value=r.location||'';document.getElementById('fDescription').value=r.description||'';document.getElementById('fContact').value=r.contact||'';document.getElementById('fTags').value=(r.tags||[]).join(', ');}
   }else{
     ['fName','fCategory','fLocation','fDescription','fContact','fTags'].forEach(function(id){document.getElementById(id).value=''});
   }
@@ -649,12 +759,12 @@ document.getElementById('saveResource').addEventListener('click',function(){
   var editId=document.getElementById('editId').value;
   var body={name:name,category:cat,location:loc,description:desc,contact:contact,tags:tags};
   if(!editId&&S.user)body.submittedBy=S.user._id;
-  fetch(editId?'/api/resources/'+editId:'/api/resources',{method:editId?'PUT':'POST',headers:authHeaders(),body:JSON.stringify(body)})
+  fetch(editId?API+'/api/resources/'+editId:API+'/api/resources',{method:editId?'PUT':'POST',headers:authHeaders(),body:JSON.stringify(body)})
     .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}})})
     .then(function(res){
       btn.disabled=false;document.getElementById('saveBtnText').textContent=editId?'Save Changes':'Share Resource';
       if(!res.ok){alertEl.textContent=res.data.error||'Something went wrong.';alertEl.className='form-alert error show';return}
-      closeModal();toast(editId?'Resource updated! ✓':'Resource shared! 🎉','success');loadResources();
+      closeModal();toast(editId?'Resource updated':'Resource shared','success');loadResources();
     })
     .catch(function(){btn.disabled=false;document.getElementById('saveBtnText').textContent=editId?'Save Changes':'Share Resource';alertEl.textContent='Network error — is the server running?';alertEl.className='form-alert error show'});
 });
@@ -672,7 +782,7 @@ function deleteResource(id){
 function renderDashboard(){
   var el=document.getElementById('dashContent');
   if(!S.user){
-    el.innerHTML='<div class="auth-required"><div class="auth-req-icon">🔒</div><div class="auth-req-title">Sign in to view your dashboard</div><div class="auth-req-sub">Track your contributions and see your community impact.</div><a href="auth.html" class="auth-req-btn">Sign In or Register</a></div>';
+    el.innerHTML='<div class="auth-required"><div class="auth-req-icon">'+IC.lock+'</div><div class="auth-req-title">Sign in to view your dashboard</div><div class="auth-req-sub">Track your contributions and see your community impact.</div><a href="auth.html" class="auth-req-btn">Sign In or Register</a></div>';
     return;
   }
   var myRes=S.resources.filter(function(r){return String(r.submittedBy)===String(S.user._id)});
@@ -685,10 +795,11 @@ function renderDashboard(){
     +(myRes.length?myRes.map(function(r,i){
       return'<div class="res-card" style="animation-delay:'+(i*0.04)+'s">'
         +'<div class="res-top"><div class="res-name">'+esc(r.name)+'</div><span class="res-cat cat-'+esc(r.category)+'">'+(CAT_LABEL[r.category]||esc(r.category))+'</span></div>'
-        +'<div class="res-loc">📍 '+esc(r.location)+'</div><div class="res-desc">'+esc(r.description)+'</div>'
-        +'<div class="res-footer"><div class="res-helpful">👍 '+(r.helpful||0)+' helpful</div>'
-        +'<div class="res-actions"><button class="res-action-btn" onclick="openEditModal(\''+esc(r._id)+'\')">✏️</button><button class="res-action-btn" onclick="deleteResource(\''+esc(r._id)+'\')">🗑</button></div></div></div>';
-    }).join(''):'<div class="state-box"><div class="state-icon">📝</div><div class="state-title">No submissions yet</div><div class="state-sub">Click "+ Share a Resource" to add your first one.</div></div>')
+        +'<div class="res-loc">'+IC.pin+' '+esc(r.location)+'</div>'
+        +'<div class="res-desc">'+esc(r.description)+'</div>'
+        +'<div class="res-footer"><div class="res-helpful">'+IC.thumb+' '+(r.helpful||0)+' helpful</div>'
+        +'<div class="res-actions"><button class="res-action-btn" onclick="openEditModal(\''+esc(r._id)+'\')">'+IC.edit+'</button><button class="res-action-btn" onclick="deleteResource(\''+esc(r._id)+'\')">'+IC.trash+'</button></div></div></div>';
+    }).join(''):'<div class="state-box"><div class="state-icon">'+IC.empty+'</div><div class="state-title">No submissions yet</div><div class="state-sub">Click "+ Share a Resource" to add your first one.</div></div>')
     +'</div>';
 }
 
@@ -696,13 +807,14 @@ function renderDashboard(){
 function renderBookmarks(){
   var grid=document.getElementById('bookmarksGrid');
   var bm=S.resources.filter(function(r){return S.bookmarks.indexOf(r._id)>-1});
-  if(!bm.length){grid.innerHTML='<div class="state-box"><div class="state-icon">🔖</div><div class="state-title">No bookmarks yet</div><div class="state-sub">Tap 🔖 on any resource to save it here.</div></div>';return}
+  if(!bm.length){grid.innerHTML='<div class="state-box"><div class="state-icon">'+IC.bm+'</div><div class="state-title">No bookmarks yet</div><div class="state-sub">Tap the bookmark icon on any resource to save it here.</div></div>';return}
   grid.innerHTML=bm.map(function(r,i){
     return'<div class="res-card" style="animation-delay:'+(i*0.04)+'s">'
       +'<div class="res-top"><div class="res-name">'+esc(r.name)+'</div><span class="res-cat cat-'+esc(r.category)+'">'+(CAT_LABEL[r.category]||esc(r.category))+'</span></div>'
-      +'<div class="res-loc">📍 '+esc(r.location)+'</div><div class="res-desc">'+esc(r.description)+'</div>'
-      +'<div class="res-footer"><div class="res-helpful">👍 '+(r.helpful||0)+' helpful</div>'
-      +'<div class="res-actions"><button class="res-action-btn voted" onclick="toggleBookmark(\''+esc(r._id)+'\');renderBookmarks()">🔖</button></div></div></div>';
+      +'<div class="res-loc">'+IC.pin+' '+esc(r.location)+'</div>'
+      +'<div class="res-desc">'+esc(r.description)+'</div>'
+      +'<div class="res-footer"><div class="res-helpful">'+IC.thumb+' '+(r.helpful||0)+' helpful</div>'
+      +'<div class="res-actions"><button class="res-action-btn voted" onclick="toggleBookmark(\''+esc(r._id)+'\');renderBookmarks()">'+IC.bm+'</button></div></div></div>';
   }).join('');
 }
 
@@ -725,6 +837,7 @@ document.querySelectorAll('.sidebar-item').forEach(function(item){
 var searchTimeout;
 document.getElementById('searchInput').addEventListener('input',function(){
   clearTimeout(searchTimeout);var q=this.value;
+  renderAutocomplete(buildSuggestions(q));
   searchTimeout=setTimeout(function(){S.search=q;applyFilters()},220);
 });
 document.getElementById('sortSelect').addEventListener('change',function(){S.sort=this.value;applyFilters()});
@@ -738,233 +851,97 @@ document.querySelectorAll('.filter-chip').forEach(function(chip){
   });
 });
 
-/* ══════════════════════════════════════
-   SEARCH AUTOCOMPLETE
-══════════════════════════════════════ */
-var acIndex = -1;
+/* AUTOCOMPLETE */
+var acIndex=-1;
+var CAT_ICONS={food:'#ic-food',shelter:'#ic-shelter',health:'#ic-health',mental:'#ic-mental',job:'#ic-job',education:'#ic-education',legal:'#ic-legal',other:'#ic-other'};
+var CAT_FULL=[{label:'Food Assistance',cat:'food'},{label:'Shelter',cat:'shelter'},{label:'Healthcare',cat:'health'},{label:'Mental Health',cat:'mental'},{label:'Job Training',cat:'job'},{label:'Education',cat:'education'},{label:'Legal Aid',cat:'legal'},{label:'Other',cat:'other'}];
 
-function buildSuggestions(q) {
-  if (!q || q.length < 2) return [];
-  var lower = q.toLowerCase();
-  var suggestions = [];
-  var seen = {};
-
-  // Category matches
-  var cats = [
-    {label:'Food Assistance',cat:'food',icon:'🥗'},
-    {label:'Shelter',cat:'shelter',icon:'🏠'},
-    {label:'Healthcare',cat:'health',icon:'❤️'},
-    {label:'Mental Health',cat:'mental',icon:'🧠'},
-    {label:'Job Training',cat:'job',icon:'💼'},
-    {label:'Education',cat:'education',icon:'📚'},
-    {label:'Legal Aid',cat:'legal',icon:'⚖️'},
-    {label:'Other',cat:'other',icon:'✨'},
-  ];
-  cats.forEach(function(c){
-    if(c.label.toLowerCase().includes(lower) || c.cat.includes(lower)){
-      suggestions.push({type:'category',icon:c.icon,label:c.label,value:c.cat});
-    }
-  });
-
-  // Resource name matches
-  S.resources.forEach(function(r){
-    if(r.name && r.name.toLowerCase().includes(lower) && !seen[r.name]){
-      seen[r.name]=true;
-      suggestions.push({type:'resource',icon:'📌',label:r.name,value:r.name,id:r._id});
-    }
-  });
-
-  // Location matches
-  var locs = {};
-  S.resources.forEach(function(r){
-    if(r.location && r.location.toLowerCase().includes(lower) && !locs[r.location]){
-      locs[r.location]=true;
-      suggestions.push({type:'location',icon:'📍',label:r.location,value:r.location});
-    }
-  });
-
+function buildSuggestions(q){
+  if(!q||q.length<2)return[];
+  var lower=q.toLowerCase(),suggestions=[],seen={};
+  CAT_FULL.forEach(function(c){if(c.label.toLowerCase().includes(lower)||c.cat.includes(lower))suggestions.push({type:'category',icon:CAT_ICONS[c.cat]||'#ic-grid',label:c.label,value:c.cat})});
+  S.resources.forEach(function(r){if(r.name&&r.name.toLowerCase().includes(lower)&&!seen[r.name]){seen[r.name]=true;suggestions.push({type:'resource',icon:'#ic-pin',label:r.name,value:r.name,id:r._id})}});
+  var locs={};
+  S.resources.forEach(function(r){if(r.location&&r.location.toLowerCase().includes(lower)&&!locs[r.location]){locs[r.location]=true;suggestions.push({type:'location',icon:'#ic-nearme',label:r.location,value:r.location})}});
   return suggestions.slice(0,7);
 }
 
-function renderAutocomplete(suggestions) {
-  var drop = document.getElementById('acDropdown');
-  if (!suggestions.length) { drop.classList.remove('open'); return; }
-  drop.innerHTML = suggestions.map(function(s,i){
-    var typeLabel = s.type==='category'?'Category':s.type==='location'?'Location':'Resource';
-    return '<div class="ac-item" data-idx="'+i+'" data-type="'+s.type+'" data-value="'+s.value+'"'+(s.id?' data-id="'+s.id+'"':'')+'>'
-      +'<span class="ac-icon">'+s.icon+'</span>'
-      +'<span class="ac-label">'+s.label+'</span>'
+function renderAutocomplete(suggestions){
+  var drop=document.getElementById('acDropdown');
+  if(!suggestions.length){drop.classList.remove('open');return}
+  drop.innerHTML=suggestions.map(function(s,i){
+    var typeLabel=s.type==='category'?'Category':s.type==='location'?'Location':'Resource';
+    return'<div class="ac-item" data-idx="'+i+'" data-type="'+s.type+'" data-value="'+esc(s.value)+'"'+(s.id?' data-id="'+s.id+'"':'')+'>'
+      +'<span class="ac-icon"><svg width="14" height="14" fill="none" stroke="#888" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="'+s.icon+'"/></svg></span>'
+      +'<span class="ac-label">'+esc(s.label)+'</span>'
       +'<span class="ac-type">'+typeLabel+'</span>'
       +'</div>';
   }).join('');
-  acIndex = -1;
-  drop.classList.add('open');
-
-  drop.querySelectorAll('.ac-item').forEach(function(item){
-    item.addEventListener('mousedown', function(e){
-      e.preventDefault();
-      selectSuggestion(this);
-    });
-  });
+  acIndex=-1;drop.classList.add('open');
+  drop.querySelectorAll('.ac-item').forEach(function(item){item.addEventListener('mousedown',function(e){e.preventDefault();selectSuggestion(this)})});
 }
 
-function selectSuggestion(el) {
-  var type  = el.dataset.type;
-  var value = el.dataset.value;
-  var id    = el.dataset.id;
+function selectSuggestion(el){
+  var type=el.dataset.type,value=el.dataset.value,id=el.dataset.id;
   document.getElementById('acDropdown').classList.remove('open');
-
-  if (type === 'category') {
-    document.getElementById('searchInput').value = '';
-    S.search = '';
-    S.activeCat = value;
-    document.querySelectorAll('.filter-chip').forEach(function(c){ c.classList.toggle('active', c.dataset.cat===value); });
-    applyFilters();
-  } else if (type === 'resource' && id) {
-    window.location.href = 'resource.html?id=' + id;
-  } else {
-    document.getElementById('searchInput').value = value;
-    S.search = value;
-    applyFilters();
-  }
+  if(type==='category'){document.getElementById('searchInput').value='';S.search='';S.activeCat=value;document.querySelectorAll('.filter-chip').forEach(function(c){c.classList.toggle('active',c.dataset.cat===value)});applyFilters()}
+  else if(type==='resource'&&id){window.location.href='resource.html?id='+id}
+  else{document.getElementById('searchInput').value=value;S.search=value;applyFilters()}
 }
 
-// Keyboard nav
-document.getElementById('searchInput').addEventListener('keydown', function(e){
-  var items = document.querySelectorAll('#acDropdown .ac-item');
-  if (!items.length) return;
-  if (e.key === 'ArrowDown') {
-    e.preventDefault();
-    acIndex = Math.min(acIndex+1, items.length-1);
-    items.forEach(function(el,i){ el.classList.toggle('focused',i===acIndex); });
-  } else if (e.key === 'ArrowUp') {
-    e.preventDefault();
-    acIndex = Math.max(acIndex-1, -1);
-    items.forEach(function(el,i){ el.classList.toggle('focused',i===acIndex); });
-  } else if (e.key === 'Enter' && acIndex >= 0) {
-    e.preventDefault();
-    selectSuggestion(items[acIndex]);
-  } else if (e.key === 'Escape') {
-    document.getElementById('acDropdown').classList.remove('open');
-  }
+document.getElementById('searchInput').addEventListener('keydown',function(e){
+  var items=document.querySelectorAll('#acDropdown .ac-item');
+  if(!items.length)return;
+  if(e.key==='ArrowDown'){e.preventDefault();acIndex=Math.min(acIndex+1,items.length-1);items.forEach(function(el,i){el.classList.toggle('focused',i===acIndex)})}
+  else if(e.key==='ArrowUp'){e.preventDefault();acIndex=Math.max(acIndex-1,-1);items.forEach(function(el,i){el.classList.toggle('focused',i===acIndex)})}
+  else if(e.key==='Enter'&&acIndex>=0){e.preventDefault();selectSuggestion(items[acIndex])}
+  else if(e.key==='Escape'){document.getElementById('acDropdown').classList.remove('open')}
 });
+document.addEventListener('click',function(e){if(!e.target.closest('.search-wrap'))document.getElementById('acDropdown').classList.remove('open')});
 
-// Close on outside click
-document.addEventListener('click', function(e){
-  if (!e.target.closest('.search-wrap')) {
-    document.getElementById('acDropdown').classList.remove('open');
-  }
-});
-
-// Override search input handler to show autocomplete
-var _origSearchTimeout;
-document.getElementById('searchInput').addEventListener('input', function(){
-  clearTimeout(_origSearchTimeout);
-  var q = this.value;
-  renderAutocomplete(buildSuggestions(q));
-  _origSearchTimeout = setTimeout(function(){ S.search=q; applyFilters(); }, 220);
-});
-
-/* ══════════════════════════════════════
-   NEAR ME — LOCATION FILTERING
-══════════════════════════════════════ */
-var nearMeActive = false;
-var userCity = null;
-
-document.getElementById('nearMeBtn').addEventListener('click', function(){
-  var btn = this;
-  if (nearMeActive) {
-    // Turn off
-    nearMeActive = false;
-    userCity = null;
-    btn.classList.remove('active');
-    btn.textContent = '📍 Near Me';
-    S.nearMe = false;
-    applyFilters();
-    return;
-  }
-
-  if (!navigator.geolocation) {
-    toast('Geolocation not supported by your browser', 'error');
-    return;
-  }
-
-  btn.classList.add('loading');
-  btn.textContent = '📍 Locating...';
-
+/* NEAR ME */
+var nearMeActive=false;
+document.getElementById('nearMeBtn').addEventListener('click',function(){
+  var btn=this,label=document.getElementById('nearMeLabel');
+  if(nearMeActive){nearMeActive=false;S.nearMe=false;btn.classList.remove('active');label.textContent='Near Me';applyFilters();return}
+  if(!navigator.geolocation){toast('Geolocation not supported','error');return}
+  btn.classList.add('loading');label.textContent='Locating...';
   navigator.geolocation.getCurrentPosition(
-    function(pos) {
-      // Reverse geocode using free API
-      var lat = pos.coords.latitude;
-      var lon = pos.coords.longitude;
-      fetch('https://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lon+'&format=json')
-        .then(function(r){ return r.json(); })
+    function(pos){
+      fetch('https://nominatim.openstreetmap.org/reverse?lat='+pos.coords.latitude+'&lon='+pos.coords.longitude+'&format=json')
+        .then(function(r){return r.json()})
         .then(function(data){
-          var addr = data.address || {};
-          userCity = addr.city || addr.town || addr.village || addr.county || addr.state || null;
-          if (!userCity) {
-            btn.classList.remove('loading');
-            btn.textContent = '📍 Near Me';
-            toast('Could not detect your city', 'error');
-            return;
-          }
-          nearMeActive = true;
-          S.nearMe = userCity;
-          btn.classList.remove('loading');
-          btn.classList.add('active');
-          btn.textContent = '📍 ' + userCity;
-          applyFilters();
-          toast('Showing resources near ' + userCity, 'success');
+          var addr=data.address||{};
+          var city=addr.city||addr.town||addr.village||addr.county||addr.state||null;
+          if(!city){btn.classList.remove('loading');label.textContent='Near Me';toast('Could not detect your city','error');return}
+          nearMeActive=true;S.nearMe=city;btn.classList.remove('loading');btn.classList.add('active');label.textContent=city;
+          applyFilters();toast('Showing resources near '+city,'success');
         })
-        .catch(function(){
-          btn.classList.remove('loading');
-          btn.textContent = '📍 Near Me';
-          toast('Could not get your location info', 'error');
-        });
+        .catch(function(){btn.classList.remove('loading');label.textContent='Near Me';toast('Could not get location info','error')});
     },
-    function(err) {
-      btn.classList.remove('loading');
-      btn.textContent = '📍 Near Me';
-      if (err.code === 1) toast('Location permission denied — enable it in browser settings', 'info');
-      else toast('Could not get your location', 'error');
+    function(err){
+      btn.classList.remove('loading');label.textContent='Near Me';
+      if(err.code===1)toast('Location permission denied','info');else toast('Could not get your location','error');
     },
-    { timeout: 8000 }
+    {timeout:8000}
   );
 });
-
-/* ── Update applyFilters to support nearMe ── */
-var _origApplyFilters = applyFilters;
-applyFilters = function() {
-  if (!S.nearMe) { _origApplyFilters(); return; }
-  var city = S.nearMe.toLowerCase();
-  // temporarily filter resources to near-me city
-  var _backup = S.resources;
-  S.resources = _backup.filter(function(r){
-    return r.location && r.location.toLowerCase().includes(city);
-  });
-  _origApplyFilters();
-  S.resources = _backup;
-};
-S.nearMe = false;
 
 /* INIT */
 initAuth();loadResources();showView('resources');
 
-/* ── DARK / LIGHT MODE ── */
+/* THEME */
 (function(){
   var btn=document.getElementById('themeToggle');
+  var icon=document.getElementById('themeIcon');
   var isLight=localStorage.getItem('ch_theme')==='light';
   function applyTheme(light){
     document.body.classList.toggle('light',light);
-    btn.textContent=light?'🌙':'☀️';
+    icon.innerHTML='<use href="'+(light?'#ic-moon':'#ic-sun')+'"/>';
     btn.title=light?'Switch to dark mode':'Switch to light mode';
   }
   applyTheme(isLight);
-  btn.addEventListener('click',function(){
-    isLight=!isLight;
-    localStorage.setItem('ch_theme',isLight?'light':'dark');
-    applyTheme(isLight);
-  });
+  btn.addEventListener('click',function(){isLight=!isLight;localStorage.setItem('ch_theme',isLight?'light':'dark');applyTheme(isLight)});
 })();
 </script>
 </body>
