@@ -16,12 +16,7 @@
   --grad:linear-gradient(135deg,#F5A623 0%,#FF6B6B 100%);
 }
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-body.light{
-  --bg:#F5F4F0;--bg2:#ECEAE4;--bg3:#E2DED6;--card:#FFFFFF;
-  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.14);
-  --text:#1A1714;--muted:#6B6660;
-}
-body.light .nav-username{color:#1A1714}
+body.light{--bg:#F5F4F0;--bg2:#ECEAE4;--bg3:#E2DED6;--card:#FFFFFF;--border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.14);--text:#1A1714;--muted:#6B6660}
 body.light .navbar{background:rgba(245,244,240,0.95)}
 body.light .nav-btn{color:#6B6660;border-color:rgba(0,0,0,0.12)}
 body.light .nav-btn:hover{color:#1A1714}
@@ -32,23 +27,13 @@ body.light .action-btn{background:#ECEAE4;color:#6B6660}
 body.light .action-btn:hover{color:#1A1714}
 body.light .modal{background:#FFFFFF}
 body.light .reason-btn{background:#ECEAE4;color:#6B6660}
-.theme-toggle{
-  width:34px;height:34px;border-radius:8px;border:1px solid var(--border);
-  background:var(--bg2);color:var(--text);cursor:pointer;
-  display:flex;align-items:center;justify-content:center;font-size:1rem;
-  transition:all 0.2s;flex-shrink:0;
-}
+body.light .nav-username{color:#1A1714}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
 .theme-toggle:hover{border-color:var(--border2);transform:scale(1.08)}
-
-/* ── NAVBAR ── */
-.navbar{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;
-  background:rgba(14,14,14,0.92);backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border);
-}
+.theme-toggle svg{width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:1.6;stroke-linecap:round}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(14,14,14,0.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
 .nav-logo{display:flex;align-items:center;gap:0.65rem;text-decoration:none;color:var(--text);font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:800}
-.nav-logo-icon{width:32px;height:32px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:900;color:#fff;font-family:'Playfair Display',serif}
+.nav-logo-icon{width:32px;height:32px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:900;color:#fff}
 .nav-right{display:flex;align-items:center;gap:0.75rem}
 .nav-btn{background:transparent;color:var(--muted);padding:0.45rem 1rem;border-radius:8px;font-weight:600;font-size:0.85rem;font-family:'Outfit',sans-serif;text-decoration:none;border:1px solid var(--border);transition:all 0.2s;cursor:pointer}
 .nav-btn:hover{color:var(--text);border-color:var(--border2)}
@@ -57,131 +42,80 @@ body.light .reason-btn{background:#ECEAE4;color:#6B6660}
 .nav-user{display:none;align-items:center;gap:0.65rem}
 .nav-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.75rem;color:#fff;border:2px solid var(--border2)}
 .nav-username{font-size:0.85rem;font-weight:600}
-
-/* ── PAGE ── */
 .page{max-width:860px;margin:0 auto;padding:100px 2rem 4rem}
-
-/* ── BREADCRUMB ── */
 .breadcrumb{display:flex;align-items:center;gap:0.5rem;margin-bottom:2rem;font-size:0.82rem;color:var(--muted)}
-.breadcrumb a{color:var(--muted);text-decoration:none;transition:color 0.2s}
+.breadcrumb a{color:var(--muted);text-decoration:none;transition:color 0.2s;display:inline-flex;align-items:center;gap:0.3rem}
 .breadcrumb a:hover{color:var(--amber)}
+.breadcrumb a svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round}
 .breadcrumb-sep{opacity:0.4}
-
-/* ── HERO ── */
 .hero{margin-bottom:2rem;animation:fadeUp 0.4s ease both}
 .hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
 .resource-name{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;line-height:1.15;flex:1}
 .resource-cat{padding:0.3rem 0.9rem;border-radius:100px;font-size:0.75rem;font-weight:700;white-space:nowrap;align-self:flex-start;margin-top:0.4rem}
-.cat-food    {background:rgba(74,222,128,0.12);color:#4ade80}
-.cat-shelter {background:rgba(245,166,35,0.12);color:#f5a623}
-.cat-health  {background:rgba(255,107,107,0.12);color:#ff6b6b}
-.cat-mental  {background:rgba(167,139,250,0.12);color:#a78bfa}
-.cat-job     {background:rgba(96,165,250,0.12);color:#60a5fa}
+.cat-food{background:rgba(74,222,128,0.12);color:#4ade80}
+.cat-shelter{background:rgba(245,166,35,0.12);color:#f5a623}
+.cat-health{background:rgba(255,107,107,0.12);color:#ff6b6b}
+.cat-mental{background:rgba(167,139,250,0.12);color:#a78bfa}
+.cat-job{background:rgba(96,165,250,0.12);color:#60a5fa}
 .cat-education{background:rgba(52,211,153,0.12);color:#34d399}
-.cat-legal   {background:rgba(251,146,60,0.12);color:#fb923c}
-.cat-other   {background:rgba(136,136,136,0.12);color:#888}
-
+.cat-legal{background:rgba(251,146,60,0.12);color:#fb923c}
+.cat-other{background:rgba(136,136,136,0.12);color:#888}
 .hero-meta{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;color:var(--muted);font-size:0.85rem}
 .hero-meta-item{display:flex;align-items:center;gap:0.4rem}
-
-/* ── ACTION BAR ── */
-.action-bar{
-  display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap;
-  padding:1.25rem 1.5rem;background:var(--card);border:1px solid var(--border);
-  border-radius:16px;margin-bottom:2rem;
-  animation:fadeUp 0.4s 0.05s ease both;
-}
-.action-btn{
-  display:flex;align-items:center;gap:0.45rem;
-  padding:0.6rem 1.1rem;border-radius:10px;
-  background:var(--bg2);border:1px solid var(--border);
-  color:var(--muted);font-family:'Outfit',sans-serif;font-weight:600;font-size:0.83rem;
-  cursor:pointer;transition:all 0.2s;
-}
+.hero-meta-item svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:1.7;stroke-linecap:round;flex-shrink:0}
+.action-bar{display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap;padding:1.25rem 1.5rem;background:var(--card);border:1px solid var(--border);border-radius:16px;margin-bottom:2rem;animation:fadeUp 0.4s 0.05s ease both}
+.action-btn{display:flex;align-items:center;gap:0.45rem;padding:0.6rem 1.1rem;border-radius:10px;background:var(--bg2);border:1px solid var(--border);color:var(--muted);font-family:'Outfit',sans-serif;font-weight:600;font-size:0.83rem;cursor:pointer;transition:all 0.2s}
+.action-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 .action-btn:hover{color:var(--text);border-color:var(--border2)}
-.action-btn.active{background:rgba(245,166,35,0.1);border-color:rgba(245,166,35,0.35);color:var(--amber)}
 .action-btn.voted{background:rgba(245,166,35,0.1);border-color:rgba(245,166,35,0.35);color:var(--amber)}
 .action-btn.bookmarked{background:rgba(96,165,250,0.1);border-color:rgba(96,165,250,0.35);color:var(--blue)}
 .action-btn.danger:hover{border-color:rgba(255,107,107,0.35);color:var(--coral)}
-.action-btn-share{
-  margin-left:auto;
-  background:var(--grad);border:none;color:#fff;
-  display:flex;align-items:center;gap:0.45rem;
-  padding:0.6rem 1.2rem;border-radius:10px;
-  font-family:'Outfit',sans-serif;font-weight:700;font-size:0.83rem;cursor:pointer;transition:all 0.2s;
-}
+.action-btn-share{margin-left:auto;background:var(--grad);border:none;color:#fff;display:flex;align-items:center;gap:0.45rem;padding:0.6rem 1.2rem;border-radius:10px;font-family:'Outfit',sans-serif;font-weight:700;font-size:0.83rem;cursor:pointer;transition:all 0.2s}
+.action-btn-share svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:1.7;stroke-linecap:round;flex-shrink:0}
 .action-btn-share:hover{opacity:0.9;transform:translateY(-1px)}
-
-/* ── GRID LAYOUT ── */
 .content-grid{display:grid;grid-template-columns:1fr 300px;gap:1.5rem;animation:fadeUp 0.4s 0.1s ease both}
 @media(max-width:700px){.content-grid{grid-template-columns:1fr}}
-
-/* ── SECTIONS ── */
 .section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
 .section-title{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:1rem}
 .description-text{font-size:0.97rem;line-height:1.8;color:rgba(240,237,232,0.85)}
-
-/* ── TAGS ── */
+body.light .description-text{color:#374151}
 .tags-wrap{display:flex;flex-wrap:wrap;gap:0.4rem}
 .tag{background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.18);color:var(--amber);font-size:0.75rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:100px}
-
-/* ── CONTACT CARD ── */
 .contact-item{display:flex;align-items:flex-start;gap:0.85rem;padding:0.85rem 0;border-bottom:1px solid var(--border)}
 .contact-item:last-child{border-bottom:none;padding-bottom:0}
-.contact-icon{width:34px;height:34px;border-radius:9px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0}
+.contact-icon{width:34px;height:34px;border-radius:9px;background:var(--bg2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-icon svg{width:16px;height:16px;stroke:var(--amber);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .contact-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:0.2rem}
 .contact-value{font-size:0.9rem;font-weight:500;word-break:break-word}
 .contact-value a{color:var(--amber);text-decoration:none}
 .contact-value a:hover{text-decoration:underline}
-
-/* ── STATS ── */
 .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.25rem}
 .stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center}
 .stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;line-height:1}
 .stat-lbl{color:var(--muted);font-size:0.72rem;margin-top:0.2rem}
-
-/* ── SUBMITTER ── */
 .submitter{display:flex;align-items:center;gap:0.85rem}
 .submitter-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;color:#fff;flex-shrink:0}
 .submitter-name{font-weight:700;font-size:0.9rem}
 .submitter-date{color:var(--muted);font-size:0.78rem;margin-top:0.15rem}
-
-/* ── MAP PLACEHOLDER ── */
-.map-box{
-  height:180px;background:var(--bg2);border:1px solid var(--border);
-  border-radius:12px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:0.5rem;
-  color:var(--muted);font-size:0.85rem;cursor:pointer;
-  transition:border-color 0.2s;text-decoration:none;
-}
+.map-box{height:180px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;color:var(--muted);font-size:0.85rem;cursor:pointer;transition:border-color 0.2s;text-decoration:none}
 .map-box:hover{border-color:var(--amber)}
-.map-box-icon{font-size:2rem;margin-bottom:0.25rem}
-
-/* ── REPORT MODAL ── */
-.modal-overlay{
-  position:fixed;inset:0;z-index:2000;
-  background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);
-  display:flex;align-items:center;justify-content:center;padding:1rem;
-  opacity:0;pointer-events:none;transition:opacity 0.3s;
-}
+.map-box-icon{width:44px;height:44px;border-radius:12px;background:rgba(245,166,35,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:0.25rem}
+.map-box-icon svg{width:22px;height:22px;stroke:var(--amber);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.share-btn-row{display:flex;flex-direction:column;gap:0.5rem}
+.share-action-btn{width:100%;justify-content:center;display:flex;align-items:center;gap:0.5rem;padding:0.65rem;border-radius:10px;background:var(--bg2);border:1px solid var(--border);color:var(--muted);font-family:'Outfit',sans-serif;font-weight:600;font-size:0.85rem;cursor:pointer;transition:all 0.2s}
+.share-action-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;flex-shrink:0}
+.share-action-btn:hover{color:var(--text);border-color:var(--border2)}
+.modal-overlay{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.3s}
 .modal-overlay.open{opacity:1;pointer-events:all}
-.modal{
-  background:var(--card);border:1px solid var(--border2);
-  border-radius:20px;padding:2rem;width:100%;max-width:460px;
-  transform:translateY(20px);transition:transform 0.3s;
-}
+.modal{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:2rem;width:100%;max-width:460px;transform:translateY(20px);transition:transform 0.3s}
 .modal-overlay.open .modal{transform:translateY(0)}
 .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem}
 .modal-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800}
-.modal-close{width:30px;height:30px;border-radius:7px;background:var(--bg2);border:1px solid var(--border);color:var(--muted);cursor:pointer;font-size:0.9rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.modal-close{width:30px;height:30px;border-radius:7px;background:var(--bg2);border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
 .modal-close:hover{color:var(--text)}
-.reason-btn{
-  width:100%;padding:0.75rem 1rem;border-radius:10px;
-  background:var(--bg2);border:1px solid var(--border);
-  color:var(--muted);font-family:'Outfit',sans-serif;font-size:0.88rem;font-weight:500;
-  cursor:pointer;transition:all 0.2s;text-align:left;margin-bottom:0.5rem;
-  display:flex;align-items:center;gap:0.65rem;
-}
+.modal-close svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.reason-btn{width:100%;padding:0.75rem 1rem;border-radius:10px;background:var(--bg2);border:1px solid var(--border);color:var(--muted);font-family:'Outfit',sans-serif;font-size:0.88rem;font-weight:500;cursor:pointer;transition:all 0.2s;text-align:left;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.65rem}
+.reason-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;flex-shrink:0}
 .reason-btn:hover{border-color:var(--border2);color:var(--text)}
 .reason-btn.selected{background:rgba(255,107,107,0.08);border-color:rgba(255,107,107,0.3);color:var(--coral)}
 .modal-actions{display:flex;gap:0.65rem;margin-top:1.25rem}
@@ -190,29 +124,51 @@ body.light .reason-btn{background:#ECEAE4;color:#6B6660}
 .btn-report{flex:2;padding:0.75rem;border-radius:10px;background:rgba(255,107,107,0.15);border:1px solid rgba(255,107,107,0.3);color:var(--coral);font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;transition:all 0.2s}
 .btn-report:hover:not(:disabled){background:rgba(255,107,107,0.25)}
 .btn-report:disabled{opacity:0.5;cursor:not-allowed}
-
-/* ── TOAST ── */
 .toast-container{position:fixed;bottom:1.5rem;right:1.5rem;z-index:3000;display:flex;flex-direction:column;gap:0.5rem}
 .toast{background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:0.75rem 1.1rem;font-size:0.85rem;font-weight:600;display:flex;align-items:center;gap:0.5rem;animation:slideIn 0.35s cubic-bezier(0.4,0,0.2,1) both;max-width:300px}
+.toast svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0}
 .toast.success{border-color:rgba(74,222,128,0.3);color:var(--green)}
-.toast.error  {border-color:rgba(255,107,107,0.3);color:var(--coral)}
-.toast.info   {border-color:rgba(96,165,250,0.3);color:var(--blue)}
-
-/* ── STATES ── */
+.toast.error{border-color:rgba(255,107,107,0.3);color:var(--coral)}
+.toast.info{border-color:rgba(96,165,250,0.3);color:var(--blue)}
 .loading-state{text-align:center;padding:5rem 2rem;color:var(--muted)}
 .loading-spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--amber);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 1rem}
 .error-state{text-align:center;padding:5rem 2rem}
-.error-icon{font-size:3rem;margin-bottom:1rem}
+.error-icon{width:56px;height:56px;border-radius:16px;background:rgba(255,107,107,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.error-icon svg{width:28px;height:28px;stroke:var(--coral);fill:none;stroke-width:1.5;stroke-linecap:round}
 .error-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;margin-bottom:0.5rem}
 .error-sub{color:var(--muted);font-size:0.9rem;margin-bottom:1.5rem}
-
-/* ── ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes slideIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
+
+<!-- SVG SYMBOLS -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="ic-arrow-l" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 16 16" fill="none"><path d="M8 2a4 4 0 0 1 4 4c0 3-4 8-4 8S4 9 4 6a4 4 0 0 1 4-4z" stroke-linecap="round"/><circle cx="8" cy="6" r="1.3"/></symbol>
+  <symbol id="ic-thumb" viewBox="0 0 16 16" fill="none"><path d="M6 14H3a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3l2-5a1.5 1.5 0 0 1 3 1.5V6h3a1 1 0 0 1 1 1l-1 6a1 1 0 0 1-1 1H6z" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-bm" viewBox="0 0 16 16" fill="none"><path d="M4 2h8a1 1 0 0 1 1 1v11l-5-3-5 3V3a1 1 0 0 1 1-1z" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-edit" viewBox="0 0 16 16" fill="none"><path d="M11 2l3 3-8 8H3v-3z" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 4l3 3" stroke-linecap="round"/></symbol>
+  <symbol id="ic-flag" viewBox="0 0 16 16" fill="none"><path d="M3 2v14M3 2h8l-2 4h3l-2 5H3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-link" viewBox="0 0 16 16" fill="none"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2-2a3 3 0 0 0-4.2-4.2l-1 1" stroke-linecap="round"/><path d="M9.5 6.5a3 3 0 0 0-4.2 0l-2 2a3 3 0 0 0 4.2 4.2l1-1" stroke-linecap="round"/></symbol>
+  <symbol id="ic-phone" viewBox="0 0 16 16" fill="none"><path d="M3 3a1 1 0 0 1 1-1h2l1.5 3.5-1.5 1s.5 2 1.5 3 3 1.5 3 1.5l1-1.5L15 11v2a1 1 0 0 1-1 1C5 14 2 7 2 4a1 1 0 0 1 1-1z" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-map" viewBox="0 0 16 16" fill="none"><path d="M1 3l4-2 6 2 4-2v11l-4 2-6-2-4 2V3z" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 1v11M11 3v11" stroke-linecap="round"/></symbol>
+  <symbol id="ic-cal" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 1v4M11 1v4M2 7h12" stroke-linecap="round"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2" stroke-linecap="round"/></symbol>
+  <symbol id="ic-whatsapp" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6"/><path d="M5 8.5c.5 1 1.5 2 3 2.5l1-1.5c.5.2 1 .3 1.5.3v2C7 12 4 9 4 5.5h2c0 .5.1 1 .3 1.5L5 8.5z" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-x" viewBox="0 0 16 16" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke-linecap="round"/></symbol>
+  <symbol id="ic-check" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-info" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6"/><path d="M8 7v4M8 5.5v.5" stroke-linecap="round"/></symbol>
+  <symbol id="ic-moon" viewBox="0 0 16 16" fill="none"><path d="M13 10A6 6 0 0 1 6 3a6 6 0 1 0 7 7z" stroke-linecap="round"/></symbol>
+  <symbol id="ic-sun" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.2 3.2l1.4 1.4M11.4 11.4l1.4 1.4M3.2 12.8l1.4-1.4M11.4 4.6l1.4-1.4" stroke-linecap="round"/></symbol>
+  <symbol id="ic-warn" viewBox="0 0 16 16" fill="none"><path d="M8 2l6 12H2z" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 7v3" stroke-linecap="round"/><circle cx="8" cy="12.5" r="0.6" fill="currentColor"/></symbol>
+  <symbol id="ic-lock" viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="8" rx="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2" stroke-linecap="round"/></symbol>
+  <symbol id="ic-cal-x" viewBox="0 0 16 16" fill="none"><path d="M6 6l4 4M10 6l-4 4" stroke-linecap="round"/><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 1v4M11 1v4M2 7h12" stroke-linecap="round"/></symbol>
+  <symbol id="ic-nosign" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6"/><path d="M4 12L12 4" stroke-linecap="round"/></symbol>
+  <symbol id="ic-repeat" viewBox="0 0 16 16" fill="none"><path d="M2 8a6 6 0 0 1 10-4.5M14 8a6 6 0 0 1-10 4.5" stroke-linecap="round"/><path d="M12 1v3h-3M4 15v-3h3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
 <!-- NAVBAR -->
 <nav class="navbar">
@@ -221,7 +177,9 @@ body.light .reason-btn{background:#ECEAE4;color:#6B6660}
     Community Hub
   </a>
   <div class="nav-right">
-    <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode">🌙</button>
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+      <svg id="themeIcon"><use href="#ic-moon"/></svg>
+    </button>
     <div id="guestNav">
       <a href="auth.html" class="nav-btn">Sign In</a>
       <a href="auth.html" class="nav-btn-primary">Get Started Free</a>
@@ -234,7 +192,6 @@ body.light .reason-btn{background:#ECEAE4;color:#6B6660}
   </div>
 </nav>
 
-<!-- PAGE CONTENT -->
 <div class="page" id="pageContent">
   <div class="loading-state">
     <div class="loading-spinner"></div>
@@ -247,15 +204,15 @@ body.light .reason-btn{background:#ECEAE4;color:#6B6660}
   <div class="modal">
     <div class="modal-header">
       <div class="modal-title">Report Resource</div>
-      <button class="modal-close" id="closeReport">✕</button>
+      <button class="modal-close" id="closeReport"><svg><use href="#ic-x"/></svg></button>
     </div>
     <p style="color:var(--muted);font-size:0.88rem;margin-bottom:1.25rem">Why are you reporting this resource? This will be reviewed by our team.</p>
     <div id="reasonBtns">
-      <button class="reason-btn" data-reason="Outdated information">📅 Outdated information</button>
-      <button class="reason-btn" data-reason="Incorrect details">❌ Incorrect details</button>
-      <button class="reason-btn" data-reason="No longer available">🚫 No longer available</button>
-      <button class="reason-btn" data-reason="Spam or inappropriate">⚠️ Spam or inappropriate</button>
-      <button class="reason-btn" data-reason="Duplicate listing">🔁 Duplicate listing</button>
+      <button class="reason-btn" data-reason="Outdated information"><svg><use href="#ic-cal"/></svg> Outdated information</button>
+      <button class="reason-btn" data-reason="Incorrect details"><svg><use href="#ic-cal-x"/></svg> Incorrect details</button>
+      <button class="reason-btn" data-reason="No longer available"><svg><use href="#ic-nosign"/></svg> No longer available</button>
+      <button class="reason-btn" data-reason="Spam or inappropriate"><svg><use href="#ic-warn"/></svg> Spam or inappropriate</button>
+      <button class="reason-btn" data-reason="Duplicate listing"><svg><use href="#ic-repeat"/></svg> Duplicate listing</button>
     </div>
     <div class="modal-actions">
       <button class="btn-cancel" id="cancelReport">Cancel</button>
@@ -264,406 +221,302 @@ body.light .reason-btn{background:#ECEAE4;color:#6B6660}
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast-container" id="toastContainer"></div>
 
 <script>
-/* ── API BASE (works locally + in production) ── */
 var API = 'https://community-hub-production-5633.up.railway.app';
+var state = { user:null, token:null, resource:null, bookmarks:[], selectedReason:null };
+var CAT_LABEL = {food:'Food',shelter:'Shelter',health:'Healthcare',mental:'Mental Health',job:'Job Training',education:'Education',legal:'Legal Aid',other:'Other'};
 
-/* ══════════════════════════════════════
-   STATE
-══════════════════════════════════════ */
-var state = { user: null, token: null, resource: null, bookmarks: [], selectedReason: null };
+function esc(s){var d=document.createElement('div');d.textContent=String(s||'');return d.innerHTML}
+function timeAgo(d){var s=Math.floor((Date.now()-new Date(d))/1000);if(s<60)return'just now';if(s<3600)return Math.floor(s/60)+'m ago';if(s<86400)return Math.floor(s/3600)+'h ago';if(s<2592000)return Math.floor(s/86400)+'d ago';return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
+function formatDate(d){return new Date(d).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}
+function authHeaders(){var h={'Content-Type':'application/json'};if(state.token)h['Authorization']='Bearer '+state.token;return h}
 
-/* ══════════════════════════════════════
-   HELPERS
-══════════════════════════════════════ */
-var CAT_LABEL = { food:'Food', shelter:'Shelter', health:'Healthcare', mental:'Mental Health', job:'Job Training', education:'Education', legal:'Legal Aid', other:'Other' };
+/* SVG icon helpers for JS-generated HTML */
+function svgUse(id,w,h){return'<svg width="'+(w||14)+'" height="'+(h||14)+'" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#'+id+'"/></svg>'}
 
-function esc(s) { var d = document.createElement('div'); d.textContent = String(s||''); return d.innerHTML; }
-
-function timeAgo(d) {
-  var s = Math.floor((Date.now() - new Date(d)) / 1000);
-  if (s < 60) return 'just now';
-  if (s < 3600) return Math.floor(s/60) + 'm ago';
-  if (s < 86400) return Math.floor(s/3600) + 'h ago';
-  if (s < 2592000) return Math.floor(s/86400) + 'd ago';
-  return new Date(d).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
-}
-
-function formatDate(d) {
-  return new Date(d).toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
-}
-
-function toast(msg, type) {
-  var t = document.createElement('div');
-  t.className = 'toast ' + (type || 'info');
-  var icons = { success:'✓', error:'✕', info:'ℹ' };
-  t.innerHTML = '<span>' + (icons[type]||'ℹ') + '</span> ' + esc(msg);
+function toast(msg,type){
+  var iconMap={success:svgUse('ic-check',13,13),error:svgUse('ic-warn',13,13),info:svgUse('ic-info',13,13)};
+  var t=document.createElement('div');
+  t.className='toast '+(type||'info');
+  t.innerHTML=(iconMap[type]||iconMap.info)+'<span>'+esc(msg)+'</span>';
   document.getElementById('toastContainer').appendChild(t);
-  setTimeout(function(){ t.style.opacity='0'; t.style.transition='opacity 0.3s'; setTimeout(function(){ t.remove(); }, 300); }, 3000);
+  setTimeout(function(){t.style.opacity='0';t.style.transition='opacity 0.3s';setTimeout(function(){t.remove()},300)},3000);
 }
 
-function authHeaders() {
-  var h = { 'Content-Type': 'application/json' };
-  if (state.token) h['Authorization'] = 'Bearer ' + state.token;
-  return h;
-}
-
-/* ══════════════════════════════════════
-   AUTH
-══════════════════════════════════════ */
-function initAuth() {
-  state.token = localStorage.getItem('ch_token');
-  try { state.user = JSON.parse(localStorage.getItem('ch_user')); } catch(e) {}
-  try { state.bookmarks = JSON.parse(localStorage.getItem('ch_bookmarks')) || []; } catch(e) {}
+/* AUTH */
+function initAuth(){
+  state.token=localStorage.getItem('ch_token');
+  try{state.user=JSON.parse(localStorage.getItem('ch_user'))}catch(e){}
+  try{state.bookmarks=JSON.parse(localStorage.getItem('ch_bookmarks'))||[]}catch(e){}
   updateNav();
-
-  if (state.token) {
-    fetch(API+'/api/auth/me', { headers: authHeaders() })
-      .then(function(r){ if (!r.ok) throw 0; return r.json(); })
-      .then(function(d){ state.user = d.user; localStorage.setItem('ch_user', JSON.stringify(d.user)); updateNav(); })
-      .catch(function(){ state.token = null; state.user = null; localStorage.removeItem('ch_token'); updateNav(); });
+  if(state.token){
+    fetch(API+'/api/auth/me',{headers:authHeaders()})
+      .then(function(r){if(!r.ok)throw 0;return r.json()})
+      .then(function(d){state.user=d.user;localStorage.setItem('ch_user',JSON.stringify(d.user));updateNav()})
+      .catch(function(){state.token=null;state.user=null;localStorage.removeItem('ch_token');updateNav()});
   }
 }
-
-function updateNav() {
-  var gNav = document.getElementById('guestNav');
-  var uNav = document.getElementById('userNav');
-  if (state.user) {
-    gNav.style.display = 'none'; uNav.style.display = 'flex';
-    var init = state.user.avatar && state.user.avatar.initials ? state.user.avatar.initials : (state.user.name ? state.user.name[0].toUpperCase() : '?');
-    var col  = state.user.avatar && state.user.avatar.color ? state.user.avatar.color : '#F5A623';
-    document.getElementById('navAvatar').textContent = init;
-    document.getElementById('navAvatar').style.background = col;
-    document.getElementById('navUsername').textContent = state.user.name ? state.user.name.split(' ')[0] : state.user.email;
-  } else {
-    gNav.style.display = 'flex'; uNav.style.display = 'none';
+function updateNav(){
+  var gNav=document.getElementById('guestNav'),uNav=document.getElementById('userNav');
+  if(state.user){
+    gNav.style.display='none';uNav.style.display='flex';
+    var init=state.user.avatar&&state.user.avatar.initials?state.user.avatar.initials:(state.user.name?state.user.name[0].toUpperCase():'?');
+    var col=state.user.avatar&&state.user.avatar.color?state.user.avatar.color:'#F5A623';
+    document.getElementById('navAvatar').textContent=init;
+    document.getElementById('navAvatar').style.background=col;
+    document.getElementById('navUsername').textContent=state.user.name?state.user.name.split(' ')[0]:state.user.email;
+  }else{
+    gNav.style.display='flex';uNav.style.display='none';
   }
 }
-
-document.getElementById('logoutBtn').addEventListener('click', function(){
-  localStorage.removeItem('ch_token'); localStorage.removeItem('ch_user');
-  state.token = null; state.user = null; updateNav(); toast('Signed out', 'info');
+document.getElementById('logoutBtn').addEventListener('click',function(){
+  localStorage.removeItem('ch_token');localStorage.removeItem('ch_user');
+  state.token=null;state.user=null;updateNav();toast('Signed out','info');
 });
 
-/* ══════════════════════════════════════
-   LOAD RESOURCE
-══════════════════════════════════════ */
-function getResourceId() {
-  return new URLSearchParams(window.location.search).get('id');
-}
-
-function loadResource() {
-  var id = getResourceId();
-  if (!id) { showError('No resource ID', 'This link looks broken.'); return; }
-
-  fetch(API+'/api/resources/' + id)
-    .then(function(r){ if (!r.ok) throw r.status; return r.json(); })
-    .then(function(data){
-      state.resource = data;
-      document.title = data.name + ' — Community Hub';
-      renderPage(data);
-    })
+/* LOAD */
+function getResourceId(){return new URLSearchParams(window.location.search).get('id')}
+function loadResource(){
+  var id=getResourceId();
+  if(!id){showError('No resource ID','This link looks broken.');return}
+  fetch(API+'/api/resources/'+id)
+    .then(function(r){if(!r.ok)throw r.status;return r.json()})
+    .then(function(data){state.resource=data;document.title=data.name+' — Community Hub';renderPage(data)})
     .catch(function(status){
-      if (status === 404) showError('Resource not found', 'This resource may have been removed.');
-      else showError('Could not load', 'Check your connection and try again.');
+      if(status===404)showError('Resource not found','This resource may have been removed.');
+      else showError('Could not load','Check your connection and try again.');
     });
 }
 
-/* ══════════════════════════════════════
-   RENDER
-══════════════════════════════════════ */
-function renderPage(r) {
-  var voted      = state.bookmarks.indexOf('v_' + r._id) > -1;
-  var bookmarked = state.bookmarks.indexOf(r._id) > -1;
-  var canEdit    = state.user && (String(state.user._id) === String(r.submittedBy && r.submittedBy._id || r.submittedBy) || state.user.role === 'admin');
+/* RENDER */
+function renderPage(r){
+  var voted=state.bookmarks.indexOf('v_'+r._id)>-1;
+  var bookmarked=state.bookmarks.indexOf(r._id)>-1;
+  var canEdit=state.user&&(String(state.user._id)===String(r.submittedBy&&r.submittedBy._id||r.submittedBy)||state.user.role==='admin');
+  var submitterName=r.submittedBy&&r.submittedBy.name?r.submittedBy.name:'Community member';
+  var submitterInit=submitterName[0].toUpperCase();
+  var submitterColor=r.submittedBy&&r.submittedBy.avatar&&r.submittedBy.avatar.color?r.submittedBy.avatar.color:'#F5A623';
+  var mapQuery=encodeURIComponent((r.name||'')+' '+(r.location||''));
+  var mapUrl='https://www.google.com/maps/search/'+mapQuery;
+  var tags=(r.tags||[]).map(function(t){return'<span class="tag">'+esc(t)+'</span>'}).join('');
 
-  var submitterName = r.submittedBy && r.submittedBy.name ? r.submittedBy.name : 'Community member';
-  var submitterInit = submitterName[0].toUpperCase();
-  var submitterColor = r.submittedBy && r.submittedBy.avatar && r.submittedBy.avatar.color ? r.submittedBy.avatar.color : '#F5A623';
-
-  var mapQuery = encodeURIComponent((r.name || '') + ' ' + (r.location || ''));
-  var mapUrl   = 'https://www.google.com/maps/search/' + mapQuery;
-
-  var tags = (r.tags || []).map(function(t){ return '<span class="tag">' + esc(t) + '</span>'; }).join('');
-
-  document.getElementById('pageContent').innerHTML =
+  document.getElementById('pageContent').innerHTML=
     /* BREADCRUMB */
     '<div class="breadcrumb">'
-    + '<a href="app.html">← All Resources</a>'
-    + '<span class="breadcrumb-sep">›</span>'
-    + '<span class="res-cat ' + esc(r.category) + '" style="padding:0.1rem 0.55rem;border-radius:100px;font-size:0.72rem;font-weight:700">' + esc(CAT_LABEL[r.category] || r.category) + '</span>'
-    + '</div>'
+    +'<a href="app.html">'+svgUse('ic-arrow-l',13,13)+' All Resources</a>'
+    +'<span class="breadcrumb-sep">›</span>'
+    +'<span class="res-cat '+esc(r.category)+'" style="padding:0.1rem 0.55rem;border-radius:100px;font-size:0.72rem;font-weight:700">'+esc(CAT_LABEL[r.category]||r.category)+'</span>'
+    +'</div>'
 
     /* HERO */
-    + '<div class="hero">'
-    + '<div class="hero-top">'
-    + '<h1 class="resource-name">' + esc(r.name) + '</h1>'
-    + '<span class="resource-cat cat-' + esc(r.category) + '">' + esc(CAT_LABEL[r.category] || r.category) + '</span>'
-    + '</div>'
-    + '<div class="hero-meta">'
-    + '<span class="hero-meta-item">📍 ' + esc(r.location) + '</span>'
-    + '<span class="hero-meta-item">👍 ' + (r.helpful||0) + ' found helpful</span>'
-    + '<span class="hero-meta-item">🕐 Added ' + timeAgo(r.createdAt) + '</span>'
-    + '</div>'
-    + '</div>'
+    +'<div class="hero">'
+    +'<div class="hero-top"><h1 class="resource-name">'+esc(r.name)+'</h1>'
+    +'<span class="resource-cat cat-'+esc(r.category)+'">'+esc(CAT_LABEL[r.category]||r.category)+'</span></div>'
+    +'<div class="hero-meta">'
+    +'<span class="hero-meta-item">'+svgUse('ic-pin',14,14)+' '+esc(r.location)+'</span>'
+    +'<span class="hero-meta-item">'+svgUse('ic-thumb',14,14)+' '+(r.helpful||0)+' found helpful</span>'
+    +'<span class="hero-meta-item">'+svgUse('ic-clock',14,14)+' Added '+timeAgo(r.createdAt)+'</span>'
+    +'</div></div>'
 
     /* ACTION BAR */
-    + '<div class="action-bar">'
-    + '<button class="action-btn' + (voted?' voted':'') + '" id="voteBtn">👍 ' + (voted?'Helpful!':'Mark Helpful') + ' <span id="voteCount" style="font-weight:800;margin-left:0.1rem">(' + (r.helpful||0) + ')</span></button>'
-    + '<button class="action-btn' + (bookmarked?' bookmarked':'') + '" id="bookmarkBtn">' + (bookmarked?'🔖 Bookmarked':'🔖 Bookmark') + '</button>'
-    + (canEdit ? '<button class="action-btn" id="editBtn">✏️ Edit</button>' : '')
-    + '<button class="action-btn danger" id="reportBtn">🚩 Report</button>'
-    + '<button class="action-btn-share" id="shareBtn">🔗 Share</button>'
-    + '</div>'
+    +'<div class="action-bar">'
+    +'<button class="action-btn'+(voted?' voted':'')+'" id="voteBtn">'+svgUse('ic-thumb')+' '+(voted?'Helpful!':'Mark Helpful')+' <span id="voteCount" style="font-weight:800;margin-left:0.1rem">('+( r.helpful||0)+')</span></button>'
+    +'<button class="action-btn'+(bookmarked?' bookmarked':'')+'" id="bookmarkBtn">'+svgUse('ic-bm')+' '+(bookmarked?'Bookmarked':'Bookmark')+'</button>'
+    +(canEdit?'<button class="action-btn" id="editBtn">'+svgUse('ic-edit')+' Edit</button>':'')
+    +'<button class="action-btn danger" id="reportBtn">'+svgUse('ic-flag')+' Report</button>'
+    +'<button class="action-btn-share" id="shareBtn">'+svgUse('ic-link')+' Share</button>'
+    +'</div>'
 
     /* CONTENT GRID */
-    + '<div class="content-grid">'
-
-    /* LEFT COLUMN */
-    + '<div>'
+    +'<div class="content-grid"><div>'
 
     /* Description */
-    + '<div class="section">'
-    + '<div class="section-title">About this resource</div>'
-    + '<p class="description-text">' + esc(r.description) + '</p>'
-    + '</div>'
+    +'<div class="section"><div class="section-title">About this resource</div>'
+    +'<p class="description-text">'+esc(r.description)+'</p></div>'
 
     /* Tags */
-    + (r.tags && r.tags.length ? '<div class="section"><div class="section-title">Tags</div><div class="tags-wrap">' + tags + '</div></div>' : '')
+    +(r.tags&&r.tags.length?'<div class="section"><div class="section-title">Tags</div><div class="tags-wrap">'+tags+'</div></div>':'')
 
     /* Contact */
-    + '<div class="section">'
-    + '<div class="section-title">Contact & Access</div>'
-    + (r.contact
-      ? '<div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-label">Contact</div><div class="contact-value">' + esc(r.contact) + '</div></div></div>'
-      : '<div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-label">Contact</div><div class="contact-value" style="color:var(--muted)">No contact info provided</div></div></div>')
-    + '<div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-label">Location</div><div class="contact-value">' + esc(r.location) + '</div></div></div>'
-    + '<div class="contact-item"><div class="contact-icon">📅</div><div><div class="contact-label">Added</div><div class="contact-value">' + formatDate(r.createdAt) + '</div></div></div>'
-    + '</div>'
+    +'<div class="section"><div class="section-title">Contact &amp; Access</div>'
+    +(r.contact
+      ?'<div class="contact-item"><div class="contact-icon">'+svgUse('ic-phone',16,16)+'</div><div><div class="contact-label">Contact</div><div class="contact-value">'+esc(r.contact)+'</div></div></div>'
+      :'<div class="contact-item"><div class="contact-icon">'+svgUse('ic-phone',16,16)+'</div><div><div class="contact-label">Contact</div><div class="contact-value" style="color:var(--muted)">No contact info provided</div></div></div>')
+    +'<div class="contact-item"><div class="contact-icon">'+svgUse('ic-pin',16,16)+'</div><div><div class="contact-label">Location</div><div class="contact-value">'+esc(r.location)+'</div></div></div>'
+    +'<div class="contact-item"><div class="contact-icon">'+svgUse('ic-cal',16,16)+'</div><div><div class="contact-label">Added</div><div class="contact-value">'+formatDate(r.createdAt)+'</div></div></div>'
+    +'</div>'
 
     /* Map */
-    + '<a class="map-box" href="' + mapUrl + '" target="_blank" rel="noopener">'
-    + '<div class="map-box-icon">🗺️</div>'
-    + '<div style="font-weight:600;color:var(--text)">' + esc(r.location) + '</div>'
-    + '<div style="font-size:0.78rem;color:var(--amber);margin-top:0.2rem">Open in Google Maps →</div>'
-    + '</a>'
+    +'<a class="map-box" href="'+mapUrl+'" target="_blank" rel="noopener">'
+    +'<div class="map-box-icon">'+svgUse('ic-map',22,22)+'</div>'
+    +'<div style="font-weight:600;color:var(--text)">'+esc(r.location)+'</div>'
+    +'<div style="font-size:0.78rem;color:var(--amber);margin-top:0.2rem">Open in Google Maps →</div>'
+    +'</a>'
 
-    + '</div>'/* end left */
-
-    /* RIGHT COLUMN */
-    + '<div>'
+    +'</div><div>'/* right col */
 
     /* Stats */
-    + '<div class="section">'
-    + '<div class="section-title">Community Stats</div>'
-    + '<div class="stat-row">'
-    + '<div class="stat-card"><div class="stat-num" style="color:var(--amber)">' + (r.helpful||0) + '</div><div class="stat-lbl">Helpful votes</div></div>'
-    + '<div class="stat-card"><div class="stat-num" style="color:var(--blue)">' + (r.reports ? r.reports.length : 0) + '</div><div class="stat-lbl">Reports</div></div>'
-    + '</div>'
-    + '</div>'
+    +'<div class="section"><div class="section-title">Community Stats</div>'
+    +'<div class="stat-row">'
+    +'<div class="stat-card"><div class="stat-num" style="color:var(--amber)">'+(r.helpful||0)+'</div><div class="stat-lbl">Helpful votes</div></div>'
+    +'<div class="stat-card"><div class="stat-num" style="color:var(--blue)">'+(r.reports?r.reports.length:0)+'</div><div class="stat-lbl">Reports</div></div>'
+    +'</div></div>'
 
     /* Submitter */
-    + '<div class="section">'
-    + '<div class="section-title">Submitted by</div>'
-    + '<div class="submitter">'
-    + '<div class="submitter-avatar" style="background:' + submitterColor + '">' + submitterInit + '</div>'
-    + '<div><div class="submitter-name">' + esc(submitterName) + '</div><div class="submitter-date">' + formatDate(r.createdAt) + '</div></div>'
-    + '</div>'
-    + '</div>'
+    +'<div class="section"><div class="section-title">Submitted by</div>'
+    +'<div class="submitter"><div class="submitter-avatar" style="background:'+submitterColor+'">'+submitterInit+'</div>'
+    +'<div><div class="submitter-name">'+esc(submitterName)+'</div><div class="submitter-date">'+formatDate(r.createdAt)+'</div></div>'
+    +'</div></div>'
 
     /* Share box */
-    + '<div class="section">'
-    + '<div class="section-title">Share this resource</div>'
-    + '<div style="display:flex;flex-direction:column;gap:0.5rem">'
-    + '<button class="action-btn" style="width:100%;justify-content:center" onclick="shareWhatsApp()">💬 Share on WhatsApp</button>'
-    + '<button class="action-btn" style="width:100%;justify-content:center" id="copyLinkBtn">🔗 Copy Link</button>'
-    + '</div>'
-    + '</div>'
+    +'<div class="section"><div class="section-title">Share this resource</div>'
+    +'<div class="share-btn-row">'
+    +'<button class="share-action-btn" onclick="shareWhatsApp()">'+svgUse('ic-whatsapp',14,14)+' Share on WhatsApp</button>'
+    +'<button class="share-action-btn" id="copyLinkBtn">'+svgUse('ic-link',14,14)+' Copy Link</button>'
+    +'</div></div>'
 
-    + '</div>'/* end right */
-    + '</div>';/* end grid */
+    +'</div></div>';/* end grid */
 
-  wireActions(r, voted, bookmarked, canEdit);
+  wireActions(r,voted,bookmarked,canEdit);
 }
 
-/* ══════════════════════════════════════
-   WIRE BUTTONS
-══════════════════════════════════════ */
-function wireActions(r, voted, bookmarked, canEdit) {
+/* WIRE BUTTONS */
+function wireActions(r,voted,bookmarked,canEdit){
 
-  /* Vote helpful */
-  document.getElementById('voteBtn').addEventListener('click', function(){
-    var endpoint = '/api/resources/' + r._id + '/' + (voted ? 'unhelpful' : 'helpful');
-    fetch(endpoint, { method: 'POST', headers: authHeaders() })
-      .then(function(res){ if(!res.ok) throw new Error(); return res.json(); })
+  /* ── THUMBS UP — fixed: now uses API prefix ── */
+  document.getElementById('voteBtn').addEventListener('click',function(){
+    var endpoint=API+'/api/resources/'+r._id+'/'+(voted?'unhelpful':'helpful');
+    fetch(endpoint,{method:'POST',headers:authHeaders()})
+      .then(function(res){if(!res.ok)throw new Error();return res.json()})
       .then(function(d){
-        r.helpful = d.helpful;
-        var btn = document.getElementById('voteBtn');
-        if (voted) {
-          voted = false;
-          var vi = state.bookmarks.indexOf('v_' + r._id);
-          if (vi > -1) state.bookmarks.splice(vi, 1);
-          localStorage.setItem('ch_bookmarks', JSON.stringify(state.bookmarks));
-          btn.classList.remove('voted');
-          btn.innerHTML = '👍 Mark Helpful <span id="voteCount" style="font-weight:800;margin-left:0.1rem">(' + d.helpful + ')</span>';
-          toast('Vote removed', 'info');
-        } else {
-          voted = true;
-          state.bookmarks.push('v_' + r._id);
-          localStorage.setItem('ch_bookmarks', JSON.stringify(state.bookmarks));
-          btn.classList.add('voted');
-          btn.innerHTML = '👍 Helpful! <span id="voteCount" style="font-weight:800;margin-left:0.1rem">(' + d.helpful + ')</span>';
-          toast('Marked as helpful — thank you!', 'success');
+        r.helpful=d.helpful;
+        var btn=document.getElementById('voteBtn');
+        if(voted){
+          voted=false;
+          var vi=state.bookmarks.indexOf('v_'+r._id);
+          if(vi>-1)state.bookmarks.splice(vi,1);
+          localStorage.setItem('ch_bookmarks',JSON.stringify(state.bookmarks));
+          btn.className='action-btn';
+          btn.innerHTML=svgUse('ic-thumb')+' Mark Helpful <span id="voteCount" style="font-weight:800;margin-left:0.1rem">('+d.helpful+')</span>';
+          toast('Vote removed','info');
+        }else{
+          voted=true;
+          state.bookmarks.push('v_'+r._id);
+          localStorage.setItem('ch_bookmarks',JSON.stringify(state.bookmarks));
+          btn.className='action-btn voted';
+          btn.innerHTML=svgUse('ic-thumb')+' Helpful! <span id="voteCount" style="font-weight:800;margin-left:0.1rem">('+d.helpful+')</span>';
+          toast('Marked as helpful — thank you!','success');
         }
       })
-      .catch(function(){ toast('Could not vote — try restarting the server', 'error'); });
+      .catch(function(){toast('Could not vote — is the server running?','error')});
   });
 
   /* Bookmark */
-  document.getElementById('bookmarkBtn').addEventListener('click', function(){
-    var idx = state.bookmarks.indexOf(r._id);
-    if (idx > -1) {
-      state.bookmarks.splice(idx, 1); bookmarked = false;
-      this.className = 'action-btn'; this.textContent = '🔖 Bookmark';
-      toast('Bookmark removed', 'info');
-    } else {
-      state.bookmarks.push(r._id); bookmarked = true;
-      this.className = 'action-btn bookmarked'; this.textContent = '🔖 Bookmarked';
-      toast('Bookmarked!', 'success');
+  document.getElementById('bookmarkBtn').addEventListener('click',function(){
+    var idx=state.bookmarks.indexOf(r._id);
+    if(idx>-1){
+      state.bookmarks.splice(idx,1);bookmarked=false;
+      this.className='action-btn';
+      this.innerHTML=svgUse('ic-bm')+' Bookmark';
+      toast('Bookmark removed','info');
+    }else{
+      state.bookmarks.push(r._id);bookmarked=true;
+      this.className='action-btn bookmarked';
+      this.innerHTML=svgUse('ic-bm')+' Bookmarked';
+      toast('Bookmarked!','success');
     }
-    localStorage.setItem('ch_bookmarks', JSON.stringify(state.bookmarks));
+    localStorage.setItem('ch_bookmarks',JSON.stringify(state.bookmarks));
   });
 
   /* Edit */
-  if (canEdit) {
-    document.getElementById('editBtn').addEventListener('click', function(){
-      window.location.href = 'app.html?edit=' + r._id;
+  if(canEdit){
+    document.getElementById('editBtn').addEventListener('click',function(){
+      window.location.href='app.html?edit='+r._id;
     });
   }
 
   /* Share */
-  document.getElementById('shareBtn').addEventListener('click', copyLink);
-  document.getElementById('copyLinkBtn').addEventListener('click', copyLink);
+  document.getElementById('shareBtn').addEventListener('click',copyLink);
+  document.getElementById('copyLinkBtn').addEventListener('click',copyLink);
 
   /* Report */
-  document.getElementById('reportBtn').addEventListener('click', openReportModal);
+  document.getElementById('reportBtn').addEventListener('click',openReportModal);
 }
 
-/* ══════════════════════════════════════
-   SHARE
-══════════════════════════════════════ */
-function copyLink() {
-  var url = window.location.href;
-  navigator.clipboard.writeText(url)
-    .then(function(){ toast('Link copied to clipboard!', 'success'); })
-    .catch(function(){ toast('Could not copy link', 'error'); });
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href)
+    .then(function(){toast('Link copied!','success')})
+    .catch(function(){toast('Could not copy link','error')});
 }
 
-function shareWhatsApp() {
-  var r = state.resource;
-  if (!r) return;
-  var text = '🏠 ' + r.name + '\n📍 ' + r.location + '\n\nFound on Community Hub:\n' + window.location.href;
-  window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+function shareWhatsApp(){
+  var r=state.resource;if(!r)return;
+  var text=r.name+'\n'+r.location+'\n\nFound on Community Hub:\n'+window.location.href;
+  window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
 }
 
-/* ══════════════════════════════════════
-   REPORT MODAL
-══════════════════════════════════════ */
-function openReportModal() {
-  if (!state.user) {
-    toast('Please sign in to report a resource', 'info');
-    setTimeout(function(){ window.location.href = 'auth.html'; }, 1200);
-    return;
-  }
-  state.selectedReason = null;
-  document.querySelectorAll('.reason-btn').forEach(function(b){ b.classList.remove('selected'); });
-  document.getElementById('submitReport').disabled = true;
+/* REPORT MODAL */
+function openReportModal(){
+  if(!state.user){toast('Please sign in to report a resource','info');setTimeout(function(){window.location.href='auth.html'},1200);return}
+  state.selectedReason=null;
+  document.querySelectorAll('.reason-btn').forEach(function(b){b.classList.remove('selected')});
+  document.getElementById('submitReport').disabled=true;
   document.getElementById('reportModal').classList.add('open');
 }
-
-function closeReportModal() {
-  document.getElementById('reportModal').classList.remove('open');
-}
-
-document.getElementById('closeReport').addEventListener('click', closeReportModal);
-document.getElementById('cancelReport').addEventListener('click', closeReportModal);
-document.getElementById('reportModal').addEventListener('click', function(e){ if (e.target === this) closeReportModal(); });
-
-/* Reason selection */
+function closeReportModal(){document.getElementById('reportModal').classList.remove('open')}
+document.getElementById('closeReport').addEventListener('click',closeReportModal);
+document.getElementById('cancelReport').addEventListener('click',closeReportModal);
+document.getElementById('reportModal').addEventListener('click',function(e){if(e.target===this)closeReportModal()});
 document.querySelectorAll('.reason-btn').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    document.querySelectorAll('.reason-btn').forEach(function(b){ b.classList.remove('selected'); });
-    this.classList.add('selected');
-    state.selectedReason = this.dataset.reason;
-    document.getElementById('submitReport').disabled = false;
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.reason-btn').forEach(function(b){b.classList.remove('selected')});
+    this.classList.add('selected');state.selectedReason=this.dataset.reason;
+    document.getElementById('submitReport').disabled=false;
   });
 });
-
-/* Submit report */
-document.getElementById('submitReport').addEventListener('click', function(){
-  var r = state.resource;
-  if (!r || !state.selectedReason) return;
-  var btn = this;
-  btn.disabled = true; btn.textContent = 'Submitting...';
-
-  fetch(API+'/api/resources/' + r._id + '/report', {
-    method: 'POST',
-    headers: authHeaders(),
-    body: JSON.stringify({ reason: state.selectedReason })
-  })
-  .then(function(res){ return res.json().then(function(d){ return { ok: res.ok, data: d }; }); })
-  .then(function(res){
-    closeReportModal();
-    if (res.ok) {
-      toast('Report submitted — thank you for keeping the community accurate!', 'success');
-    } else {
-      toast(res.data.error || 'Could not submit report', 'error');
-    }
-    btn.disabled = false; btn.textContent = 'Submit Report';
-  })
-  .catch(function(){
-    toast('Network error', 'error');
-    btn.disabled = false; btn.textContent = 'Submit Report';
-  });
+document.getElementById('submitReport').addEventListener('click',function(){
+  var r=state.resource;if(!r||!state.selectedReason)return;
+  var btn=this;btn.disabled=true;btn.textContent='Submitting...';
+  fetch(API+'/api/resources/'+r._id+'/report',{method:'POST',headers:authHeaders(),body:JSON.stringify({reason:state.selectedReason})})
+    .then(function(res){return res.json().then(function(d){return{ok:res.ok,data:d}})})
+    .then(function(res){
+      closeReportModal();
+      if(res.ok)toast('Report submitted — thank you!','success');
+      else toast(res.data.error||'Could not submit report','error');
+      btn.disabled=false;btn.textContent='Submit Report';
+    })
+    .catch(function(){toast('Network error','error');btn.disabled=false;btn.textContent='Submit Report'});
 });
 
-/* ══════════════════════════════════════
-   ERROR STATE
-══════════════════════════════════════ */
-function showError(title, sub) {
-  document.getElementById('pageContent').innerHTML =
+/* ERROR STATE */
+function showError(title,sub){
+  document.getElementById('pageContent').innerHTML=
     '<div class="error-state">'
-    + '<div class="error-icon">😕</div>'
-    + '<div class="error-title">' + esc(title) + '</div>'
-    + '<p class="error-sub">' + esc(sub) + '</p>'
-    + '<a href="app.html" style="display:inline-block;padding:0.75rem 1.5rem;background:var(--grad);color:#fff;text-decoration:none;border-radius:10px;font-weight:700">← Back to Resources</a>'
-    + '</div>';
+    +'<div class="error-icon">'+svgUse('ic-warn',28,28)+'</div>'
+    +'<div class="error-title">'+esc(title)+'</div>'
+    +'<p class="error-sub">'+esc(sub)+'</p>'
+    +'<a href="app.html" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;background:var(--grad);color:#fff;text-decoration:none;border-radius:10px;font-weight:700">'+svgUse('ic-arrow-l',14,14)+' Back to Resources</a>'
+    +'</div>';
 }
 
-/* ══════════════════════════════════════
-   INIT
-══════════════════════════════════════ */
+/* INIT */
 initAuth();
 loadResource();
 
-/* ── DARK / LIGHT MODE ── */
+/* THEME */
 (function(){
   var btn=document.getElementById('themeToggle');
+  var icon=document.getElementById('themeIcon');
   var isLight=localStorage.getItem('ch_theme')==='light';
   function applyTheme(light){
     document.body.classList.toggle('light',light);
-    btn.textContent=light?'🌙':'☀️';
+    icon.innerHTML='<use href="'+(light?'#ic-moon':'#ic-sun')+'"/>';
     btn.title=light?'Switch to dark mode':'Switch to light mode';
   }
   applyTheme(isLight);
-  btn.addEventListener('click',function(){
-    isLight=!isLight;
-    localStorage.setItem('ch_theme',isLight?'light':'dark');
-    applyTheme(isLight);
-  });
+  btn.addEventListener('click',function(){isLight=!isLight;localStorage.setItem('ch_theme',isLight?'light':'dark');applyTheme(isLight)});
 })();
 </script>
 </body>
