@@ -1,35 +1,598 @@
-<!-- ═══════════════════════════════════════════════════
-  In your auth.html, find the 3 left-panel bullet-icon divs
-  and replace them with these:
-═══════════════════════════════════════════════════ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — Community Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0A0A0A;--bg2:#141414;--card:#1A1A1A;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
+  --text:#F0EDE8;--muted:#777;--amber:#F5A623;--amber2:#FFD07A;
+  --green:#4ADE80;--coral:#FF6B6B;--blue:#60A5FA;
+  --grad:linear-gradient(135deg,#F5A623 0%,#FF6B6B 100%);
+}
+html,body{height:100%}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);display:grid;grid-template-columns:1fr 1fr;min-height:100vh;overflow-x:hidden}
 
-<!-- FIND this (bullet 1 - search icon): -->
-<div class="bullet-icon" style="background:rgba(245,166,35,0.12)">🔍</div>
-<!-- REPLACE WITH: -->
-<div class="bullet-icon" style="background:rgba(245,166,35,0.12);display:flex;align-items:center;justify-content:center">
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#F5A623" stroke-width="1.6" stroke-linecap="round">
-    <circle cx="7" cy="7" r="4.5"/><path d="M11 11l3 3"/>
-  </svg>
+/* LEFT PANEL */
+.left-panel{background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;padding:3rem;position:relative;overflow:hidden}
+.left-panel::before{content:'';position:absolute;top:-200px;left:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(245,166,35,0.08) 0%,transparent 65%);pointer-events:none;animation:panelGlow 8s ease-in-out infinite}
+.left-panel::after{content:'';position:absolute;bottom:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,107,107,0.06) 0%,transparent 65%);pointer-events:none;animation:panelGlow 10s ease-in-out infinite reverse}
+@keyframes panelGlow{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.grid-bg{position:absolute;inset:0;pointer-events:none;opacity:0.03;background-image:linear-gradient(rgba(255,255,255,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.5) 1px,transparent 1px);background-size:48px 48px}
+.left-logo{display:flex;align-items:center;gap:0.75rem;position:relative;z-index:1;text-decoration:none;color:var(--text)}
+.left-logo-icon{width:38px;height:38px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;color:#fff;font-size:1rem}
+.left-logo span{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:800}
+.left-middle{position:relative;z-index:1}
+.left-headline{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;line-height:1.1;margin-bottom:1.5rem}
+.left-headline em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.left-bullets{display:flex;flex-direction:column;gap:1rem}
+.left-bullet{display:flex;align-items:flex-start;gap:0.85rem;padding:1rem 1.1rem;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;transition:border-color 0.3s}
+.left-bullet:hover{border-color:rgba(245,166,35,0.25)}
+.bullet-icon{width:32px;height:32px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.bullet-icon svg{flex-shrink:0}
+.bullet-title{font-weight:700;font-size:0.88rem;margin-bottom:0.2rem}
+.bullet-desc{color:var(--muted);font-size:0.8rem;line-height:1.4}
+.left-testimonial{position:relative;z-index:1;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:1.5rem;border-left:3px solid var(--amber)}
+.testimonial-text{font-size:0.92rem;line-height:1.7;color:var(--text);margin-bottom:1rem;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:0.65rem}
+.author-dot{width:32px;height:32px;border-radius:50%;flex-shrink:0;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.75rem;color:#fff}
+.author-name{font-weight:700;font-size:0.82rem}
+.author-role{color:var(--muted);font-size:0.75rem}
+
+/* RIGHT PANEL */
+.right-panel{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:3rem 2rem;position:relative}
+.right-inner{width:100%;max-width:400px}
+.back-home{display:inline-flex;align-items:center;gap:0.4rem;color:var(--muted);text-decoration:none;font-size:0.82rem;margin-bottom:3rem;transition:color 0.2s}
+.back-home:hover{color:var(--text)}
+.back-home svg{transition:transform 0.2s}
+.back-home:hover svg{transform:translateX(-3px)}
+
+/* PROGRESS */
+.progress-row{display:flex;align-items:center;gap:0.75rem;margin-bottom:2.5rem}
+.progress-step{display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;font-weight:600}
+.step-dot{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800;transition:all 0.4s}
+.step-dot.done{background:var(--grad);color:#fff}
+.step-dot.active{background:rgba(245,166,35,0.15);border:2px solid var(--amber);color:var(--amber)}
+.step-dot.pending{background:var(--bg2);border:1px solid var(--border);color:var(--muted)}
+.step-label{transition:color 0.3s}
+.step-label.active{color:var(--text)}
+.step-label.pending{color:var(--muted)}
+.progress-line{flex:1;height:1px;background:var(--border);position:relative;overflow:hidden}
+.progress-line-fill{position:absolute;top:0;left:0;bottom:0;background:var(--grad);width:0%;transition:width 0.6s cubic-bezier(0.4,0,0.2,1)}
+
+/* CARD */
+.card-wrapper{position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--border);background:var(--card)}
+.auth-card{padding:2.5rem;position:absolute;inset:0;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1),opacity 0.45s cubic-bezier(0.4,0,0.2,1)}
+.auth-card.current{position:relative;transform:translateX(0);opacity:1}
+.auth-card.slide-right{transform:translateX(100%);opacity:0;pointer-events:none}
+.auth-card.slide-left{transform:translateX(-100%);opacity:0;pointer-events:none}
+.card-eyebrow{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--amber);margin-bottom:0.6rem}
+.card-title{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:800;margin-bottom:0.5rem;line-height:1.2}
+.card-sub{color:var(--muted);font-size:0.88rem;margin-bottom:2rem;line-height:1.5}
+
+/* EMAIL PILL */
+.email-pill{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.2);color:var(--amber);padding:0.35rem 0.9rem;border-radius:100px;font-size:0.8rem;font-weight:600;margin-bottom:1.5rem;cursor:pointer;transition:all 0.2s}
+.email-pill:hover{background:rgba(245,166,35,0.14)}
+
+/* FORM */
+.form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1.1rem}
+.form-label{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted)}
+.form-input{background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:0.85rem 1rem;border-radius:11px;font-size:0.95rem;font-family:'Outfit',sans-serif;outline:none;transition:all 0.25s;width:100%}
+.form-input:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,166,35,0.1)}
+.form-input.error{border-color:var(--coral);box-shadow:0 0 0 3px rgba(255,107,107,0.1);animation:shake 0.35s ease}
+.form-input::placeholder{color:var(--muted)}
+.input-wrap{position:relative}
+.input-wrap .form-input{padding-right:3rem}
+.toggle-pass{position:absolute;right:0.85rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);padding:0.25rem;transition:color 0.2s;display:flex}
+.toggle-pass:hover{color:var(--text)}
+.field-err{color:var(--coral);font-size:0.78rem;font-weight:600;display:none;align-items:center;gap:0.3rem;margin-top:0.3rem}
+.field-err.show{display:flex;animation:fadeIn 0.2s ease}
+
+/* BUTTON */
+.btn-submit{width:100%;padding:0.95rem;border-radius:11px;border:none;background:var(--grad);color:#fff;font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all 0.3s;margin-top:0.5rem;display:flex;align-items:center;justify-content:center;gap:0.5rem;position:relative;overflow:hidden}
+.btn-submit::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background 0.2s}
+.btn-submit:hover:not(:disabled)::after{background:rgba(255,255,255,0.07)}
+.btn-submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 30px rgba(245,166,35,0.35)}
+.btn-submit:disabled{opacity:0.6;cursor:not-allowed}
+.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;display:none}
+.btn-submit.loading .spinner{display:block}
+.btn-submit.loading .btn-text{display:none}
+
+/* STRENGTH */
+.strength-wrap{margin-top:0.5rem}
+.strength-bar{height:3px;background:var(--bg2);border-radius:100px;overflow:hidden;margin-bottom:0.3rem}
+.strength-fill{height:100%;border-radius:100px;transition:width 0.4s ease,background 0.4s ease;width:0%}
+.strength-label{font-size:0.72rem;font-weight:600}
+
+/* FOOTER TEXT */
+.form-footer{text-align:center;margin-top:1.25rem;color:var(--muted);font-size:0.78rem;line-height:1.6}
+.form-footer a{color:var(--amber);text-decoration:none}
+.form-footer a:hover{text-decoration:underline}
+
+/* FORGOT LINK */
+.forgot-link{background:none;border:none;color:var(--amber);font-size:0.82rem;font-family:'Outfit',sans-serif;cursor:pointer;padding:0;transition:opacity 0.2s}
+.forgot-link:hover{opacity:0.75;text-decoration:underline}
+
+/* SUCCESS */
+.success-card{text-align:center;padding:2.5rem;display:none}
+.success-card.show{display:block;animation:fadeIn 0.5s ease}
+.success-icon{width:64px;height:64px;border-radius:50%;background:rgba(74,222,128,0.12);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 1.25rem;animation:scaleIn 0.4s cubic-bezier(0.4,0,0.2,1)}
+.success-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;margin-bottom:0.5rem}
+.success-sub{color:var(--muted);font-size:0.9rem}
+
+/* ALERT */
+.alert{padding:0.85rem 1rem;border-radius:10px;margin-bottom:1.1rem;font-size:0.85rem;font-weight:500;display:none;align-items:center;gap:0.5rem}
+.alert.show{display:flex;animation:fadeIn 0.2s ease}
+.alert.error  {background:rgba(255,107,107,0.1);border:1px solid rgba(255,107,107,0.25);color:var(--coral)}
+.alert.info   {background:rgba(96,165,250,0.1); border:1px solid rgba(96,165,250,0.25); color:var(--blue)}
+.alert.success{background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.25); color:var(--green)}
+
+/* FORGOT PANEL */
+.forgot-panel{display:none}
+.forgot-panel.show{display:block;animation:fadeIn 0.3s ease}
+.back-btn{background:none;border:none;color:var(--muted);font-size:0.82rem;font-family:'Outfit',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:0.4rem;margin-top:1rem;transition:color 0.2s;padding:0}
+.back-btn:hover{color:var(--text)}
+
+/* ANIMATIONS */
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes scaleIn{from{transform:scale(0.5);opacity:0}to{transform:scale(1);opacity:1}}
+
+@media(max-width:860px){
+  body{grid-template-columns:1fr}
+  .left-panel{display:none}
+  .right-panel{padding:2.5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- LEFT PANEL -->
+<div class="left-panel">
+  <div class="grid-bg"></div>
+  <a class="left-logo" href="index.html">
+    <div class="left-logo-icon">CH</div>
+    <span>Community Hub</span>
+  </a>
+  <div class="left-middle">
+    <h2 class="left-headline">The community<br>resource platform<br>that <em>actually works.</em></h2>
+    <div class="left-bullets">
+
+      <div class="left-bullet">
+        <div class="bullet-icon" style="background:rgba(245,166,35,0.12)">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#F5A623" stroke-width="1.6" stroke-linecap="round">
+            <circle cx="7" cy="7" r="4.5"/><path d="M11 11l3 3"/>
+          </svg>
+        </div>
+        <div><div class="bullet-title">Find help instantly</div><div class="bullet-desc">Search food, shelter, healthcare and more — filtered to your city.</div></div>
+      </div>
+
+      <div class="left-bullet">
+        <div class="bullet-icon" style="background:rgba(74,222,128,0.12)">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#4ADE80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="6" r="2.5"/>
+            <path d="M3 14c0-3 2.2-5 5-5s5 2 5 5"/>
+            <path d="M13 5v3m-1.5-1.5h3"/>
+          </svg>
+        </div>
+        <div><div class="bullet-title">Share what helped you</div><div class="bullet-desc">Add resources, vote on them, and keep info current for everyone.</div></div>
+      </div>
+
+      <div class="left-bullet">
+        <div class="bullet-icon" style="background:rgba(96,165,250,0.12)">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#60A5FA" stroke-width="1.6" stroke-linecap="round">
+            <rect x="2" y="9" width="3" height="5" rx="0.5"/>
+            <rect x="6.5" y="6" width="3" height="8" rx="0.5"/>
+            <rect x="11" y="3" width="3" height="11" rx="0.5"/>
+          </svg>
+        </div>
+        <div><div class="bullet-title">Track your impact</div><div class="bullet-desc">See how many people your shared resources have helped.</div></div>
+      </div>
+
+    </div>
+  </div>
+  <div class="left-testimonial">
+    <p class="testimonial-text">I found a free dental clinic I didn't know existed. Without this site I never would have known. It saved me $800.</p>
+    <div class="testimonial-author">
+      <div class="author-dot">M</div>
+      <div>
+        <div class="author-name">Marcus T.</div>
+        <div class="author-role">Community member, Austin TX</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- FIND this (bullet 2 - handshake/community icon): -->
-<div class="bullet-icon" style="background:rgba(74,222,128,0.12)">🤝</div>
-<!-- REPLACE WITH: -->
-<div class="bullet-icon" style="background:rgba(74,222,128,0.12);display:flex;align-items:center;justify-content:center">
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#4ADE80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="8" cy="6" r="2.5"/>
-    <path d="M3 14c0-3 2.2-5 5-5s5 2 5 5"/>
-    <path d="M13 5v3m-1.5-1.5h3"/>
-  </svg>
+<!-- RIGHT PANEL -->
+<div class="right-panel">
+  <div class="right-inner">
+
+    <a class="back-home" href="index.html">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      Back to home
+    </a>
+
+    <!-- MAIN AUTH FLOW -->
+    <div id="authFlow">
+      <div class="progress-row">
+        <div class="progress-step">
+          <div class="step-dot active" id="dot1">1</div>
+          <span class="step-label active" id="label1">Email</span>
+        </div>
+        <div class="progress-line"><div class="progress-line-fill" id="progressFill"></div></div>
+        <div class="progress-step">
+          <div class="step-dot pending" id="dot2">2</div>
+          <span class="step-label pending" id="label2">Details</span>
+        </div>
+      </div>
+
+      <div class="card-wrapper" id="cardWrapper">
+        <!-- STEP 1: Email -->
+        <div class="auth-card current" id="step1">
+          <div class="card-eyebrow">Welcome</div>
+          <h1 class="card-title">Let's get started.</h1>
+          <p class="card-sub">Enter your email to sign in or create a free account. No spam, ever.</p>
+          <div class="alert" id="alert1"></div>
+          <div class="form-group">
+            <label class="form-label" for="emailInput">Email Address</label>
+            <input class="form-input" id="emailInput" type="email" placeholder="you@example.com" autocomplete="email" autofocus>
+            <div class="field-err" id="emailErr">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/><path d="M6 3.5v3M6 8v.5" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Please enter a valid email
+            </div>
+          </div>
+          <button class="btn-submit" id="btn1">
+            <span class="btn-text">Continue →</span>
+            <div class="spinner"></div>
+          </button>
+          <div class="form-footer">
+            By continuing you agree to our
+            <a href="terms.html" target="_blank">Terms of Service</a> and
+            <a href="privacy.html" target="_blank">Privacy Policy</a>.
+          </div>
+        </div>
+
+        <!-- STEP 2: injected by JS -->
+        <div class="auth-card slide-right" id="step2"></div>
+      </div>
+
+      <!-- Success shown after login/register -->
+      <div class="success-card" id="successCard">
+        <div class="success-icon">✓</div>
+        <h2 class="success-title" id="successTitle">Welcome back!</h2>
+        <p class="success-sub" id="successSub">Taking you to your dashboard...</p>
+      </div>
+    </div>
+
+    <!-- FORGOT PASSWORD PANEL -->
+    <div id="forgotPanel" class="forgot-panel">
+      <div class="card-wrapper">
+        <div class="auth-card current" style="position:relative">
+          <div class="card-eyebrow">Account Recovery</div>
+          <h1 class="card-title">Reset your password.</h1>
+          <p class="card-sub">Enter your email and we'll send a reset link to your inbox. Check spam if you don't see it.</p>
+          <div class="alert" id="forgotAlert"></div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" id="forgotEmail" type="email" placeholder="you@example.com" autocomplete="email">
+            <div class="field-err" id="forgotEmailErr">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/><path d="M6 3.5v3M6 8v.5" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Please enter a valid email
+            </div>
+          </div>
+          <button class="btn-submit" id="forgotBtn">
+            <span class="btn-text">Send Reset Link →</span>
+            <div class="spinner"></div>
+          </button>
+          <div style="text-align:center">
+            <button class="back-btn" id="backToLoginBtn">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Back to sign in
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<!-- FIND this (bullet 3 - chart/impact icon): -->
-<div class="bullet-icon" style="background:rgba(96,165,250,0.12)">📊</div>
-<!-- REPLACE WITH: -->
-<div class="bullet-icon" style="background:rgba(96,165,250,0.12);display:flex;align-items:center;justify-content:center">
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#60A5FA" stroke-width="1.6" stroke-linecap="round">
-    <rect x="2" y="9" width="3" height="5" rx="0.5"/>
-    <rect x="6.5" y="6" width="3" height="8" rx="0.5"/>
-    <rect x="11" y="3" width="3" height="11" rx="0.5"/>
-  </svg>
-</div>
+<script>
+var API = 'https://community-hub-production-5633.up.railway.app';
+var state={email:'',isNew:false,loading:false};
+
+var emailInput  =document.getElementById('emailInput');
+var emailErr    =document.getElementById('emailErr');
+var alert1      =document.getElementById('alert1');
+var btn1        =document.getElementById('btn1');
+var step1       =document.getElementById('step1');
+var step2       =document.getElementById('step2');
+var progressFill=document.getElementById('progressFill');
+var successCard =document.getElementById('successCard');
+var authFlow    =document.getElementById('authFlow');
+var forgotPanel =document.getElementById('forgotPanel');
+
+function setLoading(btn,on){state.loading=on;btn.disabled=on;btn.classList.toggle('loading',on)}
+function showAlert(el,msg,type){el.textContent=msg;el.className='alert show '+(type||'error')}
+function hideAlert(el){el.className='alert'}
+function isEmail(v){return /^\S+@\S+\.\S+$/.test(v.trim())}
+function escHtml(s){var d=document.createElement('div');d.textContent=String(s||'');return d.innerHTML}
+
+function checkStrength(pw){
+  var s=0;
+  if(pw.length>=8)s++;
+  if(/[A-Z]/.test(pw))s++;
+  if(/[0-9]/.test(pw))s++;
+  if(/[^A-Za-z0-9]/.test(pw))s++;
+  return s;
+}
+function renderStrength(fill,label,pw){
+  var s=checkStrength(pw);
+  var pct   =['0%','25%','55%','80%','100%'][s];
+  var colour=['#ff6b6b','#ff6b6b','#ffd07a','#f5a623','#4ade80'][s];
+  var txt   =['','Weak','Fair','Good','Strong'][s];
+  fill.style.width=pct;fill.style.background=colour;
+  label.textContent=pw.length?txt:'';label.style.color=colour;
+}
+
+btn1.addEventListener('click',checkEmail);
+emailInput.addEventListener('keydown',function(e){if(e.key==='Enter')checkEmail()});
+emailInput.addEventListener('input',function(){emailErr.classList.remove('show');hideAlert(alert1)});
+
+function checkEmail(){
+  if(state.loading)return;
+  var email=emailInput.value.trim();
+  if(!isEmail(email)){
+    emailInput.classList.add('error');emailErr.classList.add('show');
+    setTimeout(function(){emailInput.classList.remove('error')},400);return;
+  }
+  state.email=email;setLoading(btn1,true);hideAlert(alert1);
+  fetch(API+'/api/auth/check-email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})})
+    .then(function(r){return r.json()})
+    .then(function(data){
+      if(data.error){showAlert(alert1,data.error);setLoading(btn1,false);return}
+      state.isNew=!data.exists;buildStep2();goToStep2();setLoading(btn1,false);
+    })
+    .catch(function(){showAlert(alert1,'Network error — is the server running?');setLoading(btn1,false)});
+}
+
+function buildStep2(){
+  var isNew=state.isNew;
+  step2.innerHTML=
+    '<div class="card-eyebrow">'+(isNew?'Create Account':'Welcome Back')+'</div>'
+   +'<h1 class="card-title">'+(isNew?'Almost there.':'Good to see you.')+'</h1>'
+   +'<p class="card-sub">'+(isNew?'Create a password and tell us your name.':'Enter your password to continue.')+'</p>'
+   +'<div class="email-pill" id="emailPill">'
+   +'<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="2.5" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 4l5 3.5L11 4" stroke="currentColor" stroke-width="1.2"/></svg>'
+   +escHtml(state.email)
+   +' <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M7 5H3M5 3L3 5l2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>'
+   +'</div>'
+   +'<div class="alert" id="alert2"></div>'
+   +(isNew
+     ?'<div class="form-group"><label class="form-label">Full Name</label>'
+      +'<input class="form-input" id="nameInput" type="text" placeholder="Your name" autocomplete="name">'
+      +'<div class="field-err" id="nameErr"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/><path d="M6 3.5v3M6 8v.5" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>Name is required</div>'
+      +'</div>'
+     :'')
+   +'<div class="form-group"><label class="form-label">Password</label>'
+   +'<div class="input-wrap">'
+   +'<input class="form-input" id="passInput" type="password" placeholder="'+(isNew?'At least 6 characters':'Enter your password')+'" autocomplete="'+(isNew?'new-password':'current-password')+'">'
+   +'<button class="toggle-pass" id="togglePass" type="button" aria-label="Toggle password">'
+   +'<svg id="eyeIcon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M1 9s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z" stroke="currentColor" stroke-width="1.4"/><circle cx="9" cy="9" r="2.5" stroke="currentColor" stroke-width="1.4"/></svg>'
+   +'</button></div>'
+   +'<div class="field-err" id="passErr"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/><path d="M6 3.5v3M6 8v.5" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>'
+   +(isNew?'Minimum 6 characters required':'Password is required')+'</div>'
+   +'</div>'
+   +(isNew?'<div class="strength-wrap"><div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div><div class="strength-label" id="strengthLabel"></div></div>':'')
+   +'<button class="btn-submit" id="btn2" style="margin-top:1.25rem">'
+   +'<span class="btn-text">'+(isNew?'Create Account →':'Sign In →')+'</span>'
+   +'<div class="spinner"></div></button>'
+   +'<div style="text-align:center;margin-top:1rem">'
+   +'<button style="background:none;border:none;color:var(--muted);font-size:0.8rem;cursor:pointer;font-family:\'Outfit\',sans-serif" id="backToStep1">← Use a different email</button>'
+   +'</div>'
+   +(isNew
+     ?'<div class="form-footer">By creating an account you agree to our <a href="terms.html" target="_blank">Terms of Service</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>.</div>'
+     :'<div class="form-footer" style="margin-top:1.1rem"><button class="forgot-link" id="forgotLink">Forgot your password?</button></div>');
+
+  setTimeout(wireStep2,10);
+}
+
+function wireStep2(){
+  var btn2      =document.getElementById('btn2');
+  var passInput =document.getElementById('passInput');
+  var nameInput =document.getElementById('nameInput');
+  var alert2    =document.getElementById('alert2');
+  var togglePass=document.getElementById('togglePass');
+  var backBtn   =document.getElementById('backToStep1');
+  var emailPill =document.getElementById('emailPill');
+  var forgotLink=document.getElementById('forgotLink');
+
+  if(backBtn)  backBtn.addEventListener('click',goBack);
+  if(emailPill)emailPill.addEventListener('click',goBack);
+
+  if(forgotLink){
+    forgotLink.addEventListener('click',function(){
+      var fe=document.getElementById('forgotEmail');
+      if(fe)fe.value=state.email;
+      showForgotPanel();
+    });
+  }
+
+  var visible=false;
+  if(togglePass){
+    togglePass.addEventListener('click',function(){
+      visible=!visible;
+      passInput.type=visible?'text':'password';
+      document.getElementById('eyeIcon').style.opacity=visible?'0.5':'1';
+    });
+  }
+
+  if(state.isNew&&passInput){
+    var fill =document.getElementById('strengthFill');
+    var lbl  =document.getElementById('strengthLabel');
+    passInput.addEventListener('input',function(){if(fill&&lbl)renderStrength(fill,lbl,passInput.value)});
+  }
+
+  if(passInput)passInput.addEventListener('input',function(){
+    passInput.classList.remove('error');
+    document.getElementById('passErr').classList.remove('show');
+    if(alert2)hideAlert(alert2);
+  });
+  if(nameInput)nameInput.addEventListener('input',function(){
+    nameInput.classList.remove('error');
+    document.getElementById('nameErr').classList.remove('show');
+  });
+
+  if(btn2)btn2.addEventListener('click',function(){submitStep2(btn2,passInput,nameInput,alert2)});
+  if(passInput)passInput.addEventListener('keydown',function(e){if(e.key==='Enter')submitStep2(btn2,passInput,nameInput,alert2)});
+  if(nameInput)nameInput.addEventListener('keydown',function(e){if(e.key==='Enter')passInput.focus()});
+
+  setTimeout(function(){if(nameInput)nameInput.focus();else if(passInput)passInput.focus()},460);
+}
+
+function submitStep2(btn2,passInput,nameInput,alert2){
+  if(state.loading)return;
+  var pass=passInput?passInput.value:'';
+  var name=nameInput?nameInput.value.trim():'';
+  var valid=true;
+
+  if(state.isNew&&!name){
+    nameInput.classList.add('error');
+    document.getElementById('nameErr').classList.add('show');
+    nameInput.focus();valid=false;
+  }
+  if(!pass||pass.length<6){
+    passInput.classList.add('error');
+    document.getElementById('passErr').classList.add('show');
+    if(valid)passInput.focus();valid=false;
+  }
+  if(!valid){setTimeout(function(){passInput.classList.remove('error')},400);return}
+
+  setLoading(btn2,true);hideAlert(alert2);
+  var endpoint=state.isNew?API+'/api/auth/register':API+'/api/auth/login';
+  var body=state.isNew
+    ?{email:state.email,password:pass,name:name}
+    :{email:state.email,password:pass};
+
+  fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+    .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}})})
+    .then(function(res){
+      if(!res.ok){showAlert(alert2,res.data.error||'Something went wrong.');setLoading(btn2,false);return}
+      localStorage.setItem('ch_token',res.data.token);
+      localStorage.setItem('ch_user',JSON.stringify(res.data.user));
+      showSuccess(res.data.user);
+    })
+    .catch(function(){showAlert(alert2,'Network error — is the server running?');setLoading(btn2,false)});
+}
+
+function goToStep2(){
+  step2.classList.remove('slide-right','slide-left');
+  step2.classList.add('slide-right');
+  step2.getBoundingClientRect();
+  step1.classList.remove('current');step1.classList.add('slide-left');
+  step2.classList.remove('slide-right');step2.classList.add('current');
+  document.getElementById('dot1').className='step-dot done';
+  document.getElementById('dot1').textContent='✓';
+  document.getElementById('dot2').className='step-dot active';
+  document.getElementById('label1').className='step-label';
+  document.getElementById('label2').className='step-label active';
+  progressFill.style.width='100%';
+}
+
+function goBack(){
+  step2.classList.remove('current');step2.classList.add('slide-right');
+  step1.classList.remove('slide-left');step1.classList.add('current');
+  document.getElementById('dot1').className='step-dot active';
+  document.getElementById('dot1').textContent='1';
+  document.getElementById('dot2').className='step-dot pending';
+  document.getElementById('label1').className='step-label active';
+  document.getElementById('label2').className='step-label pending';
+  progressFill.style.width='0%';
+  setTimeout(function(){emailInput.focus()},300);
+}
+
+function showSuccess(user){
+  document.getElementById('cardWrapper').style.display='none';
+  document.querySelector('.progress-row').style.display='none';
+  document.querySelector('.back-home').style.display='none';
+  var firstName=user.name?user.name.split(' ')[0]:'there';
+  document.getElementById('successTitle').textContent=state.isNew?'Welcome, '+firstName+'!':'Welcome back, '+firstName+'!';
+  document.getElementById('successSub').textContent='Taking you to your dashboard...';
+  successCard.style.display='block';successCard.classList.add('show');
+  setTimeout(function(){window.location.href='app.html'},1600);
+}
+
+function showForgotPanel(){
+  authFlow.style.display='none';
+  document.querySelector('.back-home').style.display='none';
+  forgotPanel.classList.add('show');
+  setTimeout(function(){
+    var fe=document.getElementById('forgotEmail');
+    if(fe)fe.focus();
+  },100);
+}
+
+function hideForgotPanel(){
+  forgotPanel.classList.remove('show');
+  authFlow.style.display='block';
+  document.querySelector('.back-home').style.display='inline-flex';
+}
+
+document.getElementById('backToLoginBtn').addEventListener('click',hideForgotPanel);
+document.getElementById('forgotBtn').addEventListener('click',sendResetEmail);
+document.getElementById('forgotEmail').addEventListener('keydown',function(e){if(e.key==='Enter')sendResetEmail()});
+document.getElementById('forgotEmail').addEventListener('input',function(){
+  document.getElementById('forgotEmailErr').classList.remove('show');
+  hideAlert(document.getElementById('forgotAlert'));
+});
+
+function sendResetEmail(){
+  var emailEl =document.getElementById('forgotEmail');
+  var alertEl =document.getElementById('forgotAlert');
+  var errEl   =document.getElementById('forgotEmailErr');
+  var btn     =document.getElementById('forgotBtn');
+  var email   =emailEl.value.trim();
+
+  if(!isEmail(email)){
+    emailEl.classList.add('error');errEl.classList.add('show');
+    setTimeout(function(){emailEl.classList.remove('error')},400);return;
+  }
+
+  setLoading(btn,true);hideAlert(alertEl);
+
+  fetch(API+'/api/auth/forgot-password',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email:email})
+  })
+  .then(function(r){return r.json()})
+  .then(function(){
+    setLoading(btn,false);
+    showAlert(alertEl,'If an account exists for '+email+', a reset link has been sent. Check your inbox (and spam folder).','success');
+    emailEl.value='';
+    btn.disabled=true;
+    setTimeout(function(){btn.disabled=false},10000);
+  })
+  .catch(function(){
+    setLoading(btn,false);
+    showAlert(alertEl,'Network error — please try again.','error');
+  });
+}
+
+/* GUARD: redirect if already logged in */
+(function(){
+  var token=localStorage.getItem('ch_token');
+  if(!token)return;
+  fetch(API+'/api/auth/me',{headers:{'Authorization':'Bearer '+token}})
+    .then(function(r){if(r.ok)window.location.href='app.html'})
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
