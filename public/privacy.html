@@ -16,80 +16,84 @@
 }
 html{scroll-behavior:smooth}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
-
 .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;height:60px;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(14,14,14,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
 .nav-logo{display:flex;align-items:center;gap:0.65rem;font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:800;color:var(--text);text-decoration:none}
 .nav-logo-icon{width:30px;height:30px;border-radius:7px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:900;color:#fff;flex-shrink:0}
 .nav-back{color:var(--muted);text-decoration:none;font-size:0.83rem;font-weight:500;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
 .nav-back:hover{color:var(--text)}
-
 .page{max-width:760px;margin:0 auto;padding:7rem 2rem 5rem}
-
 .doc-hero{margin-bottom:3.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border)}
 .doc-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.25);color:var(--blue);padding:0.35rem 1rem;border-radius:100px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1.25rem}
+.doc-badge svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;flex-shrink:0}
 .doc-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;line-height:1.1;margin-bottom:1rem}
 .doc-meta{display:flex;gap:1.5rem;flex-wrap:wrap}
 .doc-meta-item{display:flex;align-items:center;gap:0.4rem;color:var(--muted);font-size:0.82rem}
+.doc-meta-item svg{width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:1.6;stroke-linecap:round;flex-shrink:0}
 .doc-meta-item span{color:var(--text);font-weight:600}
-
 .toc{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:3rem}
 .toc-title{font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.9rem}
 .toc-list{list-style:none;display:flex;flex-direction:column;gap:0.3rem}
 .toc-list a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;display:flex;align-items:center;gap:0.5rem;padding:0.28rem 0;transition:color 0.2s}
 .toc-list a:hover{color:var(--blue)}
 .toc-num{color:var(--blue);font-size:0.72rem;font-weight:700;width:18px;flex-shrink:0}
-
 .doc-section{margin-bottom:3rem;scroll-margin-top:80px}
 .section-num{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);margin-bottom:0.5rem}
 .section-title{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:800;margin-bottom:1rem;line-height:1.2}
 .doc-section p{color:var(--muted);font-size:0.92rem;margin-bottom:0.9rem;line-height:1.75}
 .doc-section p strong{color:var(--text)}
-
 .doc-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin:1rem 0}
 .doc-list li{display:flex;align-items:flex-start;gap:0.65rem;color:var(--muted);font-size:0.9rem;line-height:1.6}
 .doc-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:0.55rem}
-
-/* Data table */
 .data-table{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:0.86rem}
 .data-table th{background:var(--bg2);color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;font-size:0.72rem;padding:0.7rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
 .data-table td{padding:0.75rem 1rem;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top;line-height:1.5}
 .data-table td strong{color:var(--text)}
 .data-table tr:last-child td{border-bottom:none}
 .data-table tr:hover td{background:rgba(255,255,255,0.02)}
-
 .highlight-box{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:0 12px 12px 0;padding:1.1rem 1.25rem;margin:1.25rem 0}
 .highlight-box p{color:var(--muted);font-size:0.88rem;margin:0;line-height:1.7}
 .highlight-box strong{color:var(--text)}
-
 .green-box{background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.2);border-radius:12px;padding:1.1rem 1.25rem;margin:1.25rem 0}
 .green-box p{color:var(--muted);font-size:0.88rem;margin:0;line-height:1.7}
 .green-box strong{color:var(--green)}
-
 .rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.25rem 0}
 .right-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem}
-.right-card-icon{font-size:1.2rem;margin-bottom:0.4rem}
+.right-card-icon{width:32px;height:32px;border-radius:8px;background:rgba(96,165,250,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:0.5rem}
+.right-card-icon svg{width:15px;height:15px;stroke:var(--blue);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .right-card-title{font-weight:700;font-size:0.86rem;color:var(--text);margin-bottom:0.3rem}
 .right-card-desc{color:var(--muted);font-size:0.78rem;line-height:1.5}
-
 .doc-divider{height:1px;background:var(--border);margin:2.5rem 0}
-
 .doc-footer{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.75rem;margin-top:3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .doc-footer-text{color:var(--muted);font-size:0.85rem}
 .doc-footer-links{display:flex;gap:1.25rem}
 .doc-footer-links a{color:var(--muted);text-decoration:none;font-size:0.83rem;transition:color 0.2s}
 .doc-footer-links a:hover{color:var(--blue)}
-
 footer{border-top:1px solid var(--border);padding:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:4rem}
 footer .brand{font-family:'Playfair Display',serif;font-weight:800;font-size:1rem}
 footer .links{display:flex;gap:1.25rem}
 footer .links a{color:var(--muted);text-decoration:none;font-size:0.82rem;transition:color 0.2s}
 footer .links a:hover{color:var(--text)}
-footer .copy{color:var(--muted);font-size:0.78rem}
-
+footer .copy{color:var(--muted);font-size:0.78rem;display:flex;align-items:center;gap:0.3rem}
+footer .copy svg{width:12px;height:12px;stroke:var(--coral);fill:rgba(255,107,107,0.25);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:600px){.rights-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+
+<!-- SVG SYMBOLS -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="ic-lock" viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="8" rx="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2" stroke-linecap="round"/></symbol>
+  <symbol id="ic-cal" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 1v4M11 1v4M2 7h12" stroke-linecap="round"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2" stroke-linecap="round"/></symbol>
+  <symbol id="ic-globe" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6"/><path d="M8 2c-2 2-3 3.5-3 6s1 4 3 6M8 2c2 2 3 3.5 3 6s-1 4-3 6M2 8h12" stroke-linecap="round"/></symbol>
+  <symbol id="ic-eye" viewBox="0 0 16 16" fill="none"><path d="M1 8s3-5 7-5 7 5 7 5-3 5-7 5-7-5-7-5z" stroke-linecap="round"/><circle cx="8" cy="8" r="2"/></symbol>
+  <symbol id="ic-edit" viewBox="0 0 16 16" fill="none"><path d="M11 2l3 3-8 8H3v-3z" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 4l3 3" stroke-linecap="round"/></symbol>
+  <symbol id="ic-trash" viewBox="0 0 16 16" fill="none"><path d="M3 5h10M6 5V3h4v2"/><path d="M5 5l.5 8h5L11 5" stroke-linecap="round"/></symbol>
+  <symbol id="ic-box" viewBox="0 0 16 16" fill="none"><path d="M2 4l6-2 6 2v8l-6 2-6-2V4z" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 2v12M2 4l6 2 6-2" stroke-linecap="round"/></symbol>
+  <symbol id="ic-nosign" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6"/><path d="M4 12L12 4" stroke-linecap="round"/></symbol>
+  <symbol id="ic-pause" viewBox="0 0 16 16" fill="none"><rect x="4" y="3" width="3" height="10" rx="1"/><rect x="9" y="3" width="3" height="10" rx="1"/></symbol>
+  <symbol id="ic-heart" viewBox="0 0 16 16" fill="none"><path d="M8 13s-6-4-6-8a4 4 0 0 1 6-3.4A4 4 0 0 1 14 5c0 4-6 8-6 8z" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
 <nav class="navbar">
   <a class="nav-logo" href="index.html">
@@ -105,12 +109,15 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 <div class="page">
 
   <div class="doc-hero">
-    <div class="doc-badge">🔒 Privacy Document</div>
+    <div class="doc-badge">
+      <svg><use href="#ic-lock"/></svg>
+      Privacy Document
+    </div>
     <h1 class="doc-title">Privacy Policy</h1>
     <div class="doc-meta">
-      <div class="doc-meta-item">📅 Last updated: <span>March 5, 2026</span></div>
-      <div class="doc-meta-item">⏱ Reading time: <span>~6 minutes</span></div>
-      <div class="doc-meta-item">🌍 Applies to: <span>All users worldwide</span></div>
+      <div class="doc-meta-item"><svg><use href="#ic-cal"/></svg> Last updated: <span>March 5, 2026</span></div>
+      <div class="doc-meta-item"><svg><use href="#ic-clock"/></svg> Reading time: <span>~6 minutes</span></div>
+      <div class="doc-meta-item"><svg><use href="#ic-globe"/></svg> Applies to: <span>All users worldwide</span></div>
     </div>
   </div>
 
@@ -120,13 +127,13 @@ footer .copy{color:var(--muted);font-size:0.78rem}
       <li><a href="#p1"><span class="toc-num">01</span>What Data We Collect</a></li>
       <li><a href="#p2"><span class="toc-num">02</span>How We Use Your Data</a></li>
       <li><a href="#p3"><span class="toc-num">03</span>Data We Don't Collect</a></li>
-      <li><a href="#p4"><span class="toc-num">04</span>Cookies & Local Storage</a></li>
-      <li><a href="#p5"><span class="toc-num">05</span>Data Sharing & Third Parties</a></li>
+      <li><a href="#p4"><span class="toc-num">04</span>Cookies &amp; Local Storage</a></li>
+      <li><a href="#p5"><span class="toc-num">05</span>Data Sharing &amp; Third Parties</a></li>
       <li><a href="#p6"><span class="toc-num">06</span>Data Security</a></li>
       <li><a href="#p7"><span class="toc-num">07</span>Your Rights</a></li>
       <li><a href="#p8"><span class="toc-num">08</span>Data Retention</a></li>
       <li><a href="#p9"><span class="toc-num">09</span>Children's Privacy</a></li>
-      <li><a href="#p10"><span class="toc-num">10</span>Contact & Requests</a></li>
+      <li><a href="#p10"><span class="toc-num">10</span>Contact &amp; Requests</a></li>
     </ul>
   </div>
 
@@ -134,55 +141,25 @@ footer .copy{color:var(--muted);font-size:0.78rem}
     <p><strong>Our commitment:</strong> Community Hub does not sell your data. We do not run ads. We collect only what's necessary to run the platform. Your privacy is a feature, not an afterthought.</p>
   </div>
 
-  <!-- SECTION 1 -->
   <div class="doc-section" id="p1">
     <div class="section-num">01</div>
     <h2 class="section-title">What Data We Collect</h2>
     <p>We collect only the minimum data required to operate the platform. Here's exactly what we store:</p>
-
     <table class="data-table">
-      <thead>
-        <tr>
-          <th>Data Type</th>
-          <th>What We Store</th>
-          <th>Why</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Data Type</th><th>What We Store</th><th>Why</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>Account info</strong></td>
-          <td>Name, email address, hashed password</td>
-          <td>To create and authenticate your account</td>
-        </tr>
-        <tr>
-          <td><strong>Profile</strong></td>
-          <td>Optional bio, avatar color, initials</td>
-          <td>To personalize your profile</td>
-        </tr>
-        <tr>
-          <td><strong>Resources</strong></td>
-          <td>Name, description, location, tags, contact info you submit</td>
-          <td>To display community resources</td>
-        </tr>
-        <tr>
-          <td><strong>Activity</strong></td>
-          <td>Helpful votes you cast, resources you submitted</td>
-          <td>To show your dashboard stats and prevent duplicate votes</td>
-        </tr>
-        <tr>
-          <td><strong>Timestamps</strong></td>
-          <td>Account creation date, resource submission dates</td>
-          <td>To show recency of resources</td>
-        </tr>
+        <tr><td><strong>Account info</strong></td><td>Name, email address, hashed password</td><td>To create and authenticate your account</td></tr>
+        <tr><td><strong>Profile</strong></td><td>Optional bio, avatar color, initials</td><td>To personalize your profile</td></tr>
+        <tr><td><strong>Resources</strong></td><td>Name, description, location, tags, contact info you submit</td><td>To display community resources</td></tr>
+        <tr><td><strong>Activity</strong></td><td>Helpful votes you cast, resources you submitted</td><td>To show your dashboard stats and prevent duplicate votes</td></tr>
+        <tr><td><strong>Timestamps</strong></td><td>Account creation date, resource submission dates</td><td>To show recency of resources</td></tr>
       </tbody>
     </table>
-
     <p>Browsing Community Hub without an account is completely anonymous. We do not require an account to view resources.</p>
   </div>
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 2 -->
   <div class="doc-section" id="p2">
     <div class="section-num">02</div>
     <h2 class="section-title">How We Use Your Data</h2>
@@ -201,7 +178,6 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 3 -->
   <div class="doc-section" id="p3">
     <div class="section-num">03</div>
     <h2 class="section-title">Data We Don't Collect</h2>
@@ -218,61 +194,46 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 4 -->
   <div class="doc-section" id="p4">
     <div class="section-num">04</div>
-    <h2 class="section-title">Cookies & Local Storage</h2>
+    <h2 class="section-title">Cookies &amp; Local Storage</h2>
     <p>Community Hub uses <strong>minimal browser storage</strong> to provide core functionality:</p>
-
     <table class="data-table">
-      <thead>
-        <tr><th>Storage Type</th><th>What's Stored</th><th>Purpose</th></tr>
-      </thead>
+      <thead><tr><th>Storage Type</th><th>What's Stored</th><th>Purpose</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>localStorage</strong></td>
-          <td>Auth token (JWT), your bookmarks, your vote history</td>
-          <td>Keep you logged in, save bookmarks locally</td>
-        </tr>
-        <tr>
-          <td><strong>Session cookies</strong></td>
-          <td>Basic session state</td>
-          <td>Security and authentication</td>
-        </tr>
+        <tr><td><strong>localStorage</strong></td><td>Auth token (JWT), your bookmarks, your vote history</td><td>Keep you logged in, save bookmarks locally</td></tr>
+        <tr><td><strong>Session cookies</strong></td><td>Basic session state</td><td>Security and authentication</td></tr>
       </tbody>
     </table>
-
-    <p>We do <strong>not</strong> use advertising cookies, third-party tracking cookies, or analytics platforms like Google Analytics. Your browsing on Community Hub stays on Community Hub.</p>
+    <p>We do <strong>not</strong> use advertising cookies, third-party tracking cookies, or analytics platforms like Google Analytics.</p>
     <p>You can clear your localStorage at any time through your browser settings. This will sign you out and clear saved bookmarks on that device.</p>
   </div>
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 5 -->
   <div class="doc-section" id="p5">
     <div class="section-num">05</div>
-    <h2 class="section-title">Data Sharing & Third Parties</h2>
+    <h2 class="section-title">Data Sharing &amp; Third Parties</h2>
     <p><strong>We do not sell, rent, or trade your personal data.</strong> Period.</p>
     <p>We may share limited data only in these specific circumstances:</p>
     <ul class="doc-list">
-      <li><strong>Service providers:</strong> Our hosting provider (to run the server) and email provider (for transactional emails only) process data on our behalf under strict data agreements</li>
+      <li><strong>Service providers:</strong> Our hosting provider and email provider process data on our behalf under strict data agreements</li>
       <li><strong>Legal requirements:</strong> If required by law, court order, or to protect the safety of users</li>
       <li><strong>Business transfer:</strong> If Community Hub is acquired or merged, users will be notified before data is transferred</li>
     </ul>
     <div class="highlight-box">
-      <p><strong>Google Fonts</strong> is loaded from Google's servers to render our typography. This means Google's servers process your IP address when fonts load. To avoid this, you can use a browser extension that blocks external font requests.</p>
+      <p><strong>Google Fonts</strong> is loaded from Google's servers to render our typography. This means Google's servers process your IP address when fonts load.</p>
     </div>
   </div>
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 6 -->
   <div class="doc-section" id="p6">
     <div class="section-num">06</div>
     <h2 class="section-title">Data Security</h2>
     <p>We take reasonable measures to protect your data:</p>
     <ul class="doc-list">
-      <li>Passwords are hashed using <strong>bcrypt</strong> with a cost factor of 12 — they are never stored in plain text</li>
+      <li>Passwords are hashed using <strong>bcrypt</strong> with a cost factor of 12 — never stored in plain text</li>
       <li>Authentication uses <strong>JWT tokens</strong> with expiry — not persistent cookies</li>
       <li>All data is transmitted over <strong>HTTPS</strong> (encrypted in transit)</li>
       <li>Our database is not publicly accessible</li>
@@ -282,39 +243,38 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 7 -->
   <div class="doc-section" id="p7">
     <div class="section-num">07</div>
     <h2 class="section-title">Your Rights</h2>
     <p>Depending on your location, you may have the following rights regarding your data:</p>
     <div class="rights-grid">
       <div class="right-card">
-        <div class="right-card-icon">👁</div>
+        <div class="right-card-icon"><svg><use href="#ic-eye"/></svg></div>
         <div class="right-card-title">Access</div>
         <div class="right-card-desc">Request a copy of all personal data we hold about you</div>
       </div>
       <div class="right-card">
-        <div class="right-card-icon">✏️</div>
+        <div class="right-card-icon"><svg><use href="#ic-edit"/></svg></div>
         <div class="right-card-title">Correction</div>
         <div class="right-card-desc">Update or correct your name, email, and profile information</div>
       </div>
       <div class="right-card">
-        <div class="right-card-icon">🗑</div>
+        <div class="right-card-icon"><svg><use href="#ic-trash"/></svg></div>
         <div class="right-card-title">Deletion</div>
         <div class="right-card-desc">Delete your account and associated personal data at any time</div>
       </div>
       <div class="right-card">
-        <div class="right-card-icon">📦</div>
+        <div class="right-card-icon"><svg><use href="#ic-box"/></svg></div>
         <div class="right-card-title">Portability</div>
         <div class="right-card-desc">Request an export of your submitted resources and account data</div>
       </div>
       <div class="right-card">
-        <div class="right-card-icon">🚫</div>
+        <div class="right-card-icon"><svg><use href="#ic-nosign"/></svg></div>
         <div class="right-card-title">Objection</div>
         <div class="right-card-desc">Object to certain uses of your data — we'll review and respond</div>
       </div>
       <div class="right-card">
-        <div class="right-card-icon">⏸</div>
+        <div class="right-card-icon"><svg><use href="#ic-pause"/></svg></div>
         <div class="right-card-title">Restriction</div>
         <div class="right-card-desc">Request we limit how we process your data in certain circumstances</div>
       </div>
@@ -324,7 +284,6 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 8 -->
   <div class="doc-section" id="p8">
     <div class="section-num">08</div>
     <h2 class="section-title">Data Retention</h2>
@@ -340,7 +299,6 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 9 -->
   <div class="doc-section" id="p9">
     <div class="section-num">09</div>
     <h2 class="section-title">Children's Privacy</h2>
@@ -350,10 +308,9 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 10 -->
   <div class="doc-section" id="p10">
     <div class="section-num">10</div>
-    <h2 class="section-title">Contact & Data Requests</h2>
+    <h2 class="section-title">Contact &amp; Data Requests</h2>
     <p>For any privacy-related questions, data access requests, or deletion requests:</p>
     <ul class="doc-list">
       <li>Email: <strong>privacy@communityhub.app</strong></li>
@@ -383,7 +340,11 @@ footer .copy{color:var(--muted);font-size:0.78rem}
     <a href="index.html">Home</a>
     <a href="app.html">Browse Resources</a>
   </div>
-  <div class="copy">© 2026 Community Hub. Built with ❤️ for the community.</div>
+  <div class="copy">
+    © 2026 Community Hub. Built with
+    <svg viewBox="0 0 16 16"><use href="#ic-heart"/></svg>
+    for the community.
+  </div>
 </footer>
 
 </body>

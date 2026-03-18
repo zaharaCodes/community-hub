@@ -16,72 +16,65 @@
 }
 html{scroll-behavior:smooth}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
-
-/* NAVBAR */
 .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;height:60px;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(14,14,14,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
 .nav-logo{display:flex;align-items:center;gap:0.65rem;font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:800;color:var(--text);text-decoration:none}
 .nav-logo-icon{width:30px;height:30px;border-radius:7px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:900;color:#fff;flex-shrink:0}
 .nav-back{color:var(--muted);text-decoration:none;font-size:0.83rem;font-weight:500;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
 .nav-back:hover{color:var(--text)}
-
-/* PAGE */
 .page{max-width:760px;margin:0 auto;padding:7rem 2rem 5rem}
-
-/* HERO */
 .doc-hero{margin-bottom:3.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border)}
 .doc-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.25);color:var(--amber);padding:0.35rem 1rem;border-radius:100px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1.25rem}
+.doc-badge svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;flex-shrink:0}
 .doc-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;line-height:1.1;margin-bottom:1rem}
 .doc-meta{display:flex;gap:1.5rem;flex-wrap:wrap}
 .doc-meta-item{display:flex;align-items:center;gap:0.4rem;color:var(--muted);font-size:0.82rem}
+.doc-meta-item svg{width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:1.6;stroke-linecap:round;flex-shrink:0}
 .doc-meta-item span{color:var(--text);font-weight:600}
-
-/* TOC */
 .toc{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:3rem}
 .toc-title{font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.9rem}
 .toc-list{list-style:none;display:flex;flex-direction:column;gap:0.3rem}
 .toc-list a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;display:flex;align-items:center;gap:0.5rem;padding:0.28rem 0;transition:color 0.2s;border-radius:4px}
 .toc-list a:hover{color:var(--amber)}
 .toc-num{color:var(--amber);font-size:0.72rem;font-weight:700;width:18px;flex-shrink:0}
-
-/* SECTIONS */
 .doc-section{margin-bottom:3rem;scroll-margin-top:80px}
 .section-num{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--amber);margin-bottom:0.5rem}
 .section-title{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:800;margin-bottom:1rem;line-height:1.2}
 .doc-section p{color:var(--muted);font-size:0.92rem;margin-bottom:0.9rem;line-height:1.75}
 .doc-section p strong{color:var(--text)}
-
 .doc-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin:1rem 0}
 .doc-list li{display:flex;align-items:flex-start;gap:0.65rem;color:var(--muted);font-size:0.9rem;line-height:1.6}
 .doc-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;margin-top:0.55rem}
-
 .highlight-box{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 12px 12px 0;padding:1.1rem 1.25rem;margin:1.25rem 0}
 .highlight-box p{color:var(--muted);font-size:0.88rem;margin:0;line-height:1.7}
 .highlight-box strong{color:var(--text)}
-
 .warning-box{background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);border-radius:12px;padding:1.1rem 1.25rem;margin:1.25rem 0}
 .warning-box p{color:var(--muted);font-size:0.88rem;margin:0;line-height:1.7}
 .warning-box strong{color:var(--coral)}
-
-/* DIVIDER */
 .doc-divider{height:1px;background:var(--border);margin:2.5rem 0}
-
-/* FOOTER */
 .doc-footer{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.75rem;margin-top:3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .doc-footer-text{color:var(--muted);font-size:0.85rem}
 .doc-footer-links{display:flex;gap:1.25rem}
 .doc-footer-links a{color:var(--muted);text-decoration:none;font-size:0.83rem;transition:color 0.2s}
 .doc-footer-links a:hover{color:var(--amber)}
-
-/* PAGE FOOTER */
 footer{border-top:1px solid var(--border);padding:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:4rem}
 footer .brand{font-family:'Playfair Display',serif;font-weight:800;font-size:1rem}
 footer .links{display:flex;gap:1.25rem}
 footer .links a{color:var(--muted);text-decoration:none;font-size:0.82rem;transition:color 0.2s}
 footer .links a:hover{color:var(--text)}
-footer .copy{color:var(--muted);font-size:0.78rem}
+footer .copy{color:var(--muted);font-size:0.78rem;display:flex;align-items:center;gap:0.3rem}
+footer .copy svg{width:12px;height:12px;stroke:var(--coral);fill:rgba(255,107,107,0.25);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 </style>
 </head>
 <body>
+
+<!-- SVG SYMBOLS -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="ic-doc" viewBox="0 0 16 16" fill="none"><path d="M4 2h6l4 4v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 2v4h4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-cal" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 1v4M11 1v4M2 7h12" stroke-linecap="round"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2" stroke-linecap="round"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 16 16" fill="none"><path d="M8 2a4 4 0 0 1 4 4c0 3-4 8-4 8S4 9 4 6a4 4 0 0 1 4-4z" stroke-linecap="round"/><circle cx="8" cy="6" r="1.3"/></symbol>
+  <symbol id="ic-heart" viewBox="0 0 16 16" fill="none"><path d="M8 13s-6-4-6-8a4 4 0 0 1 6-3.4A4 4 0 0 1 14 5c0 4-6 8-6 8z" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
 <nav class="navbar">
   <a class="nav-logo" href="index.html">
@@ -97,16 +90,18 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 <div class="page">
 
   <div class="doc-hero">
-    <div class="doc-badge">📄 Legal Document</div>
+    <div class="doc-badge">
+      <svg><use href="#ic-doc"/></svg>
+      Legal Document
+    </div>
     <h1 class="doc-title">Terms of Service</h1>
     <div class="doc-meta">
-      <div class="doc-meta-item">📅 Last updated: <span>March 5, 2026</span></div>
-      <div class="doc-meta-item">⏱ Reading time: <span>~5 minutes</span></div>
-      <div class="doc-meta-item">📍 Applies to: <span>All users worldwide</span></div>
+      <div class="doc-meta-item"><svg><use href="#ic-cal"/></svg> Last updated: <span>March 5, 2026</span></div>
+      <div class="doc-meta-item"><svg><use href="#ic-clock"/></svg> Reading time: <span>~5 minutes</span></div>
+      <div class="doc-meta-item"><svg><use href="#ic-pin"/></svg> Applies to: <span>All users worldwide</span></div>
     </div>
   </div>
 
-  <!-- TOC -->
   <div class="toc">
     <div class="toc-title">Table of Contents</div>
     <ul class="toc-list">
@@ -116,7 +111,7 @@ footer .copy{color:var(--muted);font-size:0.78rem}
       <li><a href="#s4"><span class="toc-num">04</span>Content Guidelines</a></li>
       <li><a href="#s5"><span class="toc-num">05</span>Prohibited Conduct</a></li>
       <li><a href="#s6"><span class="toc-num">06</span>Intellectual Property</a></li>
-      <li><a href="#s7"><span class="toc-num">07</span>Disclaimers & Liability</a></li>
+      <li><a href="#s7"><span class="toc-num">07</span>Disclaimers &amp; Liability</a></li>
       <li><a href="#s8"><span class="toc-num">08</span>Termination</a></li>
       <li><a href="#s9"><span class="toc-num">09</span>Changes to Terms</a></li>
       <li><a href="#s10"><span class="toc-num">10</span>Contact Us</a></li>
@@ -124,10 +119,9 @@ footer .copy{color:var(--muted);font-size:0.78rem}
   </div>
 
   <div class="highlight-box">
-    <p><strong>Plain English Summary:</strong> Community Hub is a free platform where people share and find local resources. By using it, you agree to be honest, not spam or abuse the platform, and understand that we can't guarantee the accuracy of community-submitted info. That's the gist — but please read the full terms below.</p>
+    <p><strong>Plain English Summary:</strong> Community Hub is a free platform where people share and find local resources. By using it, you agree to be honest, not spam or abuse the platform, and understand that we can't guarantee the accuracy of community-submitted info.</p>
   </div>
 
-  <!-- SECTION 1 -->
   <div class="doc-section" id="s1">
     <div class="section-num">01</div>
     <h2 class="section-title">Acceptance of Terms</h2>
@@ -137,7 +131,6 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 2 -->
   <div class="doc-section" id="s2">
     <div class="section-num">02</div>
     <h2 class="section-title">Description of Service</h2>
@@ -155,7 +148,6 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 3 -->
   <div class="doc-section" id="s3">
     <div class="section-num">03</div>
     <h2 class="section-title">User Accounts</h2>
@@ -175,7 +167,6 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 4 -->
   <div class="doc-section" id="s4">
     <div class="section-num">04</div>
     <h2 class="section-title">Content Guidelines</h2>
@@ -192,7 +183,6 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 5 -->
   <div class="doc-section" id="s5">
     <div class="section-num">05</div>
     <h2 class="section-title">Prohibited Conduct</h2>
@@ -214,7 +204,6 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 6 -->
   <div class="doc-section" id="s6">
     <div class="section-num">06</div>
     <h2 class="section-title">Intellectual Property</h2>
@@ -225,13 +214,12 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 7 -->
   <div class="doc-section" id="s7">
     <div class="section-num">07</div>
-    <h2 class="section-title">Disclaimers & Limitation of Liability</h2>
+    <h2 class="section-title">Disclaimers &amp; Limitation of Liability</h2>
     <p>Community Hub is provided <strong>"as is"</strong> without warranties of any kind. We do not guarantee the accuracy, completeness, or availability of any resource listed on the platform.</p>
     <div class="highlight-box">
-      <p><strong>Important:</strong> Resources on Community Hub are submitted by community members. We do not independently verify every listing. Always confirm details (hours, availability, eligibility) directly with the resource provider before visiting.</p>
+      <p><strong>Important:</strong> Resources on Community Hub are submitted by community members. We do not independently verify every listing. Always confirm details directly with the resource provider before visiting.</p>
     </div>
     <p>To the maximum extent permitted by law, Community Hub shall not be liable for:</p>
     <ul class="doc-list">
@@ -244,7 +232,6 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 8 -->
   <div class="doc-section" id="s8">
     <div class="section-num">08</div>
     <h2 class="section-title">Termination</h2>
@@ -255,7 +242,6 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 9 -->
   <div class="doc-section" id="s9">
     <div class="section-num">09</div>
     <h2 class="section-title">Changes to Terms</h2>
@@ -265,7 +251,6 @@ footer .copy{color:var(--muted);font-size:0.78rem}
 
   <div class="doc-divider"></div>
 
-  <!-- SECTION 10 -->
   <div class="doc-section" id="s10">
     <div class="section-num">10</div>
     <h2 class="section-title">Contact Us</h2>
@@ -277,7 +262,6 @@ footer .copy{color:var(--muted);font-size:0.78rem}
     <p>We aim to respond to all legal inquiries within 5 business days.</p>
   </div>
 
-  <!-- BOTTOM NAV -->
   <div class="doc-footer">
     <div class="doc-footer-text">© 2026 Community Hub. All rights reserved.</div>
     <div class="doc-footer-links">
@@ -296,7 +280,11 @@ footer .copy{color:var(--muted);font-size:0.78rem}
     <a href="index.html">Home</a>
     <a href="app.html">Browse Resources</a>
   </div>
-  <div class="copy">© 2026 Community Hub. Built with ❤️ for the community.</div>
+  <div class="copy">
+    © 2026 Community Hub. Built with
+    <svg viewBox="0 0 16 16"><use href="#ic-heart"/></svg>
+    for the community.
+  </div>
 </footer>
 
 </body>
